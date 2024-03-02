@@ -3,9 +3,16 @@ package main
 import "fmt"
 
 // TODO: IMPORTANTE - Las constantes no necesitan ser usadas en su totalidad para compilar el código
+// TODO: Comenzar las constantes en Go con una letra mayúscula si quieres que sean visibles fuera del paquete.
+
+// Exportable, visible fuera del paquete en el que están definidas.
+const Pi = 3.1416
+
+// No exportable, solo visible dentro del paquete
+const version = "1.0.0"
 
 // Constante a nivel de paquete
-const animal = "🐯"
+const Animal = "🐯"
 
 // * Creación de secuencias de valores incrementales dentro de las declaraciones const
 // TODO: iota siempre empieza en 0
@@ -24,18 +31,19 @@ func main() {
 	// TODO: Se debe declarar y asignar inmediatamente el valor
 	// TODO: No podemos utilizar el operador de variable corta :=
 	// TODO: Recomandable usarlas a nivel de paquete
-	const GENDER string = "Masculino"
+	const Gender string = "Masculino"
 
-	fmt.Println("género:", GENDER)
+	fmt.Println("género:", Gender)
 
 	// Agrupar constantes
 	const (
-		fruit1 = "🍎"
-		fruit2 = "🍐"
+		Fruit1 = "🍎"
+		Fruit2 = "🍐"
 	)
 
-	fmt.Println(fruit1, fruit2)
+	fmt.Println(Fruit1, Fruit2)
 
-	fmt.Println(animal)
+	fmt.Println(Animal)
+	fmt.Println(version)
 
 }
