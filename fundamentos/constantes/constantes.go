@@ -12,7 +12,7 @@ const Pi = 3.1416
 const version = "1.0.0"
 
 // Constante a nivel de paquete
-const Animal = "🐯"
+const animal = "🐯"
 
 // * Creación de secuencias de valores incrementales dentro de las declaraciones const
 // TODO: iota siempre empieza en 0
@@ -31,19 +31,18 @@ func main() {
 	// TODO: Se debe declarar y asignar inmediatamente el valor
 	// TODO: No podemos utilizar el operador de variable corta :=
 	// TODO: Recomandable usarlas a nivel de paquete
-	const Gender string = "Masculino"
+	const gender string = "Masculino"
 
-	fmt.Println("género:", Gender)
+	fmt.Println("género:", gender)
 
 	// Agrupar constantes
 	const (
-		Fruit1 = "🍎"
-		Fruit2 = "🍐"
+		fruit1 = "🍎"
+		fruit2 = "🍐"
 	)
 
-	fmt.Println(Fruit1, Fruit2)
+	fmt.Println(fruit1, fruit2)
 
-	fmt.Println(Animal)
+	fmt.Println(animal)
 	fmt.Println(version)
-
 }
