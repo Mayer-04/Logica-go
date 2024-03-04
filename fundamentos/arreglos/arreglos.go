@@ -35,4 +35,12 @@ func main() {
 
 	fmt.Println(array5)
 
+	// Acceder a un elemento del arreglo - Indexados desde 0
+	fmt.Println(array2[0])
+
+	// Los arrays son valores. asignar un array a otro copia todos los elementos.
+	var copyArray = array
+
+	fmt.Println(copyArray)
+
 }
