@@ -38,9 +38,15 @@ func main() {
 	// Acceder a un elemento del arreglo - Indexados desde 0
 	fmt.Println(array2[0])
 
-	// Los arrays son valores. asignar un array a otro copia todos los elementos.
+	// TODO: Los arrays son valores. asignar un array a otro copia todos los elementos.
 	var copyArray = array
 
 	fmt.Println(copyArray)
 
+	// TODO: Modificar un elemento de un array
+	modificar := [3]string{"Perro", "Gato", "Pez"}
+
+	modificar[0] = "Conejo"
+
+	fmt.Println(modificar)
 }
