@@ -28,10 +28,15 @@ func main() {
 
 	fmt.Println("Persona2:", andres)
 
-	// No se define el nombre de los campos pero se respeta el orden
+	// Asignando un valor inicial en forma ordenada
 	mayer := Persona{"Mayer", 23}
 
 	fmt.Println("Persona3:", mayer)
+
+	// Usando el formato campo:valor para inicializarlo sin orden
+	lucas := Persona{Edad: 40, Nombre: "Lucas"}
+
+	fmt.Println("Persona4:", lucas)
 
 	// Accediendo a los campos - Usando el operador punto
 	fmt.Println(luis.Nombre) // Output: Luis
