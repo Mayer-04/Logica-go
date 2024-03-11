@@ -18,7 +18,11 @@ func main() {
 	// \n es un salto de línea
 	fmt.Printf("\nTipo: %T - Valor: %v", secondName, secondName)
 
-	// * Paquete strings - Contiene métodos para trabajar con strings
+	// TODO:  Interpolación - fmt.Sprintf
+	fullName := fmt.Sprintf("Mi nombre es %s %s", name, secondName)
+	fmt.Println("\nInterpolación:", fullName)
+
+	// * Paquete strings - Contiene métodos para trabajar con strings-----------------------------------------------
 
 	// Longitud de un string
 	fmt.Println("\nLongitud de name:", len(name))
@@ -49,34 +53,29 @@ func main() {
 	fmt.Println(str4)
 
 	// Divide una cadena en partes de acuerdo a un separador - Retorna un slice de strings
-
 	str5 := strings.Split(name, "")
 
 	fmt.Println(str5)
 
 	// Verifica si una cadena termina con una subcadena - Retorna un booleano
-
 	str6 := strings.HasSuffix(name, "er")
 
 	fmt.Println(str6)
 
 	// Eliminar los espacios
-
 	str7 := strings.TrimSpace(name)
 
 	fmt.Println(str7)
 
-	// * Paquete strconv - Contiene métodos para convertir strings
+	// * Paquete strconv - Contiene métodos para convertir strings-------------------------------------------------
 
-	// Convierte un string a un entero
-
+	// Convertir un string a un entero
 	age := "23"
 	age2, _ := strconv.Atoi(age)
 
 	fmt.Printf("\nTipo: %T - Valor: %v", age2, age2)
 
 	// Convertir un string que representa un número a un float64
-
 	weight := "70.5"
 	weight2, _ := strconv.ParseFloat(weight, 64)
 
