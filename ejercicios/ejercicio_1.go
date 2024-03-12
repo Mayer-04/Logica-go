@@ -1,4 +1,4 @@
-package main
+package ejercicios
 
 import (
 	"errors"
@@ -24,7 +24,7 @@ func addEvenNumbers(nums []int) (int, error) {
 	return result, nil
 }
 
-func main() {
+func Ejercicio1() {
 
 	var numbers = make([]int, 0, 6)
 
