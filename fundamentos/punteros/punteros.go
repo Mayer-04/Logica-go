@@ -30,7 +30,8 @@ func main() {
 	fruit := "🍎"
 	var pointer *string = &fruit
 
-	fmt.Println(pointer)
+	fmt.Println("Pointer:", pointer) // Output: Pointer: 0xc00008a030
+	fmt.Println("Value:", *pointer)  // Output: Value: 🍎
 
 	// TODO: Ejemplo con la función incrementar
 	var x int = 10

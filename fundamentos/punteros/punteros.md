@@ -1,18 +1,4 @@
----
-Title: 'Pointers'
-Description: 'Pointers in Go are variables that store the memory address of another variable. They are used to access and modify the value stored at a specific memory address.'
-Subjects:
-  - 'Code Foundations'
-  - 'Computer Science'
-Tags:
-  - 'Pointers'
-  - 'References'
-  - 'Memory Addresses'
-  - 'Variables'
-CatalogContent:
-  - 'learn-go'
-  - 'paths/back-end-engineer-career-path'
----
+# Pointers
 
 Pointers in Go are an essential feature that allows working directly with a program's memory. A pointer stores the memory address of another variable. This can be useful for accessing and modifying the value stored at that specific memory address.
 

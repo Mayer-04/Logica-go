@@ -13,12 +13,16 @@ func Ejercicio5() {
 
 	var number = 121
 
-	result := isPalindrome(number)
+	result, err := isPalindrome(number)
+
+	if err != nil {
+		fmt.Println(err)
+	}
 
 	fmt.Println(result)
 }
 
-func isPalindrome(x int) bool {
+func isPalindrome(x int) (bool, error) {
 	var nuevoString string = strconv.Itoa(x)
 	arregloStrings := strings.Split(nuevoString, "")
 
@@ -29,9 +33,10 @@ func isPalindrome(x int) bool {
 	nuevoNumber, err := strconv.Atoi(unir)
 
 	if err != nil {
-		fmt.Println(err)
+		return false, fmt.Errorf("error: %v", err)
+
 	}
 
-	return x == nuevoNumber
+	return x == nuevoNumber, nil
 
 }
