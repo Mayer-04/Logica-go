@@ -2,6 +2,8 @@ package main
 
 import "fmt"
 
+// !NOTE: El valor 0 de un map es nil si no se ha inicializa utilizando make()
+
 func main() {
 
 	// Creando un map literal - declarar y asignar inmediatamente el valor
@@ -16,7 +18,8 @@ func main() {
 	fmt.Println("Edades:", edades)
 
 	// Creando e inicializando un map con make
-	edades2 := make(map[string]int)
+	// * Solo podemos agregar la "capacidad" como segundo argumento al crear el map con make()
+	edades2 := make(map[string]int, 2)
 
 	edades2["Mayer"] = 24
 	edades2["Andres"] = 23
@@ -37,6 +40,7 @@ func main() {
 	delete(nuevoMapa, "a")
 
 	// Verificar si un elemento existe en el map
+	// !NOTE: "content" es el valor de la clave y "ok" es un booleano que indica si existe o no
 	content, ok := nuevoMapa["a"]
 
 	fmt.Printf("Contenido: %v - Existe: %t", content, ok)
