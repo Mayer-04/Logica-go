@@ -22,8 +22,8 @@ func main() {
 	// Creando un slice a partir de un arreglo
 	array := [5]int{1, 2, 3, 4, 5}
 
-	// Slice de la posición 1 a la 3 del arreglo (3 no incluido)
-	// TODO: slice comienza en 0, array[:n] es igual a array[0:n]
+	//* slicing operator: slice de la posición 1 a la 3 del arreglo (3 no incluido)
+	//TODO: slice comienza en 0, array[:n] es igual a array[0:n]
 	slice3 := array[1:3]
 
 	fmt.Println(slice3)
@@ -33,7 +33,7 @@ func main() {
 
 	fmt.Println(slice4)
 
-	// TODO: Funciones integradas para trabajar con slices
+	//TODO: Funciones integradas para trabajar con slices
 
 	// Tamaño o longitud de un slice - len()
 	fmt.Println(len(slice4))
@@ -42,12 +42,12 @@ func main() {
 	fmt.Println(cap(slice4))
 
 	// Añade uno o más elementos al slice - append()
-	// TODO: append modifica el array al que apunta el slice
+	//TODO: append modifica el array al que apunta el slice
 	slice5 := append(slice4, 6)
 	fmt.Println(slice5)
 
-	// Desempaquetando un slice o spread operator - ...
-	// TODO: Permite que los elementos se pasen individuamente como argumentos
+	// Desempaquetando un slice o spread operator
+	//* Permite que los elementos se pasen individualmente como argumentos utilizando los 3 puntos
 	a := []int{1, 2, 3}
 	b := []int{4, 5, 6}
 

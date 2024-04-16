@@ -7,6 +7,8 @@ func incrementar(puntero *int) {
 	*puntero++
 }
 
+//* Puntero: Es una variable que contiene la dirección en memoria de otra variable
+
 func main() {
 
 	// Declaración de una variable

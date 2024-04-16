@@ -4,6 +4,9 @@ import "fmt"
 
 func main() {
 
+	// Para acceder a cada elemento del arreglo se usa la notación de subíndice []
+	// Donde 0 es el primer elemento y el último es la longitud del arreglo menos 1 arr[len(a)-1]
+
 	// Arreglo
 	var array [5]int
 	array[0] = 10
@@ -24,6 +27,7 @@ func main() {
 	fmt.Println(array3)
 
 	// Arreglo de longitud implícita
+	// No se reserva memoria y la longitud viene determinada por los datos colocados al inicializarla
 	// TODO: Infiere el tamaño basado en los valores que se le asignen
 	array4 := [...]int{10, 20, 30}
 

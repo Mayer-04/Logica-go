@@ -4,7 +4,8 @@ import "fmt"
 
 func main() {
 
-	// TODO: La declaración de variable corta solo puede usarse dentro del cuerpo de una función.
+	//* Si declaras una variable pero no la usas, obtienes un error y el programa no compila.
+	//TODO: La declaración de variable corta solo puede usarse dentro del cuerpo de una función.
 
 	// Declarando una variable con su tipo
 	var name string = "Mayer"
@@ -28,12 +29,12 @@ func main() {
 	fmt.Println(casa1, casa2, casa3)
 
 	// Declaración de variable corta - Infiere automáticamente el tipo
-	// TODO: No podemos reasignar un valor con la declaración de variable corta.
+	//TODO: No podemos reasignar un valor con la declaración de variable corta.
 	age := 23
 
 	fmt.Println("edad:", age)
 
-	// Agrupar múltiples variables
+	//* Agrupar múltiples variables
 	var (
 		home   = "🏠"
 		user   = "🧑🏽"

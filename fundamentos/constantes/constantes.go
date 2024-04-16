@@ -2,8 +2,9 @@ package main
 
 import "fmt"
 
-// TODO: IMPORTANTE - Las constantes no necesitan ser usadas en su totalidad para compilar el código
-// TODO: Comenzar las constantes en Go con una letra mayúscula si quieres que sean visibles fuera del paquete.
+//* IMPORTANTE - Las constantes no necesitan ser usadas en su totalidad para compilar el código
+//* Comenzar las constantes en Go con una letra mayúscula si quieres que sean visibles fuera del paquete
+//* Declarar una constante sin usarla no provocara un mensaje de error
 
 // Exportable, visible fuera del paquete en el que están definidas.
 const Pi = 3.1416
@@ -14,7 +15,7 @@ const version = "1.0.0"
 // Constante a nivel de paquete
 const animal = "🐯"
 
-// * Creación de secuencias de valores incrementales dentro de las declaraciones const
+//* Creación de secuencias de valores incrementales dentro de las declaraciones const
 // TODO: iota siempre empieza en 0
 const (
 	Lunes     = iota // Lunes == 0

@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-// TODO: Struct - Una definición de una clase en Go
+//TODO: Struct - Una definición de una clase en Go
 // Suelen declararse a nivel de paquete y no a nivel de funciones
 type Persona struct {
 	Nombre string
@@ -10,6 +10,10 @@ type Persona struct {
 }
 
 func main() {
+
+	//* Crea una variable "maria" que contiene una estructura (struct) con los valores cero de cada campo
+	var maria Persona
+	fmt.Println("maria", maria)
 
 	// Creando una variable - Instanciando una persona
 	// TODO: Se debe inicializar todos los campos (Los nombres) - RECOMENDADO
@@ -54,5 +58,10 @@ func main() {
 		C: false,
 	}
 
-	fmt.Printf("%+v", objeto)
+	fmt.Printf("%+v\n", objeto)
+
+	//* Operador & para generar un puntero al struct "objeto"
+	objectoCopy := &objeto
+	objectoCopy.B = 24
+	fmt.Printf("objeto: %+v\n", objeto)
 }

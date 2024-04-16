@@ -6,26 +6,28 @@ import (
 	"strings"
 )
 
+// TODO: Si escribes con comillas simples una letra sera de tipo "rune", alias para el tipo int32
+
 func main() {
 
 	// TODO: Los strings se declaran entre comillas dobles
-	// TODO: Los strings son inmutables
 	var name string = "Mayer"
 
 	fmt.Printf("Tipo: %T - Valor: %v", name, name)
 
 	secondName := "Andres"
-	// \n es un salto de línea
-	fmt.Printf("\nTipo: %T - Valor: %v", secondName, secondName)
+
+	//* Salto de línea - \n
+	fmt.Printf("Tipo: %T\n - Valor: %v", secondName, secondName)
 
 	// TODO:  Interpolación - fmt.Sprintf
 	fullName := fmt.Sprintf("Mi nombre es %s %s", name, secondName)
-	fmt.Println("\nInterpolación:", fullName)
+	fmt.Println("Interpolación:\n", fullName)
 
-	// * Paquete strings - Contiene métodos para trabajar con strings-----------------------------------------------
+	//* Paquete "strings" contiene métodos para trabajar con cadenas de texto ----------------------------------------
 
 	// Longitud de un string
-	fmt.Println("\nLongitud de name:", len(name))
+	fmt.Println("Longitud de name:\n", len(name))
 
 	// Concatenar strings
 	var nameAndSecondName = name + " " + secondName
@@ -62,18 +64,18 @@ func main() {
 
 	fmt.Println(str6)
 
-	// Eliminar los espacios
+	// Eliminar los espacios del inicio y final
 	str7 := strings.TrimSpace(name)
 
 	fmt.Println(str7)
 
-	// * Paquete strconv - Contiene métodos para convertir strings-------------------------------------------------
+	//* Paquete "strconv" contiene métodos para convertir strings----------------------------------------------------
 
 	// Convertir un string a un entero
 	age := "23"
 	age2, _ := strconv.Atoi(age)
 
-	fmt.Printf("\nTipo: %T - Valor: %v", age2, age2)
+	fmt.Printf("Tipo: %T - Valor: %v\n", age2, age2)
 
 	// Convertir un string que representa un número a un float64
 	weight := "70.5"

@@ -2,7 +2,10 @@ package main
 
 import "fmt"
 
-// !NOTE: El valor 0 de un map es nil si no se ha inicializa utilizando make()
+/* Para evitar problemas a la hora de AGREGAR elementos a una "map", asegúrese de crear una "map" vacía
+(no una asignación nil) mediante la función make, esta regla solo se aplica al agregar elementos */
+
+//!NOTE: El valor 0 de un map es nil si no se ha inicializa utilizando make()
 
 func main() {
 
@@ -18,7 +21,7 @@ func main() {
 	fmt.Println("Edades:", edades)
 
 	// Creando e inicializando un map con make
-	// * Solo podemos agregar la "capacidad" como segundo argumento al crear el map con make()
+	//* Solo podemos agregar la "capacidad" como segundo argumento al crear el map con make()
 	edades2 := make(map[string]int, 2)
 
 	edades2["Mayer"] = 24
@@ -40,7 +43,7 @@ func main() {
 	delete(nuevoMapa, "a")
 
 	// Verificar si un elemento existe en el map
-	// !NOTE: "content" es el valor de la clave y "ok" es un booleano que indica si existe o no
+	//!NOTE: "content" es el valor de la clave y "ok" es un booleano que indica si existe o no
 	content, ok := nuevoMapa["a"]
 
 	fmt.Printf("Contenido: %v - Existe: %t", content, ok)
