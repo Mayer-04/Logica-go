@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-//* IMPORTANTE - Las constantes no necesitan ser usadas en su totalidad para compilar el código
+//* IMPORTANTE: Las constantes no necesitan ser usadas en su totalidad para compilar el código
 //* Comenzar las constantes en Go con una letra mayúscula si quieres que sean visibles fuera del paquete
 //* Declarar una constante sin usarla no provocara un mensaje de error
 
@@ -15,7 +15,7 @@ const version = "1.0.0"
 // Constante a nivel de paquete
 const animal = "🐯"
 
-//* Creación de secuencias de valores incrementales dentro de las declaraciones const
+//* iota: Creación de secuencias de valores incrementales dentro de las declaraciones const
 // TODO: iota siempre empieza en 0
 const (
 	Lunes     = iota // Lunes == 0
@@ -33,7 +33,6 @@ func main() {
 	// TODO: No podemos utilizar el operador de variable corta :=
 	// TODO: Recomandable usarlas a nivel de paquete
 	const gender string = "Masculino"
-
 	fmt.Println("género:", gender)
 
 	// Agrupar constantes
@@ -44,6 +43,6 @@ func main() {
 
 	fmt.Println(fruit1, fruit2)
 
-	fmt.Println(animal)
-	fmt.Println(version)
+	fmt.Println("animal:", animal)
+	fmt.Println("versión:", version)
 }

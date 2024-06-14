@@ -5,7 +5,7 @@ import "fmt"
 
 func main() {
 
-	// TODO: Print - Acción de mostrar o imprimir un valor o información en la consola.
+	// * Print - Acción de mostrar o imprimir un valor o información en la consola.
 
 	// Println imprime un valor con un salto de línea al final.
 	fmt.Println("Hola Mundo!")

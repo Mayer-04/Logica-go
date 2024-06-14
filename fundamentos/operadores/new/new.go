@@ -22,13 +22,11 @@ func main() {
 	//  Acceder al valor almacenado en la dirección de memoria con el operador de desreferenciación
 	fmt.Println("Nuevo valor de x:", *x)
 
-	var person = new(Person)
-
 	// Go inicializa automáticamente los campos del struct con valores cero de su tipo de dato correspondiente
+	var person = new(Person)
 	fmt.Println(person) // Output: &{"" "" 0 []}
 
 	// Asignando valores a los campos del struct
-
 	person.Name = "Mayer"
 	person.LastName = "Chaves"
 	person.Age = 23
