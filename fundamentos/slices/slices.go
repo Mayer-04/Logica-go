@@ -27,7 +27,7 @@ func main() {
 	//TODO: slice comienza en 0, array[:n] es igual a array[0:n]
 	slice3 := array[1:3]
 
-	fmt.Println(slice3)
+	fmt.Println("Slice 3:", slice3)
 
 	// Slices que apunta a los elementos del array desde la posición 1 hasta el final
 	slice4 := array[1:]

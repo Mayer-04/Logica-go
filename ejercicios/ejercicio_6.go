@@ -22,7 +22,6 @@ func main() {
 
 func eliminarElementos(enteros []int) []int {
 	var pares = make([]int, 0, len(enteros))
-	// var pares []int
 
 	for _, value := range enteros {
 		if value%2 == 0 {
