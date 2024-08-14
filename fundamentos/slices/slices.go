@@ -7,78 +7,76 @@ import (
 
 func main() {
 
-	// Declaración de un slice - similar a un arreglo pero la longitud no está definida
-	// Si declaras un slice pero no le asignas valores explícitos, el slice sera "nil"
+	// Declaración de un slice
+	// Los slices son estructuras más flexibles que los arrays, con longitud dinámica.
+	// Un slice sin valores iniciales será "nil".
 	var slice []int
+	fmt.Println("Slice sin valores:", slice)
 
-	fmt.Println(slice)
-
-	// Declaración literal - Declara e inicializa los valores en la misma línea
+	// Declaración literal de un slice
+	// Aquí se declaran e inicializan los valores del slice en una sola línea.
 	var slice2 = []int{1, 2, 3, 4}
+	fmt.Println("Slice literal:", slice2)
 
-	fmt.Println(slice2)
-
-	// Declaración literal con variable corta
+	// Declaración literal con índices explícitos
+	// Los índices pueden ser especificados explícitamente para definir elementos en posiciones específicas.
 	chars := []string{0: "a", 2: "c", 1: "b"}
+	fmt.Println("Slice con índices explícitos:", chars)
 
-	fmt.Println(chars)
-
-	// Creando un slice a partir de un arreglo
+	// Crear un slice a partir de un array
+	// Se usa el operador de slicing para crear un nuevo slice a partir de un array existente.
 	array := [5]int{1, 2, 3, 4, 5}
-
-	//* slicing operator: Crear nuevos slices basados en otros arrays o slices.
-	//TODO: slice comienza en 0, array[:n] es igual a array[0:n]
 	slice3 := array[1:3]
+	fmt.Println("Slice 3 (array[1:3]):", slice3)
 
-	fmt.Println("Slice 3:", slice3)
-
-	// Slices que apunta a los elementos del array desde la posición 1 hasta el final
+	// Crear un slice desde una posición hasta el final del array
+	// El slice incluye todos los elementos desde el índice especificado hasta el final del array.
 	slice4 := array[1:]
+	fmt.Println("Slice 4 (array[1:]):", slice4)
 
-	fmt.Println("slice4:", slice4)
+	//* Funciones integradas para trabajar con slices
 
-	//TODO: Funciones integradas para trabajar con slices
+	// Tamaño o longitud de un slice
+	// La longitud del slice se obtiene con la función `len()`.
+	fmt.Println("Longitud de slice4:", len(slice4))
 
-	// Tamaño o longitud de un slice - len()
-	// Número de elementos que contiene el slice
-	fmt.Println("longitud:", len(slice4))
+	// Capacidad de un slice
+	// La capacidad del slice, que es el número de elementos desde el inicio del slice hasta el final del array
+	// subyacente, se obtiene con `cap()`.
+	fmt.Println("Capacidad de slice4:", cap(slice4))
 
-	// Capacidad de un slice - cap()
-	// Número de elementos desde el comienzo del slice hasta el final del array subyacente.
-	fmt.Println("capacidad:", cap(slice4))
-
-	// Añade uno o más elementos al slice - append()
-	//TODO: append modifica el array al que apunta el slice
+	// Añadir elementos a un slice
+	// La función `append()` agrega uno o más elementos al slice y puede modificar el array subyacente.
 	slice5 := append(slice4, 6)
-	fmt.Println(slice5)
+	fmt.Println("Slice después de append:", slice5)
 
+	// Limpiar un slice con la función `clear`
+	// La función clear elimina todos los elementos del slice y lo deja con valores cero.
 	clear(slice4)
-	fmt.Println("clear:", slice4)
+	fmt.Println("Slice después de clear:", slice4)
 
-	// Desempaquetando un slice o spread operator
-	//* Permite que los elementos se pasen individualmente como argumentos utilizando los 3 puntos
+	// Desempaquetar un slice (spread operator)
+	// Los tres puntos (...) permiten expandir un slice y pasarlo como argumentos individuales a una función.
 	a := []int{1, 2, 3}
 	b := []int{4, 5, 6}
-
 	c := append(a, b...)
+	fmt.Println("Slice después de desempaquetar:", c)
 
-	fmt.Println(c)
-
-	// Creando un slice con make
-	//TODO: El primer parametro es el tipo de dato, el segundo es la longitud y el tercero la capacidad
+	// Crear un slice con make
+	// La función `make()` permite crear un slice con una longitud y capacidad inicial especificadas.
 	make1 := make([]byte, 5)
-	fmt.Println(make1)
+	fmt.Println("Slice creado con make:", make1)
 
-	// Go en su versión 1.22 introduce la función `Concat()`
-	// Devuelve un nuevo slice que concatena los dos slices proporcionados.
+	// Función `Concat` (introducida en Go 1.22)
+	// Concatena dos slices en un nuevo slice.
 	s1 := []string{"Mayer", "Andres"}
 	s2 := []string{"Luis", "Maria"}
 	concat := slices.Concat(s1, s2)
-	fmt.Println(concat) // [Mayer Andres Luis Maria]
+	fmt.Println("Slice concatenado:", concat) // [Mayer Andres Luis Maria]
 
-	// Go en su versión 1.23 introduce la función `Repeat()`
-	// Devuelve un nuevo slice que repite el segmento proporcionado el número de veces indicado.
+	// Función `Repeat` (introducida en Go 1.23)
+	// Repite el segmento del slice el número de veces indicado en un nuevo slice.
 	numbers := []int{0, 1, 2, 3}
 	repeat := slices.Repeat(numbers, 2)
-	fmt.Println(repeat) // [0 1 2 3 0 1 2 3]
+	fmt.Println("Slice repetido:", repeat) // [0 1 2 3 0 1 2 3]
 }

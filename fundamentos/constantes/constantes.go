@@ -3,10 +3,11 @@ package main
 import "fmt"
 
 //* IMPORTANTE: Las constantes no necesitan ser usadas en su totalidad para compilar el código
-//* Comenzar las constantes en Go con una letra mayúscula si quieres que sean visibles fuera del paquete
 //* Declarar una constante sin usarla no provocara un mensaje de error
+//* Se debe declarar y asignar inmediatamente el valor
 
-// Exportable, visible fuera del paquete en el que están definidas.
+// Constante a nivel de paquete
+// Constante exportable
 const Pi = 3.1416
 
 // No exportable, solo visible dentro del paquete
@@ -29,7 +30,6 @@ const (
 
 func main() {
 	// Constantes
-	// TODO: Se debe declarar y asignar inmediatamente el valor
 	// TODO: No podemos utilizar el operador de variable corta :=
 	// TODO: Recomandable usarlas a nivel de paquete
 	const gender string = "Masculino"
