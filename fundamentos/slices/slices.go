@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"slices"
+)
 
 func main() {
 
@@ -64,7 +67,18 @@ func main() {
 	// Creando un slice con make
 	//TODO: El primer parametro es el tipo de dato, el segundo es la longitud y el tercero la capacidad
 	make1 := make([]byte, 5)
-
 	fmt.Println(make1)
 
+	// Go en su versión 1.22 introduce la función `Concat()`
+	// Devuelve un nuevo slice que concatena los dos slices proporcionados.
+	s1 := []string{"Mayer", "Andres"}
+	s2 := []string{"Luis", "Maria"}
+	concat := slices.Concat(s1, s2)
+	fmt.Println(concat) // [Mayer Andres Luis Maria]
+
+	// Go en su versión 1.23 introduce la función `Repeat()`
+	// Devuelve un nuevo slice que repite el segmento proporcionado el número de veces indicado.
+	numbers := []int{0, 1, 2, 3}
+	repeat := slices.Repeat(numbers, 2)
+	fmt.Println(repeat) // [0 1 2 3 0 1 2 3]
 }
