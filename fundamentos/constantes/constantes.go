@@ -2,22 +2,23 @@ package main
 
 import "fmt"
 
-//* IMPORTANTE: Las constantes no necesitan ser usadas en su totalidad para compilar el código
-//* Declarar una constante sin usarla no provocara un mensaje de error
-//* Se debe declarar y asignar inmediatamente el valor
+// * IMPORTANTE: Las constantes no necesitan ser usadas en su totalidad para compilar el código.
+// * Declarar una constante sin usarla no provocará un mensaje de error.
+// * Las constantes se deben declarar y asignar inmediatamente un valor.
+// * Es recomendable declararlas a nivel de paquete cuando se necesita un valor constante en múltiples lugares.
 
-// Constante a nivel de paquete
-// Constante exportable
+// Constante exportable a nivel de paquete
 const Pi = 3.1416
 
-// No exportable, solo visible dentro del paquete
+// Constante no exportable, solo visible dentro del paquete
 const version = "1.0.0"
 
-// Constante a nivel de paquete
+// Constante a nivel de paquete, no exportable
 const animal = "🐯"
 
-//* iota: Creación de secuencias de valores incrementales dentro de las declaraciones const
-// TODO: iota siempre empieza en 0
+// * Uso de iota para la creación de secuencias de valores incrementales en declaraciones const
+// * iota es una característica incorporada en Go que comienza en 0 y se incrementa automáticamente.
+// * Ideal para enumeraciones o listas secuenciales.
 const (
 	Lunes     = iota // Lunes == 0
 	Martes           // Martes == 1 (iota se incrementa automáticamente)
@@ -30,12 +31,13 @@ const (
 
 func main() {
 	// Constantes
-	// TODO: No podemos utilizar el operador de variable corta :=
-	// TODO: Recomandable usarlas a nivel de paquete
+	// * Las constantes deben declararse con la palabra clave 'const' seguida del nombre y tipo de la constante.
+	// * No podemos utilizar el operador de asignación corta (:=) para definir una constante.
 	const gender string = "Masculino"
 	fmt.Println("género:", gender)
 
-	// Agrupar constantes
+	// Agrupación de constantes
+	// * Es posible agrupar constantes relacionadas en un solo bloque.
 	const (
 		fruit1 = "🍎"
 		fruit2 = "🍐"
@@ -43,6 +45,7 @@ func main() {
 
 	fmt.Println(fruit1, fruit2)
 
+	// Imprimir constantes definidas a nivel de paquete
 	fmt.Println("animal:", animal)
 	fmt.Println("versión:", version)
 }

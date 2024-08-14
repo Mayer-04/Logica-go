@@ -2,50 +2,72 @@ package main
 
 import "fmt"
 
-// Función que toma un puntero y modifica el valor apuntado
+// la función `incrementar` toma un puntero a un entero y aumenta el valor apuntado en 1.
+// Es un ejemplo de cómo modificar una variable fuera de su contexto usando un puntero.
 func incrementar(puntero *int) {
-	// Operador de desreferenciación * para acceder al valor al que apunta el puntero y modificarlo
+	// El operador de desreferenciación * permite acceder al valor al que apunta el puntero.
 	*puntero++
 }
 
-//* Puntero: Es una variable que contiene la dirección en memoria de otra variable
-// Se declara usando el asterisco * seguido del tipo de la variable a la que apunta - var puntero *int
+//* Puntero: Es una variable que almacena la dirección de memoria de otra variable.
+// Se declara utilizando un asterisco (*) antes del tipo de dato.
+//* Ejemplo: var puntero *int - donde puntero es un puntero a un entero.
 
 func main() {
 
-	// Declaración e inicialización de una variable
+	// Declaración e inicialización de una variable de tipo entero.
 	var numero int = 42
 
-	// Declaración de un puntero de tipo int.
+	//* Declaración de un puntero de tipo int.
+	// En este punto, el puntero no apunta a ninguna dirección de memoria específica (es nil por defecto).
 	var puntero *int
 
-	// Asignación del puntero a la dirección de memoria de la variable numero
+	//* Operador de dirección de punteros &
+	// Asignación del puntero a la dirección de memoria de la variable numero usando el operador &
 	puntero = &numero
 
-	// Acceso al valor a través del puntero utilizando el operador de desreferenciación *
-	fmt.Println("Valor de numero:", *puntero) // Output: Valor de numero: 42
+	// Acceso al valor a través del puntero utilizando el operador de desreferenciación (*).
+	fmt.Println("Valor de numero a través del puntero:", *puntero) // Output: 42
 
-	// Modificación del valor almacenado en la dirección de memoria apuntada por el puntero
+	// Modificación del valor almacenado en la dirección de memoria a la que apunta el puntero.
 	*puntero = 10
 
-	// El valor de la variable numero se ha actualizado.
+	// El valor de la variable numero se ha actualizado a través del puntero.
 	fmt.Println("Nuevo valor de numero:", numero) // Output: Nuevo valor de numero: 10
 
-	// Ejemplo dos: Declaración de una variable puntero y asignación de la dirección de memoria
+	// Ejemplo 2: Declaración de una variable string y un puntero a string.
 	fruit := "🍎"
 	var pointer *string = &fruit
 
-	// Imprimir la dirección de memoria almacenada en el puntero
+	// Imprimir la dirección de memoria almacenada en el puntero.
 	fmt.Println("Pointer:", pointer) // Output: Pointer: 0xc00008a030
-	// Imprimir el valor almacenado en la dirección de memoria apuntada por el puntero
-	fmt.Println("Value:", *pointer) // Output: Value: 🍎
+	// Imprimir el valor almacenado en la dirección de memoria apuntada por el puntero.
+	fmt.Println("Valor apuntado por el puntero:", *pointer) // Output: Valor apuntado por el puntero: 🍎
 
-	// Ejemplo con la función incrementar
+	// Ejemplo con la función incrementar.
 	var x int = 10
 
 	// Pasar un puntero a la función incrementar.
 	incrementar(&x)
 
 	// Imprimir el valor de x después de ser incrementado por la función.
-	fmt.Printf("Valor de x: %d, Tipo: %T\n", x, x) // Output: Valor de x: 11, Tipo: int
+	fmt.Printf("Valor de x después de incrementar: %d, Tipo: %T\n", x, x)
+
+	//* Uso de punteros con estructuras (struct).
+	type Persona struct {
+		nombre string
+		edad   int
+	}
+
+	// Declarar una variable de tipo Persona.
+	persona := Persona{nombre: "Carlos", edad: 25}
+
+	// Crear un puntero a la estructura Persona.
+	punteroPersona := &persona
+
+	// Modificar el valor del campo edad a través del puntero.
+	punteroPersona.edad = 26
+
+	// Imprimir los valores actualizados de la estructura.
+	fmt.Printf("Nombre: %q, Edad: %d\n", persona.nombre, persona.edad) // Output: Nombre: Carlos, Edad: 26
 }

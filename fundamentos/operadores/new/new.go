@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+// Person es una estructura que representa a una persona con nombre, apellido, edad y hobbies.
 type Person struct {
 	Name     string
 	LastName string
@@ -9,29 +10,49 @@ type Person struct {
 	Hoobies  []string
 }
 
-// TODO: new(T) - Crear una instancia de un tipo de dato concreto y devuelve un puntero a ese tipo de dato
+//* La función new(T) se utiliza para crear una nueva instancia de un tipo T, devolviendo un puntero al tipo T.
+//* Esto es útil cuando quieres inicializar una variable y trabajar directamente con su dirección en memoria.
 
 func main() {
 
+	// Uso de la función new para crear un puntero a un entero.
 	var x = new(int)
 
-	fmt.Println("Valor de x en memoria:", x) // Output: Valor de x en memoria: 0xc00000a0d8
+	// La dirección de memoria almacenada en x.
+	fmt.Println("Dirección de memoria de x:", x) // Output: Dirección de memoria de x: 0xc00000a0d8
 
+	// Asignar un valor a la dirección de memoria apuntada por x.
 	*x = 10
 
-	//  Acceder al valor almacenado en la dirección de memoria con el operador de desreferenciación
-	fmt.Println("Nuevo valor de x:", *x)
+	// Acceder al valor almacenado en la dirección de memoria usando el operador de desreferenciación (*).
+	fmt.Println("Nuevo valor de x:", *x) // Output: Nuevo valor de x: 10
 
-	// Go inicializa automáticamente los campos del struct con valores cero de su tipo de dato correspondiente
+	//* Crear una nueva instancia de Person usando new.
+	// Go inicializa automáticamente los campos del struct con los valores cero de su tipo de dato correspondiente.
 	var person = new(Person)
-	fmt.Println(person) // Output: &{"" "" 0 []}
 
-	// Asignando valores a los campos del struct
+	// Imprimir los valores por defecto de la estructura Person.
+	fmt.Println("Valores por defecto de person:", person) // Output: &{"" "" 0 []}
+
+	// Asignar valores a los campos del struct.
 	person.Name = "Mayer"
 	person.LastName = "Chaves"
 	person.Age = 23
 	person.Hoobies = []string{"Programar", "Leer"}
 
-	// Imprimiendo el struct con el operador de desreferenciación para acceder a sus campos
-	fmt.Println(*person)
+	// Imprimir el contenido del struct utilizando el operador de desreferenciación.
+	fmt.Println("Valores actualizados de person:", *person) // Output: {Mayer Chaves 23 [Programar Leer]}
+
+	//* Comparación de punteros creados con new.
+	otraPersona := new(Person)
+
+	// Verificar si dos punteros creados con new apuntan a diferentes ubicaciones de memoria.
+	// Output: ¿Apuntan a la misma dirección de memoria? false
+	fmt.Println("¿Apuntan a la misma dirección de memoria?", person == otraPersona)
+
+	//* Uso de new con tipos básicos como `float64`.
+	var pi = new(float64)
+	*pi = 3.14159
+	// Output: Valor de pi: 3.14159, Dirección de memoria: 0xc00000c0a8
+	fmt.Printf("Valor de pi: %.5f, Dirección de memoria: %p\n", *pi, pi)
 }

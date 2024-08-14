@@ -60,7 +60,7 @@ func main() {
 	}
 
 	//* Iterar un string
-	// Se debe hacer un casting a string() porque los caracteres son runas, lo que nos retorna su valor Unicode
+	// Se debe hacer un casting a `string` porque los caracteres son runas, lo que nos retorna su valor Unicode
 	var nombre string = "Mayer"
 	for _, value := range nombre {
 		fmt.Println(string(value))
