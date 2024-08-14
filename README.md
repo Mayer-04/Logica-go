@@ -22,18 +22,6 @@ Este repositorio proporciona una base sólida para aprender el lenguaje de progr
 - Aplicaciones en la Nube
 - Desarrollo de APIs
 
-- Microservicios: Go es ideal para construir microservicios escalables y eficientes, como los utilizados por empresas como Uber y SoundCloud.
-
-- Sistemas Distribuidos: Facilita la creación de sistemas distribuidos que manejan grandes volúmenes de datos, utilizado por empresas como Dropbox.
-
-- Herramientas de Redes y Servidores Web: Go es perfecto para desarrollar servidores web de alto rendimiento y herramientas de redes, empleados por empresas como Google y Cloudflare.
-
-- Infraestructura y Contenedores: Go es la base de herramientas de infraestructura como Docker y Kubernetes, que son cruciales para la gestión de contenedores y despliegue de aplicaciones.
-
-- Aplicaciones en la Nube: Optimizado para el desarrollo de servicios en la nube, Go es utilizado en plataformas como AWS Lambda para crear funciones escalables y de alto rendimiento.
-
-- Desarrollo de APIs: Go es excelente para desarrollar APIs rápidas y eficientes.
-
 ## Contribución
 
 ¡Las contribuciones son bienvenidas! Si tienes ideas para mejorar los ejercicios, agregar nuevos desafíos, o corregir errores, no dudes en abrir una solicitud de extracción (Pull Request). Cada aporte es valioso para la comunidad.
