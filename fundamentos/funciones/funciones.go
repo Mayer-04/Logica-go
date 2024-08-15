@@ -5,9 +5,9 @@ import (
 	"strings"
 )
 
-// * Las funciones en Go son de primera clase
-// Pueden ser asignadas a variables, pasadas como argumentos y retornadas desde otras funciones
-// * Los parámetros de funciones en Go son pasados por valor, no por referencia
+//* Go admite ciertos aspectos de la programación funcional como usar `funciones como ciudadanos de primera clase`
+// Pueden ser asignadas a variables, pasadas como argumentos y retornadas desde otras funciones.
+// * Los parámetros de funciones en Go son pasados por valor, no por referencia.
 // Se trabaja con una copia del valor, no con el valor original
 
 func main() {
@@ -130,7 +130,8 @@ func factorial(n int) int {
 }
 
 // * Closures (clausuras) - Funciones que capturan variables del entorno
-// Cada vez que la función anónima es llamada, accede y modifica la misma instancia de "counter" que existía cuando fue creada
+// Cada vez que la función anónima es llamada, accede y modifica la misma instancia de "counter"
+// que existía cuando fue creada
 func createCounter() func() int {
 	counter := 0
 	// La función anónima captura la referencia a la variable counter de su entorno léxico osea createCounter()

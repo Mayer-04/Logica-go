@@ -26,6 +26,11 @@ func main() {
 	doSomething()
 	deferMultiple()
 	deferWithRecover()
+
+	//* Los valores de las variables usadas en un defer se capturan en el momento en que se declara el defer.
+	a := 10
+	defer pushAnalytic(a) // Captura el valor de a en este momento. Se imprime `10` no 20.
+	a = 20
 }
 
 // * DoSomething realiza una operación de lectura en un archivo y asegura que se cierre correctamente
@@ -75,4 +80,9 @@ func deferWithRecover() {
 	fmt.Println("Este mensaje se imprimirá")
 	panic("¡Ocurrió un pánico!")
 	fmt.Println("Este mensaje no se imprimirá")
+}
+
+// * Evaluación inmediata de argumentos
+func pushAnalytic(a int) {
+	fmt.Println(a)
 }
