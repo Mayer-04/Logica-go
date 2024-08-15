@@ -2,12 +2,24 @@ package main
 
 import "fmt"
 
+// * Switch: una alternativa más limpia y eficiente a múltiples if-else
+// - En Go, cada caso (case) en un switch incluye implícitamente un `break`,
+// lo que significa que una vez que se encuentra una coincidencia, el programa no ejecutará los casos siguientes.
+// - Go facilita el trabajo con switch al eliminar la necesidad de break explícitos en cada caso.
+// - Evita la necesidad de múltiples if-else cuando se tiene una sola variable a comparar.
+// -La palabra clave `default` se utiliza para indicar que el caso predeterminado se debe ejecutar
+// cuando no se encuentra una coincidencia.
+
+/*
+* Si deseas continuar ejecutando los casos siguientes después de encontrar una coincidencia
+(similar al comportamiento por defecto en otros lenguajes),
+Go te permite hacerlo utilizando la palabra clave `fallthrough`.
+*/
+
 func main() {
 
 	edad := 18
 
-	// * Switch: una alternativa más limpia y eficiente a múltiples if-else
-	// Evita la necesidad de múltiples if-else cuando se tiene una única variable a comparar.
 	switch {
 	case edad < 13:
 		fmt.Println("Eres un niño")
@@ -40,9 +52,63 @@ func main() {
 	case string:
 		fmt.Println("Es una cadena")
 	default:
-
 		fmt.Println("Es de otro tipo")
+	}
 
+	//* Switch con la palabra clave `fallthrough`
+	// La palabra clave 'fallthrough' indica que el 'case' actual debe ser evaluado,
+	//incluso si se cumple una condición posterior.
+	switch 1 {
+	case 1:
+		fmt.Println("Play selected") // Se imprime el primer 'case'
+		fallthrough
+	case 2:
+		fmt.Println("Settings selected") // Se imprime el segundo 'case'
+		fallthrough
+	case 3:
+		fmt.Println("Help selected") // Se imprime el tercer 'case'
+	default:
+		fmt.Println("Invalid selection")
+	}
+
+	//* Uso de break con etiquetas - En Go, un break dentro de un switch normalmente solo termina el caso actual.
+	// Si estás dentro de un bucle y deseas salir del bucle basándote en una condición evaluada en un switch,
+	// necesitarás usar etiquetas. En este ejemplo, break loop termina el bucle for y no solo el switch.
+loop:
+	for {
+		switch 1 {
+		case 1:
+			break loop
+		}
+	}
+
+	//* Switch con múltiples valores en un solo `case`
+	// Podemos utilizar múltiples valores dentro de un solo bloque de `case`
+	// En tal caso, el bloque `case` se ejecuta si la expresión coincide con cualquiera de los valores.
+	dayOfWeek := "Sunday"
+
+	switch dayOfWeek {
+	case "Saturday", "Sunday":
+		fmt.Println("Weekend")
+
+	case "Monday", "Tuesday", "Wednesday", "Thursday", "Friday":
+		fmt.Println("Weekday")
+
+	default:
+		fmt.Println("Invalid day")
+	}
+
+	//* Switch true o Switch condicional
+	// no se coloca ninguna expresión después de switch,
+	// lo que implica que cada condición en los `case` es evaluada de manera individual como una expresión booleana.
+	numberOfDays := 28
+
+	// La expresión 'switch true' es equivalente a 'switch true {  }'
+	switch {
+	case numberOfDays == 28:
+		fmt.Println("It's February")
+	default:
+		fmt.Println("Not February")
 	}
 
 }
