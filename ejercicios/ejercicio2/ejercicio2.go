@@ -1,18 +1,16 @@
-package ejercicios
+package main
 
 import (
 	"fmt"
 	"reflect"
 )
 
-func Ejercicio2() {
-
+func main() {
 	var obj = map[string]any{"a": true, "b": 42, "c": false}
 
 	result := propiedadesBooleanas(obj)
 
 	fmt.Println(result)
-
 }
 
 func propiedadesBooleanas(obj map[string]any) []string {

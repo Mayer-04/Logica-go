@@ -1,14 +1,11 @@
-package ejercicios
+package main
 
 import (
 	"fmt"
 	"strings"
 )
 
-/* Escribe una función que tome una cadena de texto y un carácter específico, y devuelva el número de veces que ese carácter aparece en la cadena. */
-
-func Ejercicio3() {
-
+func main() {
 	var cadena string = "ANACONDA"
 	var caracter string = "u"
 
@@ -17,6 +14,10 @@ func Ejercicio3() {
 	fmt.Println(result)
 }
 
+/*
+Escribe una función que tome una cadena de texto y un carácter específico,
+y devuelva el número de veces que ese carácter aparece en la cadena.
+*/
 func NumeroDeVeces(cadena, caracter string) int {
 
 	var contador int = 0

@@ -1,4 +1,4 @@
-package ejercicios
+package main
 
 import "fmt"
 
@@ -15,8 +15,7 @@ let salaries = {
 Si salaries está vacío entonces el resultado será 0.
 */
 
-func Ejercicio4() {
-
+func main() {
 	var salaries = map[string]int{
 		"John": 100,
 		"Ann":  160,
@@ -26,7 +25,6 @@ func Ejercicio4() {
 	result := SumSalaries(salaries)
 
 	fmt.Println(result)
-
 }
 
 func SumSalaries(salaries map[string]int) int {

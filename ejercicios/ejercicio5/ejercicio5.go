@@ -1,4 +1,4 @@
-package ejercicios
+package main
 
 import (
 	"fmt"
@@ -8,9 +8,7 @@ import (
 )
 
 // Dado un número entero x, devuelve verdadero si x es un palíndromo y falso en caso contrario.
-
-func Ejercicio5() {
-
+func main() {
 	var number = 121
 
 	result, err := isPalindrome(number)

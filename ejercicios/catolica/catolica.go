@@ -26,7 +26,7 @@ func multiplesOperations(number int) map[string]any {
 
 	fmt.Println(firstNumber, secondNumber)
 
-	var newStr = ""
+	var newStr string
 	for i := len(convertString) - 1; i >= 0; i-- {
 		newStr += string(convertString[i])
 	}
