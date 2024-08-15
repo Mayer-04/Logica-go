@@ -2,13 +2,16 @@ package main
 
 import "fmt"
 
-func main() {
-	//* Los arrays en Go tienen una longitud fija, que debe ser conocida en el momento de la declaración.
-	/*
-		Los elementos del array se acceden mediante índices, donde el primer elemento está en el índice 0
-		y el último está en `len(arr)-1`.
-	*/
+/*
+* Los arrays en Go tienen un tamaño fijo y almacenan elementos del mismo tipo en ubicaciones de memoria contiguas.
+- Los elementos del array se acceden mediante índices, donde el primer elemento está en el índice 0
+y el último está en `len(arr)-1`.
+- La dirección en memoria de un array es la misma dirección del primero elemento del array. (Ej: arr[0])
+- En Go cuando pasas un array como argumento de una función, este recibe una copia de ese arreglo,
+no un puntero al primer elemento de la matriz.
+*/
 
+func main() {
 	// Array sin asignación de valores
 	// Los elementos del array se inicializan con el valor cero del tipo de dato correspondiente.
 	var array5 [2]bool
@@ -32,6 +35,13 @@ func main() {
 	array2 := [3]string{"Mayer", "Andres", "Chaves"}
 	fmt.Println("Array literal:", array2)
 
+	//* Cuando declaramos un array literal `arr := [3]int{1, 2, 3, 4}` lo que realmente sucede es esto:
+	arr := [4]int{}
+	arr[0] = 1
+	arr[1] = 2
+	arr[2] = 3
+	arr[3] = 4
+
 	// Declaración de un array multidimensional
 	// Se definen arrays dentro de arrays para crear una estructura de datos bidimensional.
 	array3 := [3][2]int{{10, 20}, {30, 40}, {50, 60}}
@@ -41,6 +51,12 @@ func main() {
 	// El tamaño del array se infiere automáticamente basado en la cantidad de elementos proporcionados.
 	array4 := [...]int{10, 20, 30}
 	fmt.Println("Array con longitud implícita:", array4)
+
+	//* Array con longitud implícita - Inicialización indexada
+	// Inicializar elementos específicos de un arreglo usando sus índices,
+	// dejando los elementos no especificados con valores por defecto.
+	array6 := [...]int{5: 3}
+	fmt.Println("array6:", array6) // [0 0 0 0 3]
 
 	// Acceso a un elemento del array
 	// Los índices comienzan en 0, por lo que array2[1] accede al segundo elemento.
