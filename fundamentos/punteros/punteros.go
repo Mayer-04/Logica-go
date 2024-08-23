@@ -2,13 +2,6 @@ package main
 
 import "fmt"
 
-// la función `incrementar` toma un puntero a un entero y aumenta el valor apuntado en 1.
-// Es un ejemplo de cómo modificar una variable fuera de su contexto usando un puntero.
-func incrementar(puntero *int) {
-	// El operador de desreferenciación * permite acceder al valor al que apunta el puntero.
-	*puntero++
-}
-
 //* Puntero: Es una variable que almacena la dirección de memoria de otra variable.
 // Se declara utilizando un asterisco (*) antes del tipo de dato.
 //* Ejemplo: var puntero *int - donde puntero es un puntero a un entero.
@@ -20,6 +13,8 @@ func main() {
 
 	//* Declaración de un puntero de tipo int.
 	// En este punto, el puntero no apunta a ninguna dirección de memoria específica (es nil por defecto).
+	// Se recomienda despues de declarar la variable asignar su valor en una sola línea,
+	// en lugar de declarar la variable primero y luego asignarle un valor en una línea separada.
 	var puntero *int
 
 	//* Operador de dirección de punteros &
@@ -70,4 +65,11 @@ func main() {
 
 	// Imprimir los valores actualizados de la estructura.
 	fmt.Printf("Nombre: %q, Edad: %d\n", persona.nombre, persona.edad) // Output: Nombre: Carlos, Edad: 26
+}
+
+// la función `incrementar` toma un puntero a un entero y aumenta el valor apuntado en 1.
+// Es un ejemplo de cómo modificar una variable fuera de su contexto usando un puntero.
+func incrementar(puntero *int) {
+	// El operador de desreferenciación * permite acceder al valor al que apunta el puntero.
+	*puntero++
 }

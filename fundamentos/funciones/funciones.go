@@ -7,8 +7,8 @@ import (
 
 //* Go admite ciertos aspectos de la programación funcional como usar `funciones como ciudadanos de primera clase`
 // Pueden ser asignadas a variables, pasadas como argumentos y retornadas desde otras funciones.
-// * Los parámetros de funciones en Go son pasados por valor, no por referencia.
-// Se trabaja con una copia del valor, no con el valor original
+// IMPORTANTE: Los parámetros de funciones en Go son pasados por valor, no por referencia.
+// Se trabaja con una copia del valor, no con el valor original.
 
 func main() {
 
@@ -19,53 +19,52 @@ func main() {
 	num := 5
 	// Obtenemos la dirección en memoria de la variable "num"
 	increment(&num)
-
 	fmt.Println(num) // El valor de num se cambia directamente
 
-	// TODO: RETURN: Llamada a una función con retorno de un solo valor.
+	//* RETURN: Llamada a una función con retorno de un solo valor.
 	result := retornar(1, 3)
 	fmt.Println(result)
 
-	// TODO: Múltiples valores a retornar
+	//* Múltiples valores a retornar
 	// Podemos ignorar u omitir algún valor utilizando el operador blank (_)
 	lower, upper := multiplesRetornos("Mayer")
 	fmt.Println(lower, upper)
 
-	// TODO: Función variática: Acepta un número indefinido de argumentos.
+	//* Función variática: Acepta un número indefinido de argumentos.
 	fmt.Println(variatica(1, 2, 3, 4, 5))
 
-	// TODO: Función anonima
+	//* Función anonima
 	anonima()
 
-	// TODO: Función anonima autoinvocada
+	//* Función anonima autoinvocada
 	func(name string) {
 		fmt.Println("Hello", name)
 	}("mayer")
 
-	// TODO: Segunda manera de declarar una función anonima con la declaración de variable corta
+	//* Segunda manera de declarar una función anonima con la declaración de variable corta
 	ejemplo := func() {
 		fmt.Println("Soy una función anonima corta")
 	}
 	ejemplo()
 
-	// TODO: Uso de funciones diferidas (defer)
+	//* Uso de funciones diferidas (defer)
 	// La función diferida se ejecutará al final de la función main
 	defer diferida()
 
-	// TODO: Llamada a una función recursiva.
+	//* Llamada a una función recursiva.
 	fmt.Println("Factorial de 5:", factorial(5))
 
-	// TODO: Closure: función que captura variables del entorno.
+	//* Closure: función que captura variables del entorno.
 	counter := createCounter()
 	fmt.Println("Counter:", counter()) // Output: Counter: 1
 	fmt.Println("Counter:", counter()) // Output: Counter: 2
 
-	//TODO: Uso de un tipo (type) de función.
+	//* Uso de un tipo (type) de función.
 	var f tipoFuncion = saludar
 	f("Mayer", "Andres")
 }
 
-// TODO: Características de las funciones ----------------------------------------------------------------------------
+//* Características de las funciones ----------------------------------------------------------------------------
 
 // Agrupar parámetros donde los dos sean del mismo tipo de dato
 func saludar(name, lastname string) {

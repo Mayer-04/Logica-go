@@ -4,7 +4,7 @@ import "fmt"
 
 // * En Go no existe el operador ternario como en otros lenguajes de programación.
 // * No hay conversión automática de valores a booleano (por ejemplo, 0 no es false).
-// * La condición dentro de un if debe ser explícitamente una expresión booleana.
+// * La condición dentro de un if debe ser `explícitamente` una expresión booleana.
 // * No se permite la asignación dentro de la condición; hacerlo causará un error de compilación.
 
 func main() {

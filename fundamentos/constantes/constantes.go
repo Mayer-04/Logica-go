@@ -42,7 +42,6 @@ func main() {
 		fruit1 = "🍎"
 		fruit2 = "🍐"
 	)
-
 	fmt.Println(fruit1, fruit2)
 
 	// Imprimir constantes definidas a nivel de paquete

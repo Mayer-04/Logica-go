@@ -4,7 +4,7 @@ import "fmt"
 
 func main() {
 
-	// TODO: Primero se ejecutan las operaciones entre (), *, /, %, +, -
+	// * Primero se ejecutan las operaciones entre (), *, /, %, +, -
 	// * Operadores aritmeticos
 
 	// Suma +
@@ -28,7 +28,7 @@ func main() {
 	fmt.Println("Modulo:", modulo)
 
 	// Ejemplo
-	var ejemplo = (2 + 3) * 2
+	ejemplo := (2 + 3) * 2
 	fmt.Println("Ejemplo:", ejemplo)
 
 }

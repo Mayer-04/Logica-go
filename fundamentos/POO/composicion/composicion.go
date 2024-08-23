@@ -2,8 +2,8 @@ package main
 
 import "fmt"
 
-//* Go no tiene herencia, utiliza la composición en su lugar
-// La composición se logra a través de la incrustación de tipos
+//* Go no tiene herencia, utiliza la composición en su lugar.
+// La composición se logra a través de la `incrustación` de tipos.
 
 type Engine struct {
 	Horsepower int

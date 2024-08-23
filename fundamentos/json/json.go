@@ -9,7 +9,7 @@ import (
 //* Son instrucciones para decirle al programa cómo convertir los datos en formatos como JSON.
 //* Son como notas especiales que le dicen al programa cómo comportarse con los datos de la estructura.
 //* El valor predeterminado de cada etiqueta en un campo es una cadena en blanco.
-// TODO: Podemos usar el paquete reflect para inspeccionar la información de la etiqueta de cada campo.
+// TODO: Podemos usar el paquete `reflect` para inspeccionar la información de la etiqueta de cada campo.
 
 type Person struct {
 	// El campo `Name` se convertirá en la clave "name" cuando se convierta a JSON.
@@ -58,10 +58,11 @@ func main() {
 	//* json.Unmarshal: Convertir una cadena JSON a código Go - Decodificación
 	//* Importante pasar un "puntero" como segundo argumento
 
-	//TODO: 1. Preparamos la cadena JSON a convertir
+	// 1. Preparamos la cadena JSON a convertir
 	exampleJson := `{"nombre":"Canada","habitantes":37314442,"capital":"Ottawa","idiomas":["Inglés","Frances"]}`
-	//TODO: 2. Preparamos la estructura que recibirá el JSON decodificado.
-	countrys := Pais{} // var countrys Pais
+	// 2. Preparamos la estructura que recibirá el JSON decodificado.
+	// countrys := Pais{} es lo mismo que `var countrys Pais`
+	countrys := Pais{}
 
 	if err := json.Unmarshal([]byte(exampleJson), &countrys); err != nil {
 		panic(err)

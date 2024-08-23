@@ -6,19 +6,22 @@ import (
 	"strconv"
 )
 
-// La función New() del paquete "errors" crea un nuevo valor de error con un mensaje personalizado
-var errorDivide = errors.New("cannot divide by zero")
+/*
+* En Go se utilizan valores de error explícitos en vez de excepciones.
+- Los errores se suelen enviar como último argumento de retorno en las funciones.
+- Para controlar los errores usamos la estructura de control `if`.
+- El valor 0 de los errores es `nil`.
+*/
 
-//* El error se suele enviar como ultimo argumento de retorno en las funciones.
-//* TODO: En Go se utilizan valores de error explícitos en vez de excepciones.
+// La función 'New()' del paquete "errors" crea un nuevo valor de error con un mensaje personalizado
+var errorDivide = errors.New("cannot divide by zero")
 
 func main() {
 
 	data := "10"
 	val, err := strconv.Atoi(data)
 
-	//* Para controlar los errores usamos la estructura de control if
-	// El valor 0 de los errores es "nil"
+	// Controlando el error con 'if'
 	if err != nil {
 		fmt.Println(err)
 	}

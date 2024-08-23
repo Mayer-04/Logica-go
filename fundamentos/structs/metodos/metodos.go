@@ -61,5 +61,5 @@ func main() {
 	// Crear una instancia del struct Product e invocar su método aplicarDescuento.
 	celular2 := Product{Name: "Samsung Galaxy", Price: 799.99}
 	celular2.aplicarDescuento(10.0)
-	fmt.Println("Después de aplicar descuento:", celular2) // {Samsung Galaxy 789.99}
+	fmt.Println("Después de aplicar descuento:", celular2) // Output: {Samsung Galaxy 789.99}
 }

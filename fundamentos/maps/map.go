@@ -4,7 +4,7 @@ import "fmt"
 
 /*
 * Los maps en Go son estructuras de datos no ordenadas que almacenan pares clave-valor.
-- Una clave puede ser de cualquier tipo comparable (int, string, struct, etc).
+- Una clave puede ser de cualquier tipo comparable (int, uint, string, struct, etc).
 - Un valor puede ser de cualquier tipo.
 - Los maps proporcionan acceso rápido a los datos y son muy útiles para almacenar conjuntos de datos
 donde se necesita buscar elementos por clave.
