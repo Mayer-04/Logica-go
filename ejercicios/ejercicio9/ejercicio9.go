@@ -11,19 +11,17 @@ Asegúrate de que los dos slices sean independientes y no compartan la misma ref
 func main() {
 
 	enteros := []int{1, 2, 3, 4, 5, 6, 7, 8, 9}
-
-	result := copiaSlice(enteros)
+	resultado := copiaSlice(enteros)
 
 	fmt.Println("enteros:", enteros)
-	fmt.Println("result:", result)
-	fmt.Printf("longitud: %d, capacidad: %d", len(result), cap(result))
+	fmt.Println("resultado:", resultado)
+	fmt.Printf("longitud: %d, capacidad: %d", len(resultado), cap(resultado))
 
 }
 
 func copiaSlice(enteros []int) []int {
 
-	var copia = make([]int, len(enteros))
-
+	copia := make([]int, len(enteros))
 	copy(copia, enteros)
 
 	return copia

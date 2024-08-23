@@ -16,9 +16,13 @@ func main() {
 	enteros := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 80, 78}
 
 	mayor, indice := enteroMayor(enteros)
-
 	fmt.Println("número mayor:", mayor)
 	fmt.Println("Índice:", indice)
+
+	// Ejemplo 2
+	mayor2, indice2 := example2(enteros)
+	fmt.Println("número mayor example2:", mayor2)
+	fmt.Println("Índice example2:", indice2)
 
 }
 
@@ -30,7 +34,6 @@ func enteroMayor(enteros []int) (int, int) {
 	for i := 0; i < len(enteros); i++ { // Empezamos desde el segundo elemento
 		if enteros[i] > mayor {
 			mayor = enteros[i]
-
 			fmt.Println(i)
 			index = i
 		}

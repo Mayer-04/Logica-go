@@ -21,17 +21,17 @@ func main() {
 }
 
 func isPalindrome(x int) (bool, error) {
-	var nuevoString string = strconv.Itoa(x)
+	nuevoString := strconv.Itoa(x)
 	arregloStrings := strings.Split(nuevoString, "")
 
 	slices.Reverse(arregloStrings)
 
-	var unir string = strings.Join(arregloStrings, "")
+	unir := strings.Join(arregloStrings, "")
 
 	nuevoNumber, err := strconv.Atoi(unir)
 
 	if err != nil {
-		return false, fmt.Errorf("error: %v", err)
+		return false, fmt.Errorf("error converting reversed string to number: %w", err)
 
 	}
 
