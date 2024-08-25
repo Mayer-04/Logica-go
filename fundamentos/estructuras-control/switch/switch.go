@@ -42,7 +42,7 @@ func main() {
 
 	var x interface{} = true
 
-	// * Switch con tipo de variable
+	// * Switch de Tipos (Type Switch)
 	// Se puede utilizar para el caso de que la variable sea de otro tipo
 	switch x.(type) {
 	case int:
@@ -57,7 +57,7 @@ func main() {
 
 	//* Switch con la palabra clave `fallthrough`
 	// La palabra clave 'fallthrough' indica que el 'case' actual debe ser evaluado,
-	//incluso si se cumple una condición posterior.
+	// incluso si se cumple una condición posterior.
 	switch 1 {
 	case 1:
 		fmt.Println("Play selected") // Se imprime el primer 'case'
