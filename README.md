@@ -1,6 +1,6 @@
 # Lógica-go 🐹
 
-Este repositorio proporciona una base sólida para aprender el lenguaje de programación Go, junto con ejercicios prácticos para fortalecer tus habilidades 🐹.
+Este repositorio proporciona una base sólida para aprender el lenguaje de programación Go, junto con ejercicios prácticos para fortalecer tus habilidades.
 
 ## Contenido
 
@@ -12,15 +12,15 @@ Este repositorio proporciona una base sólida para aprender el lenguaje de progr
 1. **Compilado:** Go es un lenguaje compilado, lo que significa que el código se traduce a un formato ejecutable antes de ser ejecutado, lo que permite una ejecución rápida y eficiente.
 2. **Tipado estático:** Go es un lenguaje de tipado estático, lo que significa que los tipos de variables se determinan en tiempo de compilación, lo que ayuda a detectar errores antes de ejecutar el programa.
 3. **Concurrencia:** Go tiene soporte nativo para la concurrencia mediante `goroutines`, lo que facilita la ejecución de múltiples tareas de forma simultánea.
-4. **Multiparadigma:** Go es principalmente un `lenguaje imperativo y concurrente`, pero también admite ciertos aspectos de la programación funcional como usar `funciones como ciudadanos de primera clase` y tiene soporte limitado para la programación orientada a objetos.
+4. **Multiparadigma:** Go es principalmente un `lenguaje imperativo y concurrente`, pero también admite ciertos aspectos de la programación funcional como usar _funciones como ciudadanos de primera clase_ y tiene soporte limitado para la programación orientada a objetos.
 5. **Lenguaje de Propósito General:** Go es muy apreciado en la industria por su rendimiento, simplicidad y capacidad para manejar tareas concurrentes de manera eficiente. Aquí detallo algunos de los usos más importantes de Go en el desarrollo y en las empresas:
 
-- Microservicios
-- Sistemas Distribuidos
-- Herramientas de Redes y Servidores web
+- Aplicaciones en la Nube.
+- Desarrollo de APIs.
 - Infraestructura y Contenedores: Docker y Kubernetes.
-- Aplicaciones en la Nube
-- Desarrollo de APIs
+- Microservicios.
+- Sistemas Distribuidos.
+- Herramientas de Redes y Servidores web.
 
 ## Contribución
 
