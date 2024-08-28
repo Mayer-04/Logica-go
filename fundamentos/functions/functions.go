@@ -5,10 +5,14 @@ import (
 	"strings"
 )
 
-//* Go admite ciertos aspectos de la programación funcional como usar `funciones como ciudadanos de primera clase`
-// Pueden ser asignadas a variables, pasadas como argumentos y retornadas desde otras funciones.
-// IMPORTANTE: Los parámetros de funciones en Go son pasados por valor, no por referencia.
-// Se trabaja con una copia del valor, no con el valor original.
+/*
+* Funciones en Go
+
+- Go admite ciertos aspectos de la programación funcional como usar `funciones como ciudadanos de primera clase`.
+- Pueden ser asignadas a variables, pasadas como argumentos y retornadas desde otras funciones.
+- IMPORTANTE: Los parámetros de funciones en Go son pasados por valor, no por referencia.
+- Se trabaja con una copia del valor, no con el valor original.
+*/
 
 func main() {
 

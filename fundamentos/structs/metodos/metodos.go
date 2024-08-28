@@ -2,8 +2,11 @@ package main
 
 import "fmt"
 
-// * Se recomienda siempre trabajar o bien con el receptor de tipo valor o puntero.
-// No combinar estos dos tipos de receptor en una misma estructura. Esto evita confusión y posibles errores
+/*
+* Métodos en Structs
+- Se recomienda siempre trabajar o bien con el receptor de tipo valor o puntero.
+- No combinar estos dos tipos de receptor en una misma estructura. Esto evita confusión y posibles errores.
+*/
 
 // Product representa un producto con un nombre y un precio.
 type Product struct {

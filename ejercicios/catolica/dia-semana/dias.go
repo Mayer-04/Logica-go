@@ -36,7 +36,7 @@ func main() {
 	// Convertir la entrada a entero
 	dia, err := strconv.Atoi(input)
 	if err != nil {
-		fmt.Println("Entrada inválida: Debe ser un número entero.")
+		fmt.Println("entrada inválida. Debe ser un número entero.")
 		return
 	}
 

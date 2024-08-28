@@ -3,9 +3,9 @@ package main
 import "fmt"
 
 /*
-* Arrays - Arreglos
-
+* Arrays: Arreglos
 Los Arrays en Go tienen un tamaño fijo y almacenan elementos del mismo tipo en ubicaciones de memoria contiguas.
+
 - Los arrays son: arreglos estaticos, tienen un tamaño fijo y se suelen declarar en la pila.
 - Los elementos del array se acceden mediante `índices`, donde el primer elemento está en el índice 0
 y el último está en `len(arr)-1`.

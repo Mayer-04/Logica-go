@@ -7,13 +7,13 @@ import (
 )
 
 /*
-* Strings - Cadenas de caracteres
+* Strings: Cadenas de caracteres
 - Los strings son una colección de caracteres.
 - Los strings son inmutables, es decir, no se pueden modificar.
 - Los strings se declaran entre comillas dobles.
-- Los strings se pueden concatenar con cualquier otro tipo de dato con la función incorporada "fmt.Sprintf()".
+- Los strings se pueden concatenar con cualquier otro tipo de dato con la función incorporada `fmt.Sprintf()`.
 - Para escribir un salto de línea, se escribe `\n`.
-- Si escribes una letra en comillas simples, se interpreta como un tipo "rune", alias para el tipo int32.
+- Si escribes una letra en comillas simples, se interpreta como un tipo `rune`, alias para el tipo int32.
 */
 
 func main() {
@@ -31,7 +31,7 @@ func main() {
 	fullName := fmt.Sprintf("Mi nombre es %s %s", name, secondName)
 	fmt.Println("interpolación:", fullName)
 
-	//* Paquete "strings" contiene métodos para trabajar con cadenas de texto ----------------------------------------
+	//* Paquete "strings" - Contiene métodos para trabajar con cadenas de texto
 
 	// Longitud de un string con la función incorporada "len()".
 	fmt.Println("longitud de name:", len(name))
@@ -68,7 +68,7 @@ func main() {
 	str7 := strings.TrimSpace(name)
 	fmt.Println(str7)
 
-	//* Paquete "strconv" contiene métodos para convertir strings----------------------------------------------------
+	//* Paquete "strconv" - Contiene métodos para convertir strings a números enteros o flotantes
 
 	// Convertir un string a un entero.
 	age := "23"

@@ -2,9 +2,12 @@ package main
 
 import "fmt"
 
-// Una Struct es una colección de campos que se pueden definir en un paquete.
-// En Go, las estructuras suelen declararse a nivel de paquete y no a nivel de funciones.
-// Es similar a una "clase" en otros lenguajes de programación.
+/*
+* Struct: Estructura
+- Una Struct es una colección de campos que se pueden definir en un paquete.
+- En Go, las estructuras suelen declararse a nivel de paquete y no a nivel de funciones.
+- Es similar a una "clase" en otros lenguajes de programación.
+*/
 
 //* Persona es una `estructura` que define una entidad con Nombre y Edad.
 type Persona struct {
@@ -42,7 +45,7 @@ func main() {
 
 	fmt.Println("Persona3:", mayer)
 
-	//* Uso del formato campo:valor para inicializar los campos en cualquier orden.
+	//* Uso del formato campo: valor para inicializar los campos en cualquier orden.
 	// Es una práctica más segura y clara, especialmente cuando hay muchos campos en la estructura.
 	lucas := Persona{Edad: 40, Nombre: "Lucas"}
 

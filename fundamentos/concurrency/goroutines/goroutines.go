@@ -5,7 +5,11 @@ import (
 	"time"
 )
 
-// * Las goroutines se crean con la palabra clave "go" antes del nombre de la función
+/*
+* Goroutines
+Se crean con la palabra clave "go" antes del nombre de la función.
+*/
+
 func main() {
 
 	go goroutine1()

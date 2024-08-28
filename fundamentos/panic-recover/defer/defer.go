@@ -6,12 +6,15 @@ import (
 	"os"
 )
 
-//* Defer es una palabra clave en Go que se utiliza para posponer la ejecución de una función hasta
-// que la función que la rodea haya terminado.
-// - Es como programar una tarea para que se ejecute justo antes de que la función finalice,
-//   sin importar cómo salga de la función (ya sea por un retorno normal o un pánico).
-// - Es útil para tareas de limpieza, como cerrar archivos, liberar recursos, cerrar una conexión
-//	 a una base de datos y manejar errores.
+/*
+* Defer
+Es una palabra clave en Go que se utiliza para posponer la ejecución de una función,
+hasta que la función que la rodea haya terminado.
+
+- Es como programar una tarea para que se ejecute justo antes de que la función finalice,
+sin importar cómo salga de la función (ya sea por un retorno normal o un pánico).
+- Es útil para tareas de limpieza, como cerrar archivos, liberar recursos y cerrar una conexión a una base de datos.
+*/
 
 func main() {
 	// En este ejemplo, se pospone la impresión de "hello" hasta que la función `main` termine,
@@ -27,7 +30,7 @@ func main() {
 	deferMultiple()
 	deferWithRecover()
 
-	//* Los valores de las variables usadas en un defer se capturan en el momento en que se declara el defer.
+	// Los valores de las variables usadas en un defer se capturan en el momento en que se declara el defer.
 	a := 10
 	defer pushAnalytic(a) // Captura el valor de a en este momento. Se imprime `10` no 20.
 	a = 20
@@ -53,7 +56,7 @@ func doSomething() (err error) {
 	return nil
 }
 
-// * DeferMultiple demuestra el uso de múltiples declaraciones defer.
+// DeferMultiple demuestra el uso de múltiples declaraciones defer.
 // En Go, cuando se utilizan varios defer en una función,
 // se ejecutan en orden LIFO (último en entrar, primero en salir),
 // lo que significa que la última función diferida se ejecutará primero.
@@ -68,8 +71,8 @@ func deferMultiple() {
 	// 1
 }
 
-// * DeferWithRecover demuestra cómo manejar un `pánico` con `defer` y `recover`.
-// - `recover` es una función incorporada que permite recuperar de un pánico.
+// DeferWithRecover demuestra cómo manejar un `pánico` con `defer` y `recover`.
+// `recover` es una función incorporada que permite recuperar la ejecución normal de un pánico.
 func deferWithRecover() {
 	defer func() {
 		if r := recover(); r != nil {
@@ -82,7 +85,7 @@ func deferWithRecover() {
 	fmt.Println("Este mensaje no se imprimirá")
 }
 
-// * Evaluación inmediata de argumentos
+// Evaluación inmediata de argumentos
 func pushAnalytic(a int) {
 	fmt.Println(a)
 }

@@ -2,13 +2,15 @@ package main
 
 import "fmt"
 
-// * Switch: una alternativa más limpia y eficiente a múltiples if-else
-// - En Go, cada caso (case) en un switch incluye implícitamente un `break`,
-// lo que significa que una vez que se encuentra una coincidencia, el programa no ejecutará los casos siguientes.
-// - Go facilita el trabajo con switch al eliminar la necesidad de break explícitos en cada caso.
-// - Evita la necesidad de múltiples if-else cuando se tiene una sola variable a comparar.
-// -La palabra clave `default` se utiliza para indicar que el caso predeterminado se debe ejecutar
-// cuando no se encuentra una coincidencia.
+/*
+* Switch: Una alternativa más limpia y eficiente a múltiples if-else.
+- En Go, cada caso (case) en un switch incluye implícitamente un `break`,
+lo que significa que una vez que se encuentra una coincidencia, el programa no ejecutará los casos siguientes.
+- Go facilita el trabajo con switch al eliminar la necesidad de break explícitos en cada caso.
+- Evita la necesidad de múltiples if-else cuando se tiene una sola variable a comparar.
+- La palabra clave `default` se utiliza para indicar que el caso predeterminado se debe ejecutar
+cuando no se encuentra una coincidencia.
+*/
 
 /*
 * Si deseas continuar ejecutando los casos siguientes después de encontrar una coincidencia
@@ -20,6 +22,7 @@ func main() {
 
 	edad := 18
 
+	// Declarando una estructura switch con multiples casos.
 	switch {
 	case edad < 13:
 		fmt.Println("Eres un niño")
@@ -29,7 +32,7 @@ func main() {
 		fmt.Println("Eres un adulto")
 	}
 
-	// * Uso de etiquetas: evita la repetición de valores constantes
+	// * Uso de etiquetas: evita la repetición de valores constantes.
 	// También se pueden utilizar etiquetas en switch para manejar diferentes casos con el mismo código.
 	switch edad := edad; {
 	case edad < 13:
@@ -42,8 +45,8 @@ func main() {
 
 	var x interface{} = true
 
-	// * Switch de Tipos (Type Switch)
-	// Se puede utilizar para el caso de que la variable sea de otro tipo
+	// * Switch de Tipos (Type Switch).
+	// Se puede utilizar para el caso de que la variable sea de otro tipo.
 	switch x.(type) {
 	case int:
 		fmt.Println("Es un entero")
@@ -55,7 +58,7 @@ func main() {
 		fmt.Println("Es de otro tipo")
 	}
 
-	//* Switch con la palabra clave `fallthrough`
+	//* Switch con la palabra clave `fallthrough`.
 	// La palabra clave 'fallthrough' indica que el 'case' actual debe ser evaluado,
 	// incluso si se cumple una condición posterior.
 	switch 1 {
@@ -82,8 +85,8 @@ loop:
 		}
 	}
 
-	//* Switch con múltiples valores en un solo `case`
-	// Podemos utilizar múltiples valores dentro de un solo bloque de `case`
+	//* Switch con múltiples valores en un solo `case`.
+	// Podemos utilizar múltiples valores dentro de un solo bloque de `case`.
 	// En tal caso, el bloque `case` se ejecuta si la expresión coincide con cualquiera de los valores.
 	dayOfWeek := "Sunday"
 
@@ -98,12 +101,12 @@ loop:
 		fmt.Println("Invalid day")
 	}
 
-	//* Switch true o Switch condicional
-	// no se coloca ninguna expresión después de switch,
-	// lo que implica que cada condición en los `case` es evaluada de manera individual como una expresión booleana.
+	//* Switch true o Switch condicional.
+	// No se coloca ninguna expresión después de switch, lo que implica que cada condición en los `case`,
+	// es evaluada de manera individual como una expresión booleana.
 	numberOfDays := 28
 
-	// La expresión 'switch true' es equivalente a 'switch true {  }'
+	// La expresión 'switch true' es equivalente a 'switch true {  }'.
 	switch {
 	case numberOfDays == 28:
 		fmt.Println("It's February")

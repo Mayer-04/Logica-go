@@ -5,11 +5,12 @@ import (
 )
 
 /*
-* Genéricos
-
+* Generics: Genéricos
 Es una característica que nos permite definir funciones, tipos y estrucutas que acepten diferentes tipos de datos.
+
 - Introducido en la versión 1.18 de Go.
 - La idea de los genéricos es no sacrificar la seguridad que brindan los tipos.
+- tipo any: Permite trabajar con cualquier tipo de dato.
 */
 
 // * Función genérica
@@ -32,7 +33,6 @@ type Person[T int | uint] struct {
 }
 
 func main() {
-
 	// Llamando a la función genérica
 	print(10)
 	print("Hola")

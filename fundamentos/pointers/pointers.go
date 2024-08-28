@@ -2,9 +2,15 @@ package main
 
 import "fmt"
 
-//* Puntero: Es una variable que almacena la dirección de memoria de otra variable.
-// Se declara utilizando un asterisco (*) antes del tipo de dato.
-//* Ejemplo: var puntero *int - donde puntero es un puntero a un entero.
+/*
+* Pointers: Punteros
+Puntero: Es una variable que almacena la dirección de memoria de otra variable.
+
+- Se declara utilizando un asterisco (*) antes del tipo de dato.
+Ejemplo: var puntero *int - donde puntero es un puntero a un entero.
+- Para obtener el valor del puntero se utiliza el asterisco (*) antes de la variable.
+Ejemplo: *puntero
+*/
 
 func main() {
 
@@ -17,7 +23,7 @@ func main() {
 	// en lugar de declarar la variable primero y luego asignarle un valor en una línea separada.
 	var puntero *int
 
-	//* Operador de dirección de punteros &
+	//* Operador de dirección de punteros `&`
 	// Asignación del puntero a la dirección de memoria de la variable numero usando el operador &
 	puntero = &numero
 
