@@ -44,6 +44,13 @@ func main() {
 		fmt.Println(i) // Output: 0, 1, 2
 	}
 
+	//* Bucle for con range de enteros sin variable de índice.
+	// Se ignora la variable de índice "i".
+	// Esta sintaxis es útil cuando simplemente necesitas realizar una acción repetitiva un número determinado de veces.
+	for range 5 {
+		fmt.Println("Go") // Output: Go Go Go Go Go
+	}
+
 	//* Bucle for con "break".
 	// Se detiene el bucle cuando i es igual a 50.
 	for i := 1; i <= 100; i++ {
