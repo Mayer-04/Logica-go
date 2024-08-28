@@ -17,19 +17,18 @@ Si salaries está vacío entonces el resultado será 0.
 */
 
 func main() {
-	var salaries = map[string]int{
+	salaries := map[string]int{
 		"John": 100,
 		"Ann":  160,
 		"Pete": 130,
 	}
 
 	result := SumSalaries(salaries)
-
 	fmt.Println(result)
 }
 
 func SumSalaries(salaries map[string]int) int {
-	var sumaTotal int = 0
+	sumaTotal := 0
 
 	for _, salary := range salaries {
 		sumaTotal += salary

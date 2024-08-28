@@ -5,23 +5,22 @@ import (
 	"fmt"
 )
 
+// Suma de enteros pares: Escribe un programa que sume todos los números pares en un rango dado de enteros.
+
 func main() {
 
-	var numbers = make([]int, 0, 6)
-
-	numbers = append(numbers, 1, 2, 3, 4, 5, 6)
-
+	numbers := []int{1, 2, 3, 4, 5, 6}
 	result, err := addEvenNumbers(numbers)
 
 	if err != nil {
 		fmt.Println(err)
+		return
 	}
 
 	fmt.Println(result)
 
 }
 
-// Suma de enteros pares: Escribe un programa que sume todos los números pares en un rango dado de enteros.
 func addEvenNumbers(nums []int) (int, error) {
 
 	if len(nums) == 0 {
@@ -29,7 +28,6 @@ func addEvenNumbers(nums []int) (int, error) {
 	}
 
 	result := 0
-
 	for _, value := range nums {
 		if value%2 == 0 {
 			result += value

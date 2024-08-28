@@ -8,15 +8,14 @@ import (
 )
 
 // Dado un número entero x, devuelve verdadero si x es un palíndromo y falso en caso contrario.
+
 func main() {
-	var number = 121
+	number := 121
 
 	result, err := isPalindrome(number)
-
 	if err != nil {
 		fmt.Println(err)
 	}
-
 	fmt.Println(result)
 }
 
@@ -32,9 +31,7 @@ func isPalindrome(x int) (bool, error) {
 
 	if err != nil {
 		return false, fmt.Errorf("error converting reversed string to number: %w", err)
-
 	}
 
 	return x == nuevoNumber, nil
-
 }

@@ -6,14 +6,13 @@ import (
 )
 
 /*
-Dividir un slice:
+* Dividir un slice:
 Escribe una función que tome un slice de enteros y lo divida en dos slices,
 uno que contenga los primeros n elementos y otro que contenga el resto.
 La función debería devolver ambos slices.
 */
 
 func main() {
-
 	enteros := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 
 	primeros, resto := dosSlices(enteros, 4)
@@ -49,12 +48,11 @@ func dosSlices(enteros []int, n int) ([]int, []int) {
 
 	// Retorno los dos slices, primeros y resto
 	return primeros, resto
-
 }
 
 //!NOTE: Otra solución al ejercicio
 
-func dividirSlice(slice []int, n int) ([]int, []int) {
+func DividirSlice(slice []int, n int) ([]int, []int) {
 	// Verificar si n es mayor que la longitud del slice
 	if n > len(slice) {
 		return slice, []int{}

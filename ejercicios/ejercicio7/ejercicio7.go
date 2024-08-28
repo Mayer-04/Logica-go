@@ -3,14 +3,13 @@ package main
 import "fmt"
 
 /*
-Concatenar slices:
+* Concatenar slices:
 Crea una función que tome dos slices de enteros y los concatene en uno solo.
 Asegúrate de que el slice resultante tenga una longitud igual a la suma de las longitudes de los dos slices originales,
 y que su capacidad sea igual a la capacidad del primer slice más la capacidad del segundo slice.
 */
 
 func main() {
-
 	slice1 := []int{1, 2, 3, 4, 5}
 	slice2 := []int{6, 7, 8, 9, 10}
 
@@ -19,7 +18,6 @@ func main() {
 	fmt.Println("Longitud:", len(result))  // Longitud: 10
 	fmt.Println("Capacidad:", cap(result)) // Capacidad: 10
 	fmt.Println(result)                    // [1 2 3 4 5 6 7 8 9 10]
-
 }
 
 func concatenarSlices(slice1, slice2 []int) []int {
@@ -38,5 +36,4 @@ func concatenarSlices(slice1, slice2 []int) []int {
 	result = append(result, slice2...)
 
 	return result
-
 }
