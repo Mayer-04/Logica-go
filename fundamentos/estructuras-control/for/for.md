@@ -71,33 +71,32 @@ for i, value := range [array | slice | string | map] {
 
 ```go
 // Array
-var arr = [5]int{1,2,3,4,5}
+arr := [5]int{1,2,3,4,5}
 
 for i, value := range arr {
     fmt.Printf("Indice: %d, Valor: %d\n", i, value)
 }
 ```
 
-**Example2:**
+**Example 2:**
 
 > [!IMPORTANT]
 > We can use the blank operator to ignore either of the two variables.
 
 ```go
-var arr = [3]string{"Daniela", "Pedro", "Andres"}
+arr := [3]string{"Daniela", "Pedro", "Andres"}
 // Operator blank _
 for _, value := range arr {
     fmt.Println(value)
 }
 ```
 
-**Example3:**
+**Example 3:**
 
 > [!IMPORTANT]
 > Since version 1.22 you can use range with an integer as argument
 
 ```go
-
 for i := range 5 {
     fmt.Println(i)
 }
