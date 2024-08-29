@@ -6,16 +6,28 @@ En Go, los puntos y comas (;) son opcionales y el compilador los inserta automá
 
 **Algunas caracteristicas a tener en cuenta:**
 
-- No se insertara un punto y coma justo despues de la palabra clave `for`.
+- No se insertara un punto y coma justo despues de la palabra reservada `for`.
 - Con los operadores de incremento `++` y decremento `--` hay que tener cuidado y tratarlos como una declaración y no como una expresión.
 
 La razón por la cual el código anterior no es válido es que los compiladores lo verán como:
 
 ```go
-func f() {
+func main() {
     a := 0;
-    println(a++;);
-    println(a--;);
+    println(a++;); // Error: ++ no se puede usar como expresión
+    println(a--;); // Error: -- no se puede usar como expresión
+}
+```
+
+Para que sea correcto, los operadores de incremento y decremento deben estar en su propia línea como declaraciones:
+
+```go
+func main() {
+    a := 0
+    a++            // Incrementa 'a' en 1
+    println(a)     // Ahora 'a' es 1
+    a--            // Decrementa 'a' en 1
+    println(a)     // Ahora 'a' es 0
 }
 ```
 
