@@ -8,6 +8,7 @@ Los tipos en Go son una forma de definir la estructura y el comportamiento de lo
 
 - Pueden ser tipos básicos, como int, string, etc., o tipos definidos por el usuario,
 como estructuras (struct), alias de tipos existentes, y funciones.
+- Alias: Un alias es otro nombre que se puede usar para referirse a un tipo existente.
 */
 
 // Creando un tipo Person que es una estructura.
@@ -16,12 +17,12 @@ type Person struct {
 	Age  int
 }
 
-// Creando un tipo que es un slice de estructuras Person.
+// Creando un tipo que es un `slice` de estructuras Person.
 // Esto permite trabajar con múltiples instancias de Person como un solo tipo.
 type People []Person
 
-// Definición de un tipo personalizado basado en un tipo existente.
-// MyNumber es un alias para el tipo int, lo que nos permite agregar métodos específicos.
+// Creando un nuevo tipo basado en un tipo existente en este caso `int`.
+// MyNumber es un `alias` para el tipo int, lo que nos permite agregar métodos específicos.
 type MyNumber int
 
 // Creamos un método para el tipo MyNumber.
@@ -31,7 +32,7 @@ func (m MyNumber) String() string {
 }
 
 // Definiendo un tipo para una función que recibe dos strings como parámetros.
-// Los tipos de función permiten definir y trabajar con funciones como valores.
+// Los tipos de función permiten definir y trabajar con `funciones como valores`.
 type MyFunction func(string, string)
 
 // Implementando un método para el tipo MyFunction.
@@ -50,27 +51,32 @@ func main() {
 
 	// Definimos una variable de tipo MyNumber.
 	var number MyNumber = 11
-	fmt.Printf("myNumber: %T\n", number)                 // Output: myNumber: main.MyNumber
+	fmt.Printf("myNumber: %+v\n", number)                // Output: myNumber: 11
+	fmt.Printf("tipo: %T\n", number)                     // Output: tipo: main.MyNumber
 	fmt.Printf("método String(): %s\n", number.String()) // Output: 11
 
-	// Definimos una variable de tipo MyFunction y la asignamos a una función anónima.
+	// Definimos una variable de tipo `MyFunction` y la asignamos a una función anónima.
 	var function MyFunction = func(name, lastname string) {
 		fmt.Printf("Hello, %s %s!\n", name, lastname)
 	}
+
+	// Llamando a la función asignada a MyFunction.
+	function("Robert", "Downey") // Output: Hello, Robert Downey!
+
 	// Usamos el método hello para llamar a la función asignada a MyFunction.
 	function.hello("Mayer", "Andres") // Output: Hello, Mayer Andres!
 
-	// Combinando tipos personalizados
-	// Creamos una lista de personas (People) usando el tipo personalizado `type People []Person`.
+	// Combinando tipos personalizados.
+	// Creamos un slice de personas (People) usando el tipo personalizado `People`.
 	people := People{
 		{Name: "John", Age: 30},
 		{Name: "Cristiano", Age: 39},
 	}
-	// Imprimimos la lista de personas.
+	// Imprimimos el slice de personas.
 	fmt.Printf("people: %+v\n", people) // Output: people: [{Name:John Age:30} {Name:Cristiano Age:39}]
 
-	// Alias y métodos personalizados
-	// Usamos el alias myPerson y el método String() del tipo MyNumber.
+	// Alias y métodos personalizados.
+	// Usamos el alias `myPerson` y el método String() del tipo `MyNumber`.
 	person2 := myPerson{"Messi", 37}
 	number2 := MyNumber(42)
 	fmt.Printf("person2: %+v\n", person2)                             // Output: person2: {Name:Messi Age:37}
