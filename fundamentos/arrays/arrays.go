@@ -6,7 +6,9 @@ import "fmt"
 * Arrays: Arreglos
 Los Arrays en Go tienen un tamaño fijo y almacenan elementos del mismo tipo en ubicaciones de memoria contiguas.
 
-- Los arrays son: arreglos estaticos, tienen un tamaño fijo y se suelen declarar en la pila.
+- Los arrays son: arreglos estaticos, tienen un tamaño fijo y se suelen declarar en la pila (stack).
+- El compilador de Go conoce la longitud y la capacidad con anticipación de un array.
+- `len y cap` son constantes y siempre iguales.
 - Los elementos del array se acceden mediante `índices`, donde el primer elemento está en el índice 0
 y el último está en `len(arr)-1`.
 - La dirección en memoria de un array es la misma dirección del primero elemento del array. (Ej: arr[0])
@@ -39,7 +41,7 @@ func main() {
 	array2 := [3]string{"Mayer", "Andres", "Chaves"}
 	fmt.Println("array literal:", array2)
 
-	//* Cuando declaramos un array literal arr := [3]int{1, 2, 3, 4}, lo que realmente sucede es esto:
+	// TODO: Cuando declaramos un array literal arr := [3]int{1, 2, 3, 4}, lo que realmente sucede es esto:
 	arr := [4]int{}
 	arr[0] = 1
 	arr[1] = 2

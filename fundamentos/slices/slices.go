@@ -6,8 +6,25 @@ import (
 )
 
 /*
-* Slices: Rebanadas
+* Slices: Rebanadas o Cortes
 - Los slices son estructuras más flexibles que los arrays, con longitud dinámica.
+- La longitud y l capacidad son dinámicos, pueden cambiar en tiempo de ejecución.
+- Por lo general un slice se asigna en la pila (stack).
+- El array subyacente es más probable que termine en el montón (heap) porque puede crecer dinámicamente.
+
+* Longitud: Cuantos elementos tiene el slice.
+* Capacidad: Es el número de elementos desde el inicio del slice hasta el final del array subyacente.
+- Es la cantidad máxima de elementos que puede contener antes de que necesite crecer dinámicamente.
+- Esto se produce cuando se excede la capacidad del slice no la capacidad del array subyacente.
+- Cuando Go crea un nuevo array para adaptar un slice en crecimiento, generalmente duplica la capacidad.
+
+Un slice internamente es una estructura con tres campos:
+
+type slice struct {
+	array unsafe.Pointer // Puntero al array
+	len   int            // Cantidad de elementos
+	cap   int            // Capacidad del array
+}
 */
 
 func main() {
@@ -24,13 +41,18 @@ func main() {
 
 	// Declaración literal de un slice.
 	// Aquí se declaran e inicializan los valores del slice en una sola línea.
-	var slice2 = []int{1, 2, 3, 4}
+	slice2 := []int{1, 2, 3, 4}
 	fmt.Println("slice literal:", slice2)
 
 	// Declaración literal de un slice vacío.
 	// Los slices vacíos tienen una longitud de 0 y su capacidad es 0.
-	var sliceEmpty = []int{}
+	sliceEmpty := []int{}
 	fmt.Println("slice literal vacío:", sliceEmpty)
+
+	// Declaración de un slice con new.
+	// Se usa la función new para crear un nuevo slice.
+	sliceNew := *new([]int)
+	fmt.Println("slice new:", sliceNew) // Output: []
 
 	// Declaración literal con índices explícitos.
 	// Los índices pueden ser especificados explícitamente para definir elementos en posiciones específicas.
