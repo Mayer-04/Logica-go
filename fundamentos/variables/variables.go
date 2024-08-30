@@ -46,7 +46,7 @@ func main() {
 		user   = "🧑🏽"
 		animal = "🐈"
 	)
-	fmt.Printf("multiples variables: %s, %s, %s\n", home, user, animal)
+	fmt.Printf("múltiples variables: %s, %s, %s\n", home, user, animal)
 
 	// Declaración de múltiples variables en una sola línea utilizando la declaración de variable corta.
 	numero1, numero2, numero3 := 2, 3, 4

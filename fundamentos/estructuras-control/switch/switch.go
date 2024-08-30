@@ -22,7 +22,7 @@ func main() {
 
 	edad := 18
 
-	// Declarando una estructura switch con multiples casos.
+	// Declarando una estructura switch con múltiples casos.
 	switch {
 	case edad < 13:
 		fmt.Println("Eres un niño")
