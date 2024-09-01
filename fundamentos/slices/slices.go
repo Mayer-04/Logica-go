@@ -105,15 +105,16 @@ func main() {
 	make1 := make([]byte, 5)
 	fmt.Println("slice creado con make:", make1)
 
-	// Función `Concat` (introducida en Go 1.22).
+	// Función `Concat` (Introducida en Go 1.22).
 	// Concatena dos slices en un nuevo slice.
 	s1 := []string{"Mayer", "Andres"}
 	s2 := []string{"Joe", "Rose"}
 	concat := slices.Concat(s1, s2)
 	fmt.Println("slice concatenado:", concat) // Output: [Mayer Andres Joe Rose]
 
-	// Función `Repeat` (introducida en Go 1.23).
-	// Repite el segmento del slice el número de veces indicado en un nuevo slice.
+	// Función `Repeat` (Introducida en Go 1.23).
+	// Toma un slice y lo repite un número de veces para crear un nuevo slice más grande.
+	// El método devuelve una nueva porción que contiene la porción original repetida `count` veces.
 	numbers := []int{0, 1, 2, 3}
 	repeat := slices.Repeat(numbers, 2)
 	fmt.Println("slice repetido:", repeat) // Output: [0 1 2 3 0 1 2 3]

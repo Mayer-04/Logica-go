@@ -68,17 +68,55 @@ func main() {
 	str7 := strings.TrimSpace(name)
 	fmt.Println(str7)
 
+	// Función `Clone` (Introducida en Go 1.18).
+	// Devuelve una copia de la cadena.
+	// Ayuda a que ciertos programas utilizen menos memoria.
+	animal := "León"
+	clone := strings.Clone(animal)
+	fmt.Println("clone:", clone)
+
+	// Función `Cut` (Nueva en Go 1.18).
+	// Busca el primer lugar donde aparece `sep` en `s` y divide `s` en dos partes.
+	// Es útil para partir una cadena en dos donde aparezca el separador.
+	s := "Hola mundo"
+	sep := " "
+	before, after, found := strings.Cut(s, sep)
+	fmt.Println("Antes del separador:", before)   // Output: "Hola"
+	fmt.Println("Después del separador:", after)  // Output: "mundo"
+	fmt.Println("¿Separador encontrado?:", found) // Output: true
+
+	// Función `CutPrefix` (Nueva en Go 1.20).
+	// Prefijo: Una cadena que aparece al principio de otra.
+	// Quita un prefijo específico al comienzo de una cadena y dice si lo encontró.
+	// Si la cadena empieza con ese prefijo, lo quita y devuelve el resto de la cadena.
+	gopher := "gopher"
+	prefix := "go"
+	after, ok := strings.CutPrefix(gopher, prefix)
+	fmt.Println("Después del prefijo:", after) // Output: "opher"
+	fmt.Println("¿Prefijo encontrado?:", ok)   // Output: true
+
+	// Función `CutSuffix` (Nueva en Go 1.20).
+	// Sufijo: Una cadena que aparece al final de otra.
+	// Quita un sufijo específico al final de una cadena y dice si lo encontró.
+	// Si la cadena termina con ese sufijo, lo quita y devuelve el resto.
+	// Si no termina con el sufijo, devuelve la cadena tal cual.
+	document := "documento.txt"
+	suffix := ".txt"
+	newS, ok := strings.CutSuffix(document, suffix)
+	fmt.Println("Después del sufijo:", newS) // Output: "documento"
+	fmt.Println("¿Sufijo encontrado?:", ok)  // Output: true
+
 	//* Paquete "strconv" - Contiene métodos para convertir strings a números enteros o flotantes
 
 	// Convertir un string a un entero.
 	age := "23"
 	// Omitimos el error por temas didacticos.
 	age2, _ := strconv.Atoi(age)
-	fmt.Printf("tipo: %T - valor: %v\n", age2, age2)
+	fmt.Printf("tipo: %T - valor: %v\n", age2, age2) // Output: tipo: int - valor: 23
 
 	// Convertir un string que representa un número a un float64.
 	weight := "70.5"
 	weight2, _ := strconv.ParseFloat(weight, 64)
-	fmt.Printf("tipo: %T - valor: %v", weight2, weight2)
+	fmt.Printf("tipo: %T - valor: %v", weight2, weight2) // Output: tipo: float64 - valor: 70.5
 
 }
