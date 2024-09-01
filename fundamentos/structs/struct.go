@@ -9,10 +9,15 @@ import "fmt"
 - Es similar a una "clase" en otros lenguajes de programación.
 */
 
-//* Persona es una `estructura` que define una entidad con Nombre y Edad.
+//* Persona es una `estructura` que define un objeto con Nombre y Edad.
 type Persona struct {
 	Nombre string
 	Edad   uint8
+}
+
+// Podemos definir en una misma línea dos campos que comparten el mismo tipo de dato.
+type Rectangulo struct {
+	Ancho, Alto float64
 }
 
 func main() {
