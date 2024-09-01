@@ -2,7 +2,9 @@
 
 ## Conceptos claves
 
-1. **Clase:** Una clase es como un plano o molde que define cómo va a ser un objeto. Es una plantilla que describe qué características (propiedades) y qué acciones (métodos) puede tener algo en tu programa.
+### Clase
+
+Una clase es como un plano o molde que define cómo va a ser un objeto. Es una plantilla que describe qué características (propiedades) y qué acciones (métodos) puede tener algo en tu programa.
 
 Los métodos pueden interactuar con las propiedades de la clase.
 
@@ -11,37 +13,46 @@ Los métodos pueden interactuar con las propiedades de la clase.
 - La **clase Animal** define qué características tendrán todos los animales, como especie, género, nombre y peso.
 - La **clase Car** especifica qué características tendrán todos los coches, como marca, modelo, color y año.
 
-2. **Atributos (o Propiedades):** Son las características o datos que describen a un objeto.
+### Atributos (o Propiedades)
+
+Son las características o datos que describen a un objeto.
 
 **Ejemplos:**
 
 - En la **clase Animal**, los atributos pueden ser especie, género, nombre y peso.
 - En la **clase Car**, los atributos pueden ser marca, modelo, color y año.
 
-3. **Métodos:** Un método es una función que pertenece a una clase. Define una acción que los objetos de esa clase pueden realizar. Suelen ser verbos.
+### Métodos
+
+Un método es una función que pertenece a una clase. Define una acción que los objetos de esa clase pueden realizar. Suelen ser verbos.
 
 **Ejemplos:**
 
 - Algunas acciones o métodos que podria tener la **clase Animal** podrian ser `Dormir` o `Comer`.
 - Algunas acciones o métodos que podria tener la **clase Car** podrian ser `Manejar` o `Acelerar`.
 
-4. **Objeto:** Un objeto es una instancia de una clase, es decir, algo concreto que se ha creado a partir de esa plantilla. Si la clase es el plano, el objeto es la construcción final.
+### Objeto
+
+Un objeto es una instancia de una clase, es decir, algo concreto que se ha creado a partir de esa plantilla. Si la clase es el plano, el objeto es la construcción final.
 
 **Ejemplos:**
 
 - Un objeto de la **clase Animal** podría ser un perro llamado "Zeus".
 - Un objeto de la **clase Car** podría ser un coche específico, como un Nissan Tiida del año 2014.
 
-5. **Instanciación:** Es el proceso de crear un objeto a partir de una clase. Al `instanciar` una clase, estás creando un nuevo objeto basado en esa plantilla.
+### Instanciación
+
+Es el proceso de crear un objeto a partir de una clase. Al `instanciar` una clase, estás creando un nuevo objeto basado en esa plantilla.
+Cada vez que se instancia una clase, se crea un nuevo objeto con su propio conjunto de atributos, pero todos basados en la misma definición de clase.
 
 **Ejemplos:**
 
 - Podemos crear un objeto llamado _perro_, que es una instancia de la **clase Animal**. Este objeto tendrá características y acciones definidas en la clase Animal, como especie, género, nombre, Dormir o Comer.
 - Podemos crear un objeto llamado _toyota_, que es una instancia de la **clase Car**. Este objeto tendrá características y acciones definidas en la clase Car, como marca, modelo, año, Manejar o Acelerar.
 
-**IMPORTANTE:** Cada vez que se instancia una clase, se crea un nuevo objeto con su propio conjunto de atributos, pero todos basados en la misma definición de clase.
+### Constructor
 
-6. **Constructor:** Un constructor es un `método especial` que se llama automáticamente cuando se crea un objeto. Su propósito es inicializar el objeto, configurando sus atributos con valores iniciales.
+Un constructor es un `método especial` que se llama automáticamente cuando se crea un objeto. Su propósito es inicializar el objeto, configurando sus atributos con valores iniciales.
 
 El constructor es invocado automáticamente al crear un objeto.
 
