@@ -45,7 +45,7 @@ func main() {
 
 	var x interface{} = true
 
-	// * Switch de Tipos (Type Switch).
+	// * Switch de Tipos (Type Switches).
 	// Se puede utilizar para el caso de que la variable sea de otro tipo.
 	switch x.(type) {
 	case int:
@@ -55,7 +55,7 @@ func main() {
 	case string:
 		fmt.Println("Es una cadena")
 	default:
-		fmt.Println("Es de otro tipo")
+		fmt.Println("Es de otro tipo") // Se imprime 'Es de otro tipo'
 	}
 
 	//* Switch con la palabra clave `fallthrough`.

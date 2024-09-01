@@ -10,6 +10,15 @@ import "fmt"
 - La declaración de variable corta `:=`, solo puede usarse dentro del cuerpo de una función.
 */
 
+// Agrupando múltiples variables en un bloque var.
+// Se utiliza los paréntesis '()' para agrupar las variables.
+// Se recomienda usarlas a nivel de paquete.
+var (
+	home   = "🏠"
+	user   = "🧑🏽"
+	animal = "🐈"
+)
+
 func main() {
 
 	// Declarando e inicializando una variable con su tipo explícito.
@@ -38,14 +47,7 @@ func main() {
 	age := 23
 	fmt.Println("edad:", age)
 
-	// Agrupando múltiples variables en un bloque var.
-	// Se utiliza los paréntesis '()' para agrupar las variables.
-	// Se recomienda usarlas a nivel de paquete.
-	var (
-		home   = "🏠"
-		user   = "🧑🏽"
-		animal = "🐈"
-	)
+	// Imprimiendo las variables agrupadas en un bloque var.
 	fmt.Printf("múltiples variables: %s, %s, %s\n", home, user, animal)
 
 	// Declaración de múltiples variables en una sola línea utilizando la declaración de variable corta.
