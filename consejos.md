@@ -13,9 +13,9 @@ La razón por la cual el código anterior no es válido es que los compiladores 
 
 ```go
 func main() {
-    a := 0;
-    println(a++;); // Error: ++ no se puede usar como expresión
-    println(a--;); // Error: -- no se puede usar como expresión
+    number := 0;
+    println(number++;); // Error: ++ no se puede usar como expresión
+    println(number--;); // Error: -- no se puede usar como expresión
 }
 ```
 
@@ -23,11 +23,11 @@ Para que sea correcto, los operadores de incremento y decremento deben estar en 
 
 ```go
 func main() {
-    a := 0
-    a++            // Incrementa 'a' en 1
-    println(a)     // Ahora 'a' es 1
-    a--            // Decrementa 'a' en 1
-    println(a)     // Ahora 'a' es 0
+    number := 0
+    number++            // Incrementa 'number' en 1
+    println(number)     // Ahora 'number' es 1
+    number--            // Decrementa 'number' en 1
+    println(number)     // Ahora 'number' es 0
 }
 ```
 
@@ -100,9 +100,13 @@ func main() {
 }
 ```
 
-## Manejo de Errores en Go con fmt.Errorf y el verbo %w
+## Manejo de Errores en Go con fmt.Errorf, el Verbo %w y errors.Join
 
 Desde Go 1.13, puedes añadir contexto a los errores sin perder la información original usando `fmt.Errorf` con el verbo `%w`. En Go 1.20, se introdujo `errors.Join` para agrupar múltiples errores.
+
+### Formato de los Mensajes de Error
+
+Es recomendable escribir los mensajes de error en **minúsculas** para mantener la consistencia, especialmente cuando los mensajes de error se combinan o se muestran juntos. A diferencia de otros lenguajes de programación donde es común **capitalizar** la primera letra de los mensajes de error, en Go se prefiere que comiencen en **minúscula**, salvo que inicien con un _nombre propio_ o una _abreviatura_.
 
 **Envolver un error:**
 
@@ -125,7 +129,5 @@ Envolver errores proporciona más contexto sobre dónde y por qué ocurrió el e
 Aunque `panic` puede ser recuperado con `recover()`, esto no siempre es posible ni recomendable.
 
 - `recover()` solo puede capturar pánicos en la misma goroutine donde se llama, el pánico de otra función no pueden ser recuperado por la función diferida en main(). Esto resulta en un crash del programa.
-
 - Un pánico en una parte del sistema puede provocar fallos en otras partes, especialmente en entornos de microservicios o sistemas distribuidos, causando fallos en cascada.
-
 - Debería limitarse a situaciones críticas, como durante la inicialización de un programa.
