@@ -33,7 +33,7 @@ Go no tiene herencia como en otros lenguajes orientados a objetos, pero puedes l
 
 ## Composición
 
-La composición es la forma principal en que Go maneja la reutilización de código y la construcción de objetos complejos. En lugar de que una clase herede de otra, una estructura en Go puede incluir otra estructura como un campo, conocido como `incrustar una estructura`.
+La composición es la forma principal en que Go maneja la reutilización de código y la construcción de objetos complejos. En lugar de que una clase herede de otra, una estructura en Go puede incluir otra estructura como un campo, conocido como `incrustación de estructuras`.
 
 ```go
 type Engine struct {
@@ -54,7 +54,7 @@ type Car struct {
 En Go, el polimorfismo se logra utilizando `interfaces`. Una interfaz define un conjunto de métodos, pero no proporciona la implementación de esos métodos.
 
 - Cualquier tipo que implemente esos métodos se dice que "satisface" la interfaz.
-- Una interfaz es como un contrato que deben cumplir los tipos en Go para que sean implementados.
+- Una interfaz es como un contrato que dice qué métodos deben existir, pero no dice cómo implementarlos.
 - A diferencia de otros lenguajes de programación, no es necesario declarar _explícitamente_ que un tipo implementa una interfaz; Go lo determina automáticamente.
 
 ```go
@@ -89,7 +89,6 @@ func StartVehicle(v Vehicle) {
 // Llamada al polimorfismo
 car := Car{Brand: "Toyota"}
 bike := Bike{Brand: "Yamaha"}
-
 StartVehicle(car)
 StartVehicle(bike)
 ```

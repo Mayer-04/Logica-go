@@ -71,7 +71,7 @@ El encapsulamiento es como poner un escudo protector alrededor de los datos de u
 
 ## Herencia
 
-La herencia permite que una clase nueva (hija) herede las propiedades y métodos de otra clase existente (padre). Esto ayuda a reutilizar código y a crear relaciones entre diferentes clases.
+La herencia permite que una clase nueva _(hija)_ herede las propiedades y métodos de otra clase existente _(padre)_. Esto ayuda a reutilizar código y a crear relaciones entre diferentes clases.
 
 ## Composición
 
@@ -81,5 +81,5 @@ La composición es una forma de construir un objeto utilizando otros objetos com
 
 El polimorfismo permite que objetos de clases diferentes respondan de manera similar a los mismos métodos, pero cada uno puede hacerlo de manera única. En otras palabras, aunque diferentes objetos puedan realizar la misma acción, lo hacen a su manera.
 
-- Varias formas de hacer lo mismo: Diferentes clases pueden tener métodos con el mismo nombre, pero implementados de manera distinta.
-- Uso de interfaces: Una interfaz es como un contrato que dice qué métodos deben existir, pero no dice cómo implementarlos. Cada clase decide cómo hacer su trabajo mientras cumple con ese contrato.
+- **Varias formas de hacer lo mismo:** Diferentes clases pueden tener métodos con el mismo nombre, pero implementados de manera distinta.
+- **Uso de interfaces:** Una interfaz es como un contrato que dice qué métodos deben existir, pero no dice cómo implementarlos. Cada clase decide cómo hacer su trabajo mientras cumple con ese contrato.
