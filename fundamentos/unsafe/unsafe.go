@@ -68,9 +68,10 @@ func main() {
 
 	//* `unsafe.Pointer()`.
 	// Permite convertir un puntero de un tipo específico (como `*int`) a un puntero genérico (`unsafe.Pointer`).
+	// Un Pointer puede convertirse en un valor puntero de cualquier tipo.
+	// Un uintptr puede convertirse en un puntero.
 	// Esto es útil cuando necesitas convertir entre diferentes tipos de punteros,
 	// lo cual normalmente no es permitido en Go.
-
 	var x int = 42
 	p := unsafe.Pointer(&x) // Convertimos el puntero `*int` a `unsafe.Pointer`
 	// Convertimos `unsafe.Pointer` a `uintptr`, que es solo un número que representa la dirección de memoria.
