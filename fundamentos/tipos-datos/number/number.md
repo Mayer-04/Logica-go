@@ -2,24 +2,24 @@
 
 ## uint - Almacena solo números positivos
 
-- uint8 unsigned **8-bit** integers **(0 to 255)**
-- uint16 unsigned **16-bit** integers **(0 to 65535)**
-- uint32 unsigned **32-bit** integers **(0 to 4294967295)**
-- uint64 unsigned **64-bit** integers **(0 to 18446744073709551615)**
+- uint8: Enteros sin signo de 8 bits (0 a 255) - `1 byte`
+- uint16: Enteros sin signo de 16 bits (0 a 65535) - `2 bytes`
+- uint32: Enteros sin signo de 32 bits (0 a 4294967295) - `4 bytes`
+- uint64: Enteros sin signo de 64 bits (0 a 18446744073709551615) - `8 bytes`
 
 ## int - Trabaja con números negativos y positivos
 
-- int8 signed **8-bit** integers **(-128 to 127)**
-- int16 signed **16-bit** integers **(-32768 to 32767)**
-- int32 signed **32-bit** integers **(-2147483648 to 2147483647)**
-- int64 signed **64-bit** integers **(-9223372036854775808 to 9223372036854775807)**
+- int8: Enteros con signo de 8 bits (-128 a 127) - `1 byte`
+- int16: Enteros con signo de 16 bits (-32768 a 32767) - `2 bytes`
+- int32: Enteros con signo de 32 bits (-2147483648 a 2147483647) - `4 bytes`
+- int64: Enteros con signo de 64 bits (-9223372036854775808 a 9223372036854775807) - `8 bytes`
 
-## Números de tipo decimal
+## Números de tipo decimal o de punto flotante
 
-- float32
-- float64
+- float32 - `4 bytes`
+- float64 - `8 bytes`
 
 ## Alias
 
-- **byte** = alias for uint8
-- **rune** = alias for int32
+- **byte:** alias para _uint8_
+- **rune:** alias para _int32_
