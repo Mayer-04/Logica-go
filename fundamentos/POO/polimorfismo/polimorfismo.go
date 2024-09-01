@@ -28,7 +28,7 @@ type Car struct{}
 // Implementamos el método 'Start' para la estructura 'Car'.
 // Esto hace que 'Car' satisfaga la interfaz 'Vehicle'.
 func (c Car) Start() string {
-	return "Car is starting with a roar!"
+	return "The Car is starting!"
 }
 
 // Definimos una estructura 'Motorcycle' vacía que representa otro tipo de vehículo.
@@ -37,7 +37,7 @@ type Motorcycle struct{}
 // Implementamos el método 'Start' para la estructura 'Motorcycle'.
 // Esto hace que 'Motorcycle' también satisfaga la interfaz 'Vehicle'.
 func (m Motorcycle) Start() string {
-	return "Motorcycle is starting with a vroom!"
+	return "The Motorcycle is starting!"
 }
 
 // Definimos una estructura 'Bicycle' vacía que representa otro tipo de vehículo.
@@ -46,7 +46,7 @@ type Bicycle struct{}
 // Implementamos el método 'Start' para la estructura 'Bicycle'.
 // Esto hace que 'Bicycle' satisfaga la interfaz 'Vehicle'.
 func (b Bicycle) Start() string {
-	return "Bicycle is starting silently."
+	return "The Bicycle is in motion!"
 }
 
 // La función 'StartVehicle' toma como parámetro cualquier tipo que implemente la interfaz 'Vehicle'.
@@ -61,11 +61,11 @@ func main() {
 	// Esto demuestra cómo 'StartVehicle' puede trabajar con diferentes tipos de vehículos.
 	// Todos estos tipos implementan la misma interfaz 'Vehicle'.
 	car := Car{}
-	StartVehicle(car) // Output: Car is starting with a roar!
+	StartVehicle(car) // Output: The Car is starting!
 
 	motorcycle := Motorcycle{}
-	StartVehicle(motorcycle) // Output: Motorcycle is starting with a vroom!
+	StartVehicle(motorcycle) // Output: The Motorcycle is starting!
 
 	bicycle := Bicycle{}
-	StartVehicle(bicycle) // Output: Bicycle is starting silently.
+	StartVehicle(bicycle) // Output: The Bicycle is in motion!
 }

@@ -51,10 +51,10 @@ func main() {
 	fmt.Printf("myCar: %#v\n", nissan)
 
 	// Accedemos a los campos de la estructura utilizando el operador punto (.).
-	fmt.Println("model:", nissan.model)
-	fmt.Println("year:", nissan.year)
-	fmt.Println("price:", nissan.price)
-	fmt.Println("components:", nissan.components)
+	fmt.Printf("model: %s\n", nissan.model)
+	fmt.Printf("year: %d\n", nissan.year)
+	fmt.Printf("price: %.2f\n", nissan.price)
+	fmt.Printf("components: %v\n", nissan.components)
 
 	// Si un campo no se inicializa explícitamente, se le asigna el valor cero (0) para su tipo de dato.
 	toyota := car{
