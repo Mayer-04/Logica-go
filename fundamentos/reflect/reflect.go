@@ -11,6 +11,8 @@ El paquete "reflect" proporciona métodos para trabajar con tipos y valores en t
 
 - Permite inspeccionar y modificar dinámicamente variables, estructuras y sus campos.
 - Inspección y modificación de campos de estructuras.
+- Solo aplicar el paquete `reflect` cuando sea necesario.
+- El código puede tener menos rendimiento cuando se utiliza el paquete `reflect`.
 - Acceso a etiquetas (tags) de los campos en estructuras.
 - `reflect.TypeOf()`: Obtiene el tipo de dato de una variable.
 - `reflect.ValueOf()`: Obtiene el valor de una variable.
