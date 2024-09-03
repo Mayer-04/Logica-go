@@ -19,6 +19,14 @@ son instrucciones para decirle al programa cómo convertir los datos en formatos
 - Por defecto, las etiquetas están vacías, y se utilizan para personalizar la forma en que los datos se representan en JSON.
 
 IMPORTANTE: Puedes usar el paquete `reflect` para inspeccionar las etiquetas de los campos.
+
+* Deserializar:
+- Es el proceso de convertir una secuencia de bytes (JSON) en una estructura de datos en Go.
+* Serializar:
+- Es convertir una estructura de datos de Go en una secuencia de bytes o en un formato como JSON.
+* Decodificar:
+- Se refiere específicamente a la `deserialización` en el contexto de JSON, es decir,
+es el proceso de leer un JSON y convertirlo en una estructura de datos en Go.
 */
 
 type Person struct {
@@ -62,19 +70,21 @@ func main() {
 
 	// Convertir el slice de bytes a una cadena para imprimirlo.
 	str := string(jsonData)
-	fmt.Println("JSON de Person:", str) // Output: {"name":"Mayer","age":24,"play":"false"}
+	fmt.Printf("JSON de Person: %s\n", str) // Output: {"name":"Mayer","age":24,"play":"false"}
 
 	// Convertir una cadena JSON a una estructura Go (deserialización).
 	exampleJson := `{"nombre":"Canada","habitantes":37314442,"capital":"Ottawa","idiomas":["Inglés","Francés"]}`
-	countrys := Country{}
+	// Crear una instancia de vacía de Country.
+	countrys := Country{} // var countrys Country
 
+	// Convertir la cadena JSON a una instancia de Country (deserialización).
 	if err := json.Unmarshal([]byte(exampleJson), &countrys); err != nil {
 		panic(err)
 	}
 
-	fmt.Println("Estructura Country:", countrys) // Output: {Canada 37314442 Ottawa [Inglés Francés]}
+	fmt.Printf("estructura Country: %+v\n", countrys) // Output: {Canada 37314442 Ottawa [Inglés Francés]}
 
-	// Usar reflect para inspeccionar etiquetas de los campos.
+	// Usar `reflect` para inspeccionar etiquetas de los campos.
 	t := reflect.TypeOf(Country{})
 	for i := 0; i < t.NumField(); i++ {
 		field := t.Field(i)

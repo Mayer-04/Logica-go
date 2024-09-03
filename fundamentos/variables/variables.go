@@ -53,5 +53,4 @@ func main() {
 	// Declaración de múltiples variables en una sola línea utilizando la declaración de variable corta.
 	numero1, numero2, numero3 := 2, 3, 4
 	fmt.Printf("números: %d, %d, %d", numero1, numero2, numero3)
-
 }

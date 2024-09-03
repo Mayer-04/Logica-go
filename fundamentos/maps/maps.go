@@ -7,7 +7,7 @@ import "fmt"
 Los Maps en Go son estructuras de datos no ordenadas que almacenan pares clave-valor.
 
 - Una clave puede ser de cualquier tipo comparable (int, uint, string, struct, etc).
-- Un valor puede ser de cualquier tipo.
+- Los valores pueden ser de cualquier tipo.
 - Los maps proporcionan acceso rápido a los datos y son muy útiles para almacenar conjuntos de datos
 donde se necesita buscar elementos por clave.
 
@@ -38,7 +38,7 @@ func main() {
 	mapaVacio := map[int]string{}
 	fmt.Println("Mapa vacío:", mapaVacio) // Output: Mapa vacío: map[]
 
-	// Creando e inicializando un mapa vacío utilizando `make`.
+	// Creando e inicializando un mapa vacío utilizando `make()`.
 	// Podemos especificar la capacidad inicial como segundo argumento del map para optimizar el rendimiento.
 	edades2 := make(map[string]int, 2)
 
@@ -52,7 +52,7 @@ func main() {
 	fmt.Println("Valor de la llave 'a':", nuevoMapa["a"])
 	fmt.Println("Valor de la llave 'd':", nuevoMapa["d"]) // Output: Valor de la llave 'd': 0
 
-	// Eliminando un elemento del map utilizando su clave.
+	// La función incorporada `delete()` elimina el elemento con la clave especificada (m[clave]) del mapa.
 	delete(nuevoMapa, "a")
 
 	// Verificando si una clave existe en el map y obteniendo su valor.
@@ -61,10 +61,10 @@ func main() {
 	value, ok := nuevoMapa["a"]
 	fmt.Printf("Valor: %v - Existe: %t\n", value, ok)
 
-	// Limpiando el map eliminando todos sus elementos usando la función `clear()`.
-	// `clear()` es una función moderna que simplifica la eliminación de todos los elementos de un map.
+	// Eliminando todos sus elementos del map usando la función `clear()`.
+	// `clear()` es una función que simplifica la eliminación de todos los elementos de un map.
 	clear(edades)
-	fmt.Println("Edades después de clear():", edades)
+	fmt.Println("Edades después de clear():", edades) // Output: map[]
 
 	// Recorriendo un map con un bucle `for range`
 	// El orden de iteración de los elementos en un map es aleatorio y puede cambiar entre ejecuciones del programa.
