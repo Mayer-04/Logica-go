@@ -58,9 +58,10 @@ func waitGroup() {
 	fmt.Println("Todas las goroutines se han completado!")
 }
 
-//* Ejemplo real de uso de WaitGroup:
+//* Consumiendo múltiplesAPIs con WaitGroup:
 
-var URLS = []string{
+// URLs de las 3 APIs que queremos solicitar.
+var URLS = [3]string{
 	"https://jsonplaceholder.typicode.com/posts/1",
 	"https://rickandmortyapi.com/api/character",
 	"https://jsonplaceholder.typicode.com/users",
