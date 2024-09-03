@@ -18,8 +18,8 @@ func obtenerDia(dia int) string {
 		7: "Domingo",
 	}
 
-	// Verificar si el día está en el mapa, devolver la representación en caso afirmativo
-	// Si no, devolver "Día inválido"
+	// Verificar si el día está en el mapa, devolver la representación en caso afirmativo.
+	// Si no, devolver "Día inválido".
 	if nombreDia, existe := dias[dia]; existe {
 		return nombreDia
 	}
@@ -28,19 +28,19 @@ func obtenerDia(dia int) string {
 }
 
 func main() {
-	// Solicitar entrada del usuario
+	// Solicitar entrada del usuario.
 	var input string
 	fmt.Print("Ingrese un dígito entre 1 y 7: ")
 	fmt.Scanln(&input)
 
-	// Convertir la entrada a entero
+	// Convertir la entrada a entero.
 	dia, err := strconv.Atoi(input)
 	if err != nil {
 		fmt.Println("entrada inválida. Debe ser un número entero.")
 		return
 	}
 
-	// Obtener el día y mostrar el resultado
+	// Obtener el día y mostrar el resultado.
 	mensaje := obtenerDia(dia)
 	fmt.Println("Día de la semana:", mensaje)
 }

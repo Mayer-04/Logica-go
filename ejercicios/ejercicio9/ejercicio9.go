@@ -20,6 +20,5 @@ func main() {
 func copiaSlice(enteros []int) []int {
 	copia := make([]int, len(enteros))
 	copy(copia, enteros)
-
 	return copia
 }

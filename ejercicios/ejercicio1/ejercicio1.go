@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-// Suma de enteros pares: Escribe un programa que sume todos los números pares en un rango dado de enteros.
+//* Suma de enteros pares: Escribe un programa que sume todos los números pares en un rango dado de enteros.
 
 func main() {
 
@@ -18,21 +18,34 @@ func main() {
 	}
 
 	fmt.Println(result)
-
 }
 
 func addEvenNumbers(nums []int) (int, error) {
 
 	if len(nums) == 0 {
-		return 0, errors.New("no hay números")
+		return 0, errors.New("no hay números en el slice")
 	}
 
-	result := 0
+	sum := 0
 	for _, value := range nums {
 		if value%2 == 0 {
-			result += value
+			sum += value
 		}
 	}
 
-	return result, nil
+	return sum, nil
+}
+
+// NOTA: Esta solución solo es válida en nuestro ejercicio.
+func addEvenNumbers2(numbers []int) (int, error) {
+	if len(numbers) == 0 {
+		return 0, errors.New("no numbers in slice")
+	}
+
+	var sum int
+	for i := 1; i < len(numbers); i += 2 {
+		sum += numbers[i]
+	}
+
+	return sum, nil
 }
