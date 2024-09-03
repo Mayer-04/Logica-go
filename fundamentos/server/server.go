@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"log/slog"
 	"net/http"
 	"strconv"
 )
@@ -13,11 +14,22 @@ import (
 - El paquete 'encoding/json' facilita el trabajo con datos en formato JSON,
 proporcionando funciones para su codificación y decodificación.
 
-* Multiplexor (Mux):
+* Multiplexor de solicitudes (Mux):
 - Se utiliza para organizar y gestionar cómo se manejan diferentes rutas en un servidor HTTP.
 - Permite definir rutas específicas que corresponden a diferentes manejadores (handlers).
 - Cuando llega una solicitud HTTP, el multiplexor verifica la ruta solicitada y la asigna al manejador
 correspondiente para procesar la petición y responder al cliente.
+
+* Manejadores (Handlers):
+- Los manejadores son funciones que responden a las solicitudes HTTP,
+procesando la información recibida y generando una respuesta para el cliente.
+- Cada manejador toma una solicitud HTTP, realiza la lógica necesaria
+(como acceder a una base de datos, procesar datos, etc.), y envía una respuesta al cliente.
+
+* Rutas (Routes):
+- Las rutas son patrones de URL que dirigen las solicitudes HTTP a los manejadores correspondientes.
+- Cada ruta se asocia con un manejador específico,
+lo que permite que diferentes URLs desencadenen diferentes comportamientos en el servidor.
 
 * Algunos conceptos a tener en cuenta:
 - Escribir datos: Consiste en enviar o transferir información desde un programa (como un servidor)
@@ -56,20 +68,21 @@ func main() {
 	mux.HandleFunc("POST /users", createUser)
 
 	// La solicitud debe ser de tipo 'GET' y la ruta debe ser '/users/{id}'.
-	// Recupera el parámetro '{id}' de la solicitud.
+	// Recupera el parámetro de la ruta '{id}' de la solicitud que captura un valor dinámico.
 	mux.HandleFunc("GET /users/{id}", getUsers)
 
 	// La solicitud debe ser de tipo 'DELETE' y la ruta debe ser '/users/{id}'.
-	// Agregamos una exprsión regular que consiste en un número entre 0 y 9.
-	mux.HandleFunc("DELETE /users/{id:[0-9]+}", deleteUser)
+	mux.HandleFunc("DELETE /users/{id}", deleteUser)
 
-	// Imprimimos un mensaje cuando el servidor se inicia.
-	fmt.Println("Servidor iniciado en el puerto :8080")
+	// Mostramos un mensaje en la consola cuando el servidor se inicia.
+	// `slog.Info()` es una función que registra un mensaje en la consola.
+	slog.Info("Servidor iniciado en el puerto :8080")
 
 	//* Iniciamos el servidor.
 	// El primer argumento es la dirección o puerto donde escuchará el servidor.
 	// El segundo argumento es el manejador de solicitudes (en este caso, `mux`).
 	http.ListenAndServe(":8080", mux)
+
 }
 
 // Controlador para manejar la ruta raíz.
@@ -84,6 +97,7 @@ func handleRoot(w http.ResponseWriter, r *http.Request) {
 func createUser(w http.ResponseWriter, r *http.Request) {
 
 	// Creamos una instancia vacía de `User` para almacenar los datos del cuerpo de la solicitud.
+	// Go inicializa los campos de la estructura `User` a sus valores cero correspondientes.
 	var user User
 
 	// Crea un decodificador basado en el cuerpo (body) de la petición.
@@ -179,9 +193,11 @@ func deleteUser(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Eliminamos el par clave y valor del mapa por su id.
+	// Eliminamos el par clave-valor del mapa por su id.
 	delete(users, id)
 
+	// Indicamos que la petición fue exitosa con un estado 204.
+	// El código 204 indica que la acción fue exitosa, pero no es necesario devolver ninguna información.
 	w.WriteHeader(http.StatusNoContent)
-	fmt.Fprintf(w, "el usuario %s fue eliminado exitosamente", users[id].Name)
+	// fmt.Fprintf(w, "el usuario %s fue eliminado exitosamente", users[id].Name)
 }
