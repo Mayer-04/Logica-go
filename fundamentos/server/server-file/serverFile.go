@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"time"
 )
 
 /*
@@ -25,13 +26,27 @@ func main() {
 	publicPath := getPublicPath()
 	// Crea un servidor de archivos estáticos que servirá los archivos desde la carpeta 'public'.
 	fs := http.FileServer(http.Dir(publicPath))
-	// Definimos el manejador de solicitudes HTTP.
+	// Configura el manejador de solicitudes HTTP para servir archivos estáticos desde la ruta raíz (/).
 	http.Handle("/", fs)
 	// Definimos el puerto en el que el servidor web escuchará las solicitudes.
 	addr := ":5000"
+
+	// Configuramos el servidor HTTP con tiempos de espera personalizados para lectura y escritura.
+	server := &http.Server{
+		Addr:    addr,
+		Handler: fs,
+		// El tiempo de lectura especifica cuánto tiempo el servidor esperará para leer la solicitud del cliente
+		// antes de cancelar la conexión.
+		ReadTimeout: 10 * time.Second,
+		// El tiempo de escritura especifica cuánto tiempo el servidor esperará para enviar la respuesta completa
+		// antes de cancelar la conexión.
+		WriteTimeout: 10 * time.Second,
+	}
+
+	// Registra un mensaje en la consola utilizando slog cuando el servidor se inicia.
 	slog.Info("Servidor iniciado en el puerto " + addr)
 	// Iniciamos el servidor web en el puerto especificado.
-	http.ListenAndServe(addr, nil)
+	server.ListenAndServe()
 }
 
 // getCurrentDirectory obtiene el directorio de trabajo actual.
