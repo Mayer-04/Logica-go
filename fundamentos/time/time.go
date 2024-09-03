@@ -44,18 +44,18 @@ func main() {
 
 	// Obtener el número de horas de una duración.
 	hours := duration.Hours()
-	fmt.Printf("Horas en la duración: %.2f\n", hours) // 2.75
+	fmt.Printf("Horas en la duración: %.2f\n", hours) // Output: 2.75
 
 	// Obtener el número de minutos de una duración.
 	minutes := duration.Minutes()
-	fmt.Printf("Minutos en la duración: %.2f\n", minutes) // 165.00
+	fmt.Printf("Minutos en la duración: %.2f\n", minutes) // Output: 165.00
 
 	// Obtener el número de segundos de una duración.
 	seconds := duration.Seconds()
-	fmt.Printf("Segundos en la duración: %.2f\n", seconds) // 9900.00
+	fmt.Printf("Segundos en la duración: %.2f\n", seconds) // Output: 9900.00
 
 	// Pausar la ejecución del programa por 2 segundos.
-	// Una duración negativa o cero hace que `Sleep` regrese inmediatamente.
+	// Una duración negativa o cero hace que `Sleep()` regrese inmediatamente.
 	fmt.Println("Esperando 2 segundos...")
 	time.Sleep(2 * time.Second)
 	fmt.Println("Continuando la ejecución después de la pausa.")
@@ -66,7 +66,7 @@ func main() {
 
 	// Comparar dos fechas (after y before).
 	if future.After(specificDate) {
-		fmt.Println("El tiempo futuro es después de la fecha específica.") // Se imprime este println
+		fmt.Println("El tiempo futuro es después de la fecha específica.") // Se imprime este Println
 	} else if future.Before(specificDate) {
 		fmt.Println("El tiempo futuro es antes de la fecha específica.")
 	} else {

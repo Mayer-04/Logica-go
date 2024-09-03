@@ -6,12 +6,12 @@ import "fmt"
 * Funciones de impresión en Go
 Go proporciona varias funciones para mostrar información en la consola:
 
-- `print`: Imprime un valor o información en la consola sin un salto de línea,
+- `print()`: Imprime un valor o información en la consola sin un salto de línea,
 es una función nativa del lenguaje, diferente de las funciones del paquete fmt.
-- `fmt.Print`: Imprime un valor o información en la consola sin un salto de línea.
-- `fmt.Println`: Imprime un valor o información en la consola y agrega un salto de línea al final.
-- `fmt.Printf`: Imprime una cadena formateada utilizando especificadores de formato.
-- Especificadores de formato (%) - Indican cómo se debe formatear el valor que se imprime.
+- `fmt.Print()`: Imprime un valor o información en la consola sin un salto de línea.
+- `fmt.Println()`: Imprime un valor o información en la consola y agrega un salto de línea al final.
+- `fmt.Printf()`: Imprime una cadena formateada utilizando especificadores de formato.
+- Especificadores de formato (%): Indican cómo se debe formatear el valor que se imprime.
 */
 
 func main() {

@@ -104,9 +104,9 @@ func createUser(w http.ResponseWriter, r *http.Request) {
 	// Decodifica los datos de la petición y los almacena en la variable 'user'.
 	// La variable 'user' contendra todos los datos de que se especifique en el body de la petición.
 	// Evidentemente el cuerpo de la solicitud debe coincidir con nuestra estructura 'User'.
-	if error := json.NewDecoder(r.Body).Decode(&user); error != nil {
+	if err := json.NewDecoder(r.Body).Decode(&user); err != nil {
 		// Le pasamos la respuesta, el error y el estado de la petición en este caso 400.
-		http.Error(w, error.Error(), http.StatusBadRequest)
+		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
 
@@ -139,10 +139,10 @@ func getUsers(w http.ResponseWriter, r *http.Request) {
 	userId := r.PathValue("id")
 
 	// Convertimos el ID de usuario de string a entero.
-	id, error := strconv.Atoi(userId)
+	id, err := strconv.Atoi(userId)
 
-	if error != nil {
-		http.Error(w, error.Error(), http.StatusBadRequest)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
 
@@ -159,12 +159,12 @@ func getUsers(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
 	// Transformamos el usuario a JSON para mandarlo como respuesta al cliente.
-	data, error := json.Marshal(user)
+	data, err := json.Marshal(user)
 
-	if error != nil {
+	if err != nil {
 		// Si ocurre un error al codificar el JSON, devolvemos un error 500 (Internal Server Error).
 		// Es un error interno del servidor porque hasta este punto el usuario ingreso las datos correctamente.
-		http.Error(w, error.Error(), http.StatusInternalServerError)
+		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 
@@ -180,10 +180,10 @@ func deleteUser(w http.ResponseWriter, r *http.Request) {
 	userId := r.PathValue("id")
 
 	// Convertimos el ID de usuario de string a entero.
-	id, error := strconv.Atoi(userId)
+	id, err := strconv.Atoi(userId)
 
-	if error != nil {
-		http.Error(w, error.Error(), http.StatusBadRequest)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
 

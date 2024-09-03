@@ -35,8 +35,8 @@ func main() {
 	valueOfNumber := reflect.ValueOf(number)
 	valueOfText := reflect.ValueOf(text)
 
-	fmt.Println("El valor de 'number' es:", valueOfNumber) // 10
-	fmt.Println("El valor de 'text' es:", valueOfText)     // "Hello, World!"
+	fmt.Println("El valor de 'number' es:", valueOfNumber) // Output: 10
+	fmt.Println("El valor de 'text' es:", valueOfText)     // Output: "Hello, World!"
 
 	// Definición de una estructura con etiquetas (tags) para JSON y validación.
 	type Person struct {
@@ -82,5 +82,5 @@ func main() {
 		modifiablePerson.FieldByName("Name").SetString("Diego") // Cambia el nombre a "Diego".
 	}
 
-	fmt.Printf("Nuevo valor de 'Name': %q\n", person.Name) // Muestra "Diego"
+	fmt.Printf("Nuevo valor de 'Name': %q\n", person.Name) // Output: "Diego"
 }

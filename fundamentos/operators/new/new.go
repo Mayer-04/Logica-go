@@ -2,16 +2,18 @@ package main
 
 import "fmt"
 
-// Person es una estructura que representa a una persona con nombre, apellido, edad y hobbies.
+/*
+* Operador new
+- La función new(T) se utiliza para crear una nueva instancia de un tipo T, devolviendo un puntero al tipo T.
+- Esto es útil cuando quieres inicializar una variable y trabajar directamente con su dirección en memoria.
+*/
+
 type Person struct {
 	Name     string
 	LastName string
 	Age      int
 	Hoobies  []string
 }
-
-//* La función new(T) se utiliza para crear una nueva instancia de un tipo T, devolviendo un puntero al tipo T.
-//* Esto es útil cuando quieres inicializar una variable y trabajar directamente con su dirección en memoria.
 
 func main() {
 
@@ -37,11 +39,11 @@ func main() {
 	// Asignar valores a los campos del struct.
 	person.Name = "Mayer"
 	person.LastName = "Chaves"
-	person.Age = 23
+	person.Age = 24
 	person.Hoobies = []string{"Programar", "Leer"}
 
 	// Imprimir el contenido del struct utilizando el operador de desreferenciación.
-	fmt.Println("Valores actualizados de person:", *person) // Output: {Mayer Chaves 23 [Programar Leer]}
+	fmt.Println("Valores actualizados de person:", *person) // Output: {Mayer Chaves 24 [Programar Leer]}
 
 	//* Comparación de punteros creados con new.
 	otraPersona := new(Person)
