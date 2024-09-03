@@ -35,6 +35,7 @@ func waitGroup() {
 	// Definimos una constante para indicar el número de gorutinas que vamos a lanzar.
 	const numGoroutines = 5
 	// Incrementa el contador del WaitGroup en 5, indicando que vamos a esperar a que 5 gorutinas terminen.
+	// NOTA: Llama al método `Add()` antes de que se llame al método `Done()`, no utilizarlo dentro de las gorutinas.
 	wg.Add(numGoroutines)
 
 	// Lanza 5 gorutinas que imprimen su índice antes de finalizar.
@@ -58,7 +59,7 @@ func waitGroup() {
 	fmt.Println("Todas las goroutines se han completado!")
 }
 
-//* Consumiendo múltiplesAPIs con WaitGroup:
+//* Consumiendo múltiples APIs con WaitGroup:
 
 // URLs de las 3 APIs que queremos solicitar.
 var URLS = [3]string{
@@ -80,9 +81,9 @@ func fetchAllAPIs() {
 			// Decrementa el contador del WaitGroup cuando cada gorutina finaliza.
 			defer wg.Done()
 			// Llama a la función requestAPI para realizar la solicitud HTTP.
-			data, error := requestAPI(url)
-			if error != nil {
-				fmt.Println(error)
+			data, err := requestAPI(url)
+			if err != nil {
+				fmt.Println(err)
 				return
 			}
 			// Imprime los datos recibidos de la APIs como una cadena de texto.
