@@ -1,38 +1,39 @@
 # Scheduler del Runtime de Go - Planificador en tiempo de ejecución de Go
 
-En Go, las goroutines son unidades ligeras de ejecución gestionadas eficientemente por el `scheduler del runtime`. Aquí te explico cómo funciona:
+En Go, las goroutines son unidades ligeras de ejecución que permiten la concurrencia de manera eficiente. En este artículo, te explico cómo el scheduler del runtime de Go gestiona estas goroutines.
 
 ## Gestión de Goroutines
 
-El scheduler de Go maneja un montón de goroutines _(pequeños hilos ligeros)_ que se ejecutan en diferentes momentos. En lugar de asignar cada goroutine a un hilo físico, el scheduler organiza muchas goroutines para que usen unos pocos hilos del sistema operativo de manera eficiente.
+El scheduler de Go maneja miles de goroutines que se ejecutan de manera concurrente. En lugar de asignar cada goroutine a un hilo físico del sistema operativo, el scheduler organiza muchas goroutines para que utilicen unos pocos hilos de manera eficiente
 
-El scheduler utiliza un algoritmo basado en el `modelo M`.
+El scheduler utiliza el `Modelo GMP`.
 
-### Modelo M
+### Modelo GMP: Goroutine, Machine, Processor
 
-Es una forma de organizar y gestionar cómo las goroutines (pequeños hilos ligeros) se ejecutan en los hilos del sistema operativo.
+Go utiliza un modelo conocido como GMP para gestionar la ejecución de las goroutines:
 
-- M representa el número de goroutines que tienes.
-- N representa el número de hilos del sistema operativo que tu computadora puede manejar a la vez.
+- G (Goroutine): Es una tarea ligera que ejecuta código en Go.
+- M (Machine): Representa un hilo del sistema operativo.
+- P (Processor): Es una abstracción utilizada por el scheduler para manejar la ejecución de las goroutines. Cada P puede ejecutar una goroutine a la vez.
 
-En lugar de que cada goroutine tenga su propio hilo (lo que sería ineficiente y consumiría muchos recursos), el scheduler de Go toma muchas goroutines **(M)** y las distribuye en un número más pequeño de hilos del sistema operativo **(N)**. Esto permite que se aprovechen mejor los recursos de tu computadora sin sobrecargarla.
+El número de M (hilos del sistema operativo) puede ser menor que el número de G (goroutines), lo que permite que muchas goroutines se ejecuten de manera eficiente utilizando pocos hilos.
 
 **Ejemplo de la vida real:**
 
-Imagina que tienes 100 tareas **(M = 100)** pero solo 10 trabajadores **(N = 10)**. En lugar de asignar un trabajador a cada tarea, haces que esos 10 trabajadores se turnen para realizar las 100 tareas. Así no tienes que contratar 100 trabajadores para hacer el mismo trabajo.
+Imagina que tienes 100 tareas **(G = 100)** pero solo 10 trabajadores **(M = 10)**. En lugar de asignar un trabajador a cada tarea, esos 10 trabajadores se turnan para realizar las 100 tareas. El (P) actúa como un supervisor que organiza y distribuye las tareas a los trabajadores.
 
 ## Colas de Goroutines
 
-Cuando se crea una goroutine, se coloca en una especie de lista de espera llamada cola. El scheduler elige goroutines de esta lista para ejecutarlas en los hilos disponibles. Hay diferentes colas para goroutines que están listas para ejecutarse y para aquellas que están esperando por algo.
+Las goroutines se colocan en colas de espera antes de ejecutarse. Existen colas locales asociadas a cada (P) y una cola global. Las goroutines en las colas locales son las primeras en ser ejecutadas, y si un P no tiene más goroutines en su cola, puede tomar una de la cola global o *"robar"* una goroutine de otra cola local.
 
 ## Asignación a Hilos
 
-Las goroutines se asignan a los hilos del sistema operativo disponibles mediante un conjunto de hilos gestionado por el runtime, conocido como "P". Estos hilos están asociados con los hilos del sistema operativo y permiten la ejecución concurrente de múltiples goroutines sin necesidad de asignar un hilo exclusivo para cada una.
+Cada P tiene su propia cola de goroutines y se asocia con un M (hilo del sistema operativo) cuando ejecuta una goroutine. Si una goroutine realiza una operación que la bloquea, el M puede ser reasignado a otro P para continuar ejecutando otras goroutines, manteniendo la eficiencia.
 
 ## Operaciones Bloqueantes
 
-Si una goroutine realiza una operación que la bloquea (como una espera en red o en un recurso), el scheduler puede pausar esa goroutine y moverla a una cola de espera. El scheduler entonces pone en espera esta goroutine y permite que otras goroutines continúen ejecutándose en el mismo hilo, evitando que el sistema se quede parado.
+Cuando una goroutine se bloquea (por ejemplo, esperando una respuesta de la red), el scheduler mueve esa goroutine a una cola de espera y reasigna el M que estaba ejecutándola a otra goroutine que esté lista para continuar.
 
 ## Gestión de Colas
 
-Si hay muchas goroutines esperando en la cola, el scheduler organiza las goroutines en varias colas para distribuir el trabajo entre los hilos. Esto ayuda a que el trabajo se haga de manera más equilibrada y rápida, evitando que algunas goroutines se queden esperando demasiado tiempo.
+El scheduler gestiona las colas de goroutines para asegurar que el trabajo se distribuye de manera equitativa entre los hilos disponibles, evitando que algunas goroutines queden esperando demasiado tiempo.
