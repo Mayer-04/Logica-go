@@ -19,13 +19,14 @@ El paquete "time" proporciona funcionalidades para manejar fechas, horas, duraci
 
 func main() {
 
-	// Obtener la fecha y hora actual.
+	// Obtener la fecha y hora actual en el que se ejecuta el programa.
 	now := time.Now()
-	fmt.Println("Fecha y hora actual:", now) // 2024-08-23 15:03:20.3843366 -0500 -05 m=+0.000000001
+	fmt.Println("Fecha y hora actual:", now) // 2024-09-04 17:14:52.3757128 -0500 -05 m=+0.000626201
 
 	// Sumar 2 horas a la fecha y hora actual.
+	// Si la hora actual es de 5 pm y la suma es de 2 horas, la hora resultante es de 7 pm.
 	future := now.Add(2 * time.Hour)
-	fmt.Println("Fecha y hora después de 2 horas:", future)
+	fmt.Println("Fecha y hora después de 2 horas:", future) // 2024-09-04 19:14:52.3757128 -0500 -05 m=+7200.000626201
 
 	// Calcular la diferencia de tiempo entre dos instancias.
 	difference := future.Sub(now)
@@ -64,7 +65,7 @@ func main() {
 	specificDate := time.Date(2024, time.January, 1, 10, 0, 0, 0, time.UTC)
 	fmt.Println("Fecha específica:", specificDate) // Fecha específica: 2024-01-01 10:00:00 +0000 UTC
 
-	// Comparar dos fechas (after y before).
+	// Comparar dos fechas after (después) o before (antes).
 	if future.After(specificDate) {
 		fmt.Println("El tiempo futuro es después de la fecha específica.") // Se imprime este Println
 	} else if future.Before(specificDate) {
