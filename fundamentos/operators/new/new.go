@@ -6,6 +6,7 @@ import "fmt"
 * Operador new
 - La función new(T) se utiliza para crear una nueva instancia de un tipo T, devolviendo un puntero al tipo T.
 - Esto es útil cuando quieres inicializar una variable y trabajar directamente con su dirección en memoria.
+- Cuando se busca maximizar el rendimiento se recomiendautilizar new(T) en vez de &T{}.
 */
 
 type Person struct {
@@ -42,17 +43,15 @@ func main() {
 	person.Age = 24
 	person.Hoobies = []string{"Programar", "Leer"}
 
-	// Imprimir el contenido del struct utilizando el operador de desreferenciación.
+	// Imprimir el contenido del struct utilizando el operador de desreferenciación (*).
 	fmt.Println("Valores actualizados de person:", *person) // Output: {Mayer Chaves 24 [Programar Leer]}
 
-	//* Comparación de punteros creados con new.
+	// Comparación de punteros creados con new.
 	otraPersona := new(Person)
-
 	// Verificar si dos punteros creados con new apuntan a diferentes ubicaciones de memoria.
-	// Output: ¿Apuntan a la misma dirección de memoria? false
-	fmt.Println("¿Apuntan a la misma dirección de memoria?", person == otraPersona)
+	fmt.Println("¿Apuntan a la misma dirección de memoria?", person == otraPersona) // Output: false
 
-	//* Uso de new con tipos básicos como `float64`.
+	// Uso de new con tipos básicos como `float64`.
 	var pi = new(float64)
 	*pi = 3.14159
 	// Output: Valor de pi: 3.14159, Dirección de memoria: 0xc00000c0a8
