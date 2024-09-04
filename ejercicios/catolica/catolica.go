@@ -8,50 +8,48 @@ import (
 
 func main() {
 	number := 45
-
 	result := multiplesOperations(number)
-
-	fmt.Println(result)
+	fmt.Printf("%#v", result)
 }
 
 func multiplesOperations(number int) map[string]any {
 
-	convertString := strconv.Itoa(number)
+	result := make(map[string]any)
 
-	fmt.Println(convertString)
+	// Convierte el número en un string
+	str := strconv.Itoa(number)
 
-	// TODO: Convertimos el byte a string
-	firstNumber := string(convertString[0])
-	secondNumber := string(convertString[1])
-
-	fmt.Println(firstNumber, secondNumber)
-
-	var newStr string
-	for i := len(convertString) - 1; i >= 0; i-- {
-		newStr += string(convertString[i])
+	if len(str) != 2 {
+		fmt.Println("El número debe tener exactamente dos dígitos.")
+		return nil
 	}
 
-	fmt.Println(newStr)
+	// Convierte el string en reverso
+	var reversedStr string
+	for i := len(str) - 1; i >= 0; i-- {
+		reversedStr += string(str[i])
+	}
+	result["reverse"] = reversedStr
 
-	// TODO: Convertimos el string a int
-	a, _ := strconv.Atoi(firstNumber)
-	b, _ := strconv.Atoi(secondNumber)
-
-	sum := a + b
-	substraction := a - b
-	multiplication := a * b
-	division := float64(a) / float64(b)
-	pow := int(math.Pow(float64(a), float64(b)))
-	module := a % b
-
-	return map[string]any{
-		"reverse":        newStr,
-		"sum":            sum,
-		"substraction":   substraction,
-		"multiplication": multiplication,
-		"division":       division,
-		"pow":            pow,
-		"module":         module,
+	// Convertimos los caracteres en enteros
+	a, err := strconv.Atoi(string(str[0]))
+	if err != nil {
+		return nil
+	}
+	b, err := strconv.Atoi(string(str[1]))
+	if err != nil {
+		return nil
 	}
 
+	// Realizamos las operaciones
+	// Asignamos los resultados al map
+	result["sum"] = a + b
+	result["subtraction"] = a - b
+	result["multiplication"] = a * b
+	// Pendiente validación por si alguno de los dígitos es 0
+	result["division"] = float64(a) / float64(b)
+	result["pow"] = int(math.Pow(float64(a), float64(b)))
+	result["module"] = a % b
+
+	return result
 }
