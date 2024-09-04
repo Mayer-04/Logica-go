@@ -46,6 +46,7 @@ func main() {
 
 	// Declaración literal de un slice vacío.
 	// Los slices vacíos tienen una longitud de 0 y su capacidad es 0.
+	// Debe evitarse si inicializamos un slice sin elementos.
 	sliceEmpty := []int{}
 	fmt.Println("slice literal vacío:", sliceEmpty)
 
