@@ -43,6 +43,12 @@ func main() {
 	// El contexto `ctxCancel` hereda el valor de `ctx` y puede ser cancelado para liberar recursos.
 	ctxCancel, cancel := context.WithCancel(ctx)
 
+	// `context.WithoutCancel(ctxCancel)` se añadio en la versión 1.21 de Go.
+	// Permite crear una copia de un contexto padre que no se cancela cuando el contexto padre es cancelado.
+	// No tiene un canal `Done` y no tiene una fecha límite y no propaga errores si el contexto padre es cancelado.
+	// IMPORTANTE: Este contexto no se verá afectado si `ctxCancel` es cancelado.
+	noCancelCtx := context.WithoutCancel(ctxCancel)
+
 	// `cancel()` se llama cuando la función `main` termine, para liberar los recursos asociados con `ctxCancel`.
 	// Es una buena práctica llamar a `cancel` para evitar fugas de recursos.
 	defer cancel()
@@ -60,11 +66,15 @@ func main() {
 		// la operación se completará antes del tiempo de espera.
 		fmt.Println("Operación completada.")
 
-		// Done nos devuelve un canal de cualquier tipo.
+		// Done nos devuelve un canal (chan struct{}) al que no es necesario pasar ningún dato a través del canal.
 		// Se utiliza  para notificar cuando el contexto se cancela o se agota el tiempo.
 	case <-ctxTimeout.Done():
 		// Se ejecuta si el contexto se cancela o se agota el tiempo.
 		fmt.Println("Operación cancelada o tiempo agotado:", ctxTimeout.Err())
+
+	case <-noCancelCtx.Done():
+		// Esto nunca se ejecutará ya que `noCancelCtx` no tiene canal `Done`.
+		fmt.Println("El contexto sin cancelación ha sido cancelado")
 	}
 
 	// * ctxDeadline es un contexto derivado de `ctx`.
@@ -80,11 +90,11 @@ func main() {
 	ctxValue := context.WithValue(ctxDeadline, requestIDKey, "12345")
 
 	// Simular operaciones concurrentes que usan los contextos anteriores.
-	go processRequest(ctxTimeout) // Output: Operación completada en el request.
 	go processRequest(ctxValue)   // Output: Operación completada con RequestID: 12345
+	go processRequest(ctxTimeout) // Output: Operación completada en el request.
 
-	// Esperar 2 segundos para permitir que las goroutines terminen.
-	time.Sleep(2 * time.Second)
+	// Esperar 1 segundos para permitir que las goroutines terminen.
+	time.Sleep(1 * time.Second)
 }
 
 // processRequest Simula una función que procesa una solicitud respetando el contexto proporcionado.
