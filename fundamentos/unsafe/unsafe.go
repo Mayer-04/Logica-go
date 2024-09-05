@@ -22,11 +22,16 @@ Se utiliza para hacer conversiones entre diferentes tipos de punteros.
 - Representa un puntero genérico que puede ser convertido a otros tipos de punteros.
 - Es un tipo especial de puntero que puede ser usado para realizar conversiones entre diferentes tipos de punteros,
 permitiendo manipular la memoria directamente.
+- Cuando lo usas, le estás diciendo al compilador Go: “sé lo que estoy haciendo, así que confía en mí”.
+* Ejemplo:
+Puedes cambiar un puntero *int a un unsafe.Pointer y luego cambiar ese unsafe.Pointer a un puntero *float64.
+
 
 * `uintptr`:
 - Es un entero sin signo lo suficientemente grande para almacenar un puntero.
 - Aunque puede contener una dirección de memoria, `uintptr` no es un puntero real,
 por lo que no se garantiza que el valor almacenado en él apunte a una dirección válida durante mucho tiempo.
+- No se recomienda convertir un `uintptr` a un `unsafe.Pointer`.
 
 
 * Aritmética de punteros:
@@ -40,7 +45,7 @@ con `unsafe` es posible emularla utilizando conversiones a `uintptr`.
 func main() {
 
 	// `unsafe.Sizeof()`
-	// Devuelve el tamaño en bytes de una variable.
+	// Devuelve el tamaño en bytes de una variable. Es útil para ver cuánto espacio ocupa un tipo.
 	// No considera el contenido dinámico de slices o strings, sino solo su estructura interna.
 	text := "Hello, World!"
 	number := 10
@@ -102,6 +107,13 @@ func main() {
 	// Devuelve un puntero al primer elemento de los datos subyacentes de un slice.
 	sliData := unsafe.SliceData(sli)
 	fmt.Printf("Puntero al primer elemento de los datos subyacentes de un slice: %v\n", sliData)
+
+	// Convertir un puntero *int64 a *float64.
+	var a int64 = 10
+	aPtr := unsafe.Pointer(&a)
+
+	b := (*float64)(aPtr)
+	fmt.Printf("Nuevo puntero float64: %v", b)
 }
 
 // convertStringToBytes Convierte una cadena en un slice de bytes.
