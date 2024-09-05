@@ -3,31 +3,37 @@ package main
 import "fmt"
 
 /*
-* Eliminar elementos de un slice:
-Escribe una función que tome un slice de enteros y elimine todos los números impares del slice.
-Asegúrate de que el slice resultante mantenga su longitud y capacidad original.
+* Concatenar slices:
+Crea una función que tome dos slices de enteros y los concatene en uno solo.
+Asegúrate de que el slice resultante tenga una longitud igual a la suma de las longitudes de los dos slices originales,
+y que su capacidad sea igual a la capacidad del primer slice más la capacidad del segundo slice.
 */
 
 func main() {
+	slice1 := []int{1, 2, 3, 4, 5}
+	slice2 := []int{6, 7, 8, 9, 10}
 
-	enteros := []int{1, 2, 3, 4, 5, 6, 7, 8, 9}
+	result := concatenarSlices(slice1, slice2)
 
-	fmt.Printf("enteros: %d, capacidad: %d\n", len(enteros), cap(enteros)) // enteros: 9, capacidad: 9
-
-	result := eliminarElementos(enteros)
-
-	fmt.Printf("pares: %d, capacidad: %d\n", len(result), cap(result)) // pares: 4, capacidad: 9
-	fmt.Println("Resultado:", result)                                  // Resultado: [2 4 6 8]
+	fmt.Println("Longitud:", len(result))  // Longitud: 10
+	fmt.Println("Capacidad:", cap(result)) // Capacidad: 10
+	fmt.Println(result)                    // [1 2 3 4 5 6 7 8 9 10]
 }
 
-func eliminarElementos(enteros []int) []int {
-	var pares = make([]int, 0, len(enteros))
+func concatenarSlices(slice1, slice2 []int) []int {
 
-	for _, value := range enteros {
-		if value%2 == 0 {
-			pares = append(pares, value)
-		}
-	}
+	sumaCapacidades := cap(slice1) + cap(slice2)
 
-	return pares
+	// Inicializar result con la longitud adecuada.
+	result := make([]int, len(slice1), sumaCapacidades)
+
+	// for _, value := range slice1 {
+	// 	result = append(result, value)
+	// }
+
+	copy(result, slice1)
+
+	result = append(result, slice2...)
+
+	return result
 }
