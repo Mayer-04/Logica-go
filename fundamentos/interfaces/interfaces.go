@@ -5,25 +5,41 @@ import "fmt"
 /*
 * Interfaces en Go:
 Las interfaces en Go son una forma de definir un conjunto de métodos que un tipo debe implementar.
+Su objetivo principal es crear `abstracciones` en el código, solo debes crear interfaces cuando realmente las necesitas.
 
-IMPORTANTE: Go utiliza un sistema de interfaces implícitas,
-lo que significa que no es necesario declarar que un tipo "implementa" una interfaz; simplemente,
+IMPORTANTE: Go utiliza un sistema de interfaces implícitas, lo que significa que no es necesario declarar
+que un tipo "implementa" una interfaz; simplemente,
 si un tipo posee `todos` los métodos definidos por una interfaz, entonces ese tipo satisface esa interfaz.
 
 - Las interfaces pueden ser implementadas por cualquier tipo.
 - Un tipo puede implementar múltiples interfaces.
 - En Go, es común que las interfaces tengan un solo método.
 Esto se conoce como interfaces mínimas, lo que permite una mayor flexibilidad y reusabilidad.
-- Es una buena práctica nombrar las interfaces con un sufijo `-er`,
-como `Printer` en lugar de `Print`, siguiendo una convención del lenguaje.
+- Es una buena práctica nombrar las interfaces con un sufijo `-er`, como `Printer` en lugar de `Print`.
 - Las interfaces pueden ser compuestas, es decir, una interfaz puede incluir otras interfaces.
 - IMPORTANTE: Puedes implementar interfaces definidas en otros paquetes de Go, no solo las que tú defines.
 
-* Ejemplos adicionales:
+* Características adicionales:
 - Una interfaz nula no tiene un valor ni un tipo concreto.
 Una interfaz nula se crea simplemente al declarar una interfaz sin asignarle un valor.
 - Una interfaz vacía tiene cero métodos y puede ser utilizada para manejar datos de cualquier tipo.
 Una interfaz vacía no es considerada una expresión.
+
+* ¿Cuándo usar interfaces?
+- Comportamiento común: Usar interfaces cuando varios tipos implementan un comportamiento común (Polimorfismo).
+*Ejemplo:
+Imagina que tienes varios tipos (estructuras) en tu programa que comparten un comportamiento común.
+En lugar de duplicar código, puedes definir una interface que capture ese comportamiento.
+
+- Desacoplamiento: El desacoplamiento es cuando queremos que nuestro código sea más flexible y no esté atado
+a implementaciones específicas, es decir, que cada componente sea independiente y pueda cambiarse sin afectar a otros componentes.
+* Ejemplo:
+Si estas creando una aplicación que necesita guardar datos e inicialmente decides guardar los datos
+en un archivo y deseas cambiar la implementación para que los datos se guarden en una base de datos,
+puedes definir un interface que te permita hacer estos cambios de manera sencilla.
+
+- Restringir el comportamiento: Cuando queremos asegurarnos de que un tipo específico cumple
+con ciertos requisitos o restricciones.
 */
 
 // Printer es una interfaz mínima que define un solo método Print.
