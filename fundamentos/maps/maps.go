@@ -8,8 +8,10 @@ Los Maps en Go son estructuras de datos no ordenadas que almacenan pares clave-v
 
 - Una clave puede ser de cualquier tipo comparable (int, uint, string, struct, etc).
 - Los valores pueden ser de cualquier tipo.
-- Los maps proporcionan acceso rápido a los datos y son muy útiles para almacenar conjuntos de datos
+- Los mapas proporcionan acceso rápido a los datos y son muy útiles para almacenar conjuntos de datos
 donde se necesita buscar elementos por clave.
+- En un mapa no pueden haber dos claves iguales. Cada clave en un mapa debe ser única.
+- Si intentas asignar un valor a una clave que ya existe en el mapa, el valor asociado con esa clave se actualizará.
 
 IMPORTANTE:
 - Para evitar problemas al agregar elementos a un map, asegúrese de crearlo usando la función `make()`
@@ -72,4 +74,19 @@ func main() {
 	for nombre, edad := range edades2 {
 		fmt.Printf("Nombre: %q, Edad: %d\n", nombre, edad)
 	}
+
+	// Ejemplo de un mapa donde no pueden haber dos claves iguales.
+	m := make(map[string]int)
+	// Agregar un valor.
+	m["a"] = 1
+	fmt.Println(m) // Output: map[a:1]
+
+	// Agregar otro valor con la misma clave.
+	// Se actualiza el valor de la clave "a" a 2. El valor 1 se reemplaza por 2.
+	m["a"] = 2
+	fmt.Println(m) // Output: map[a:2]
+
+	// Agregar una clave diferente.
+	m["b"] = 3
+	fmt.Println(m) // Output: map[a:2 b:3]
 }
