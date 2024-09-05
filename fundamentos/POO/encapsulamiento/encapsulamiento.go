@@ -30,10 +30,19 @@ func (p Person) GreetPerson() {
 	fmt.Println("Hello, my name is", p.Name)
 }
 
-// getAge es un método privado que retorna la edad de la persona.
+// Creando un método `getter`, en Go no se recomienda poner Get antes del nombre del método.
+// `yourAge` es un método privado que retorna la edad de la persona.
 // Solo puede ser llamado dentro del paquete donde se definió.
-func (p Person) getAge() int {
+func (p Person) yourAge() int {
 	return p.Age
+}
+
+// Creando un método `setter`, se puede utilizar `set` antes del nombre del método.
+// `setAge` es un método privado que establece la edad de la persona.
+// Utiliza un receptor de tipo `puntero` para modificar el valor original del campo.
+// Solo puede ser llamado dentro del paquete donde se definió.
+func (p *Person) setAge(age int) {
+	p.Age = age
 }
 
 func main() {
@@ -45,13 +54,21 @@ func main() {
 	// Imprimimos los valores de la instancia.
 	// Los campos públicos se mostrarán, pero `hobbies` no porque es privado.
 	// Este comportamiento es distinto si imprimimos `andres` con `fmt.Printf`.
-	fmt.Println("andres:", andres) // Output: andres: {Andres 24 true [programar leer]}
+	fmt.Printf("andres: %+v\n", andres) // Output: andres: {Name:Andres Age:24 Live:true hobbies:[programar leer]}
 
 	// Llamamos al método público `GreetPerson`.
 	andres.GreetPerson() // Output: Hello, my name is Andres
 
-	// Intentamos llamar al método privado `getAge`.
+	// Llamamos al método privado `yourAge`.
 	// Aunque es privado, como estamos dentro del mismo paquete, esto funcionará.
-	age := andres.getAge()
+	age := andres.yourAge()
 	fmt.Printf("Andres tiene %d años.\n", age) // Output: Andres tiene 24 años.
+
+	// Llamamos al método privado `setAge`.
+	andres.setAge(25)
+	fmt.Printf("setAge: %+v\n", andres) // Output: setAge: {Name:Andres Age:25 Live:true hobbies:[programar leer]}
+
+	// IMPORTANTE: El campo `Age` del objeto `andres` se ha modificado por completo.
+	// Esto es debido a que usamos un receptor de tipo `puntero` para modificar el valor original del campo.
+	fmt.Printf("andres: %+v\n", andres) // Output: andres: {Name:Andres Age:25 Live:true hobbies:[programar leer]}
 }
