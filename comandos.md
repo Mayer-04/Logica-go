@@ -4,6 +4,8 @@
 
 Los paquetes son una forma de organizar el código en Go. Cada `archivo` de Go pertenece a un paquete, y los paquetes permiten dividir el código en módulos reutilizables. El paquete principal en Go es `main`, que es donde comienza la ejecución de un programa. Puedes importar paquetes dentro de otros para usar su funcionalidad.
 
+Cuando se usa el paquete `main`, el programa genera un archivo ejecutable independiente. Pero cuando un programa forma parte de un paquete que no es main, **Go no genera un archivo binario**.
+
 Cuando utilizas funciones de otros paquetes, necesitas importarlos. Por ejemplo, el `paquete "fmt"` proporciona funciones para imprimir en la consola, y el `paquete "strings"` tiene funciones para trabajar con cadenas de texto.
 
 ```go
@@ -100,4 +102,3 @@ go build -mod=vendor
 ```
 
 Esto le indica a Go que utilice las dependencias en la carpeta `vendor` en lugar de volver a descargarlas.
-
