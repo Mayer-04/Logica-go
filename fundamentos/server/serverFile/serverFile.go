@@ -66,9 +66,8 @@ func getPublicPath() string {
 	// Obtiene el directorio de trabajo actual.
 	dir, err := getCurrentDirectory()
 	if err != nil {
-		// Registra el error si no se puede obtener el directorio de trabajo actual.
-		slog.Any("getCurrentDirectory():", err)
-
+		// Imprime el error si no se puede obtener el directorio de trabajo actual.
+		fmt.Println(err)
 		// Termina el programa con un estado de error genérico.
 		// El código 1 indica una falla por una razón que no está claramente definida.
 		os.Exit(1)

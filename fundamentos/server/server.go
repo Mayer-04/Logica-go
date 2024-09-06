@@ -82,14 +82,13 @@ func main() {
 	// El primer argumento es la dirección o puerto donde escuchará el servidor.
 	// El segundo argumento es el manejador de solicitudes (en este caso, `mux`).
 	http.ListenAndServe(":8080", mux)
-
 }
 
 // Controlador para manejar la ruta raíz.
 // Escribe un mensaje de "Hola Mundo" como respuesta.
 func handleRoot(w http.ResponseWriter, r *http.Request) {
 
-	// Nos permite escribir cualquier contenido en la respuesta.
+	// Nos permite enviar cualquier contenido en la respuesta.
 	fmt.Fprintf(w, "Hola Mundo!")
 	// w.Write([]byte("Hello, World!"))
 }
@@ -181,7 +180,6 @@ func deleteUser(w http.ResponseWriter, r *http.Request) {
 
 	// Convertimos el ID de usuario de string a entero.
 	id, err := strconv.Atoi(userId)
-
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
