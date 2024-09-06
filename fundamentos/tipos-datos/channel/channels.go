@@ -9,15 +9,15 @@ import (
 * Channels: Canales en Go
 Los canales en Go permiten la comunicación y sincronización entre goroutines, facilitando el envío y recepción de datos.
 
-- Se declaran utilizando la función `make()` y son de tipo `chan`.
+- Los canales deben crearse asignandoles memoria utilizando la función `make()`. Su tipo de dato es `chan`.
 - El operador `<-` se usa para enviar datos a un canal (canal <- dato) y para recibir datos de un canal (dato <- canal).
 - Los canales pueden bloquearse si no hay una goroutine disponible
 para recibir los datos enviados o para enviar los datos requeridos.
 - La función `close()` se utiliza para indicar que no se enviarán más datos a través de un canal.
 
-* Existen canales con y sin buffer:
-- Sin buffer: Los envíos y recepciones se bloquean hasta que la otra parte esté lista.
-- Con buffer: Se pueden almacenar varios datos en el canal antes de que se bloquee.
+* Existen canales con y sin búfer:
+- Sin búfer: Los envíos y recepciones se bloquean hasta que la otra parte esté lista.
+- Con búfer: Se pueden almacenar varios datos en el canal antes de que se bloquee.
 
 * IMPORTANTE:
 - Evitar el `deadlock`, que ocurre cuando todas las goroutines están bloqueadas, esperando unas de otras.
@@ -49,17 +49,18 @@ func main() {
 	// Este canal solo puede enviar datos.
 	send(num)
 
-	//* Creando un canal con buffer.
+	//* Creando un canal con búfer.
 	// Este canal puede almacenar hasta 2 enteros antes de bloquearse.
 	ch2 := make(chan int, 2)
 
 	// Enviando datos al canal. No se bloquea porque tiene capacidad para almacenar dos valores.
-	// Las operaciones de envío al canal solo se bloquearán cuando el buffer esté lleno.
+	// Las operaciones de envío al canal solo se bloquearán cuando el búfer esté lleno.
 	ch2 <- 4
 	ch2 <- 2
+	// ch2 <- 6 // Se bloquearía si se descomenta, ya que el búfer está lleno.
 
 	// Recibiendo datos del canal.
-	// Las operaciones de recepción solo se bloquearán cuando el buffer esté vacío.
+	// Las operaciones de recepción solo se bloquearán cuando el búfer esté vacío.
 	fmt.Println(<-ch2) // Imprime el primer valor almacenado en el canal (4).
 	fmt.Println(<-ch2) // Imprime el segundo valor almacenado en el canal (2).
 
