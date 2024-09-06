@@ -29,6 +29,13 @@ func main() {
 	fullName := fmt.Sprintf("Mi nombre es %s %s", name, secondName)
 	fmt.Printf("interpolación: %s\n", fullName)
 
+	// Convertir un string a un slice de bytes si necesitas modificar el contenido.
+	cadena := "Hola"
+	bytes := []byte(cadena)                      // Convierte el string en un slice de bytes
+	bytes[0] = 'M'                               // Modifica el primer carácter
+	nuevoString := string(bytes)                 // Convierte de nuevo a string
+	fmt.Printf("nuevoString: %q\n", nuevoString) // "Mola"
+
 	//* Paquete "strings": Métodos útiles para manipular cadenas.
 
 	// Obtener la longitud de un string usando la función `len()`.
