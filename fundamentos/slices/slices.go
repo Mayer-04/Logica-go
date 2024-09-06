@@ -61,7 +61,7 @@ func main() {
 	fmt.Println("slice con índices explícitos:", chars) // Output: ["a", "z", "m"]
 
 	// Crear un slice a partir de un array.
-	// Se usa el operador de slicing (:) para crear un nuevo slice a partir de un array existente.
+	// Se usa el slicing (:) para crear un nuevo slice a partir de un array existente.
 	// Sintaxis: array[start:end]
 	array := [5]int{1, 2, 3, 4, 5}
 	slice3 := array[1:3]

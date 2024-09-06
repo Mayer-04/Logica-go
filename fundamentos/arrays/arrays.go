@@ -17,6 +17,7 @@ no un puntero al primer elemento de la matriz.
 */
 
 func main() {
+
 	// Array sin asignación de valores.
 	// Los elementos del array se inicializan con el valor cero del tipo de dato correspondiente.
 	// En este caso array5 tiene 2 elementos que corresponden al valor cero del tipo de dato `bool`.
@@ -88,5 +89,4 @@ func main() {
 	for i, v := range array {
 		fmt.Println("i:", i, "v:", v)
 	}
-
 }
