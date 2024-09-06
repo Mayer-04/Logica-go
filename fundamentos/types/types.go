@@ -7,8 +7,9 @@ import "fmt"
 Los tipos en Go son una forma de definir la estructura y el comportamiento de los datos.
 
 - Pueden ser tipos básicos, como int, string, etc., o tipos definidos por el usuario,
-como estructuras (struct), alias de tipos existentes, y funciones.
-- Alias: Un alias es otro nombre que se puede usar para referirse a un tipo existente.
+como estructuras (struct), interfaces, alias de tipos existentes y tipos personalizados.
+- Alias: Un alias es otro nombre que se puede usar para referirse a un tipo existente,
+pero no crea un tipo nuevo. Simplemente es una forma más legible de referirse a un tipo ya existente.
 */
 
 // Creando un tipo Person que es una estructura.
@@ -21,6 +22,7 @@ type Person struct {
 // Esto permite trabajar con múltiples instancias de Person como un solo tipo.
 type People []Person
 
+//* Alias de tipos.
 // Creando un nuevo tipo basado en un tipo existente en este caso `int`.
 // MyNumber es un `alias` para el tipo int, lo que nos permite agregar métodos específicos.
 type MyNumber int
