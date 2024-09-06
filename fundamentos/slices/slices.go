@@ -8,21 +8,20 @@ import (
 /*
 * Slices: Rebanadas o Cortes
 - Los slices son estructuras más flexibles que los arrays, con longitud dinámica.
-- La longitud y l capacidad son dinámicos, pueden cambiar en tiempo de ejecución.
-- Por lo general un slice se asigna en la pila (stack).
-- El array subyacente es más probable que termine en el montón (heap) porque puede crecer dinámicamente.
-
-* Longitud: Cuantos elementos tiene el slice.
-* Capacidad: Es el número de elementos desde el inicio del slice hasta el final del array subyacente.
-- Es la cantidad máxima de elementos que puede contener antes de que necesite crecer dinámicamente.
-- Esto se produce cuando se excede la capacidad del slice no la capacidad del array subyacente.
-- Cuando Go crea un nuevo array para adaptar un slice en crecimiento, generalmente duplica la capacidad.
+- A diferencia de los arrays, los slices pueden cambiar de tamaño durante la ejecución del programa.
+- La estructura de un slice (puntero, longitud, capacidad) generalmente se asigna en la pila si es seguro hacerlo,
+  pero el array subyacente puede ser asignado en el montón si es necesario.
+- La longitud de un slice es el número de elementos que contiene.
+* Capacidad de un slice:
+- Es el número de elementos desde el inicio del slice hasta el final del array subyacente.
+- Cuando se excede la capacidad del slice, Go crea un nuevo array, generalmente duplicando la capacidad,
+  pero este comportamiento puede variar dependiendo del tamaño.
 
 Un slice internamente es una estructura con tres campos:
 
 type slice struct {
-	array unsafe.Pointer // Puntero al array
-	len   int            // Cantidad de elementos
+	array unsafe.Pointer // Puntero al array subyacente
+	len   int            // Longitud del slice
 	cap   int            // Capacidad del array
 }
 */
@@ -34,8 +33,8 @@ func main() {
 	var slice []int
 	fmt.Println("slice sin valores:", slice)
 
-	// Crear un slice nulo y vacío explícitamente.
-	// Un slice nulo es igual a nil mientras que un slice vacío tiene una longitud de 0.
+	// Crear un slice nulo explícitamente.
+	// Un slice nulo es igual a nil y no contiene elementos.
 	sliceNull := []string(nil)
 	fmt.Println("slice nulo:", sliceNull)
 
@@ -50,18 +49,20 @@ func main() {
 	sliceEmpty := []int{}
 	fmt.Println("slice literal vacío:", sliceEmpty)
 
-	// Declaración de un slice con new.
-	// Se usa la función new para crear un nuevo slice.
+	// Declaración de un slice utilizando la función new.
+	// new([]int) devuelve un puntero a un slice vacío. Desreferenciándolo obtenemos un slice vacío pero no nil.
 	sliceNew := *new([]int)
 	fmt.Println("slice new:", sliceNew) // Output: []
 
-	// Declaración literal con índices explícitos.
+	// Declaración literal de un slice con índices explícitos.
+	// El slice resultante no mantiene el orden de declaración.
 	// Los índices pueden ser especificados explícitamente para definir elementos en posiciones específicas.
 	chars := []string{0: "a", 2: "m", 1: "z"}
 	fmt.Println("slice con índices explícitos:", chars) // Output: ["a", "z", "m"]
 
 	// Crear un slice a partir de un array.
 	// Se usa el operador de slicing (:) para crear un nuevo slice a partir de un array existente.
+	// Sintaxis: array[start:end]
 	array := [5]int{1, 2, 3, 4, 5}
 	slice3 := array[1:3]
 	fmt.Println("slice 3 (array[1:3]):", slice3) // Output: [2 3]
@@ -88,34 +89,84 @@ func main() {
 	fmt.Println("slice después de append:", slice5)
 
 	// Limpiar un slice con la función `clear()`.
-	// La función clear elimina todos los elementos del slice y lo deja con valores cero.
+	// `clear()` pone los elementos a su valor cero pero mantiene la longitud y capacidad del slice.
 	clear(slice4)
 	fmt.Println("slice después de clear:", slice4)
 
 	// Desempaquetar un slice (...).
 	// Los tres puntos permiten expandir un slice y pasarlo como argumentos individuales a una función.
-	a := []int{1, 2, 3}
+	a := []int{1, 2, 3, 4}
 	b := []int{4, 5, 6}
 	c := append(a, b...)
 	fmt.Println("slice después de desempaquetar:", c)
 
-	// Crear un slice con make.
-	// La función `make()` permite crear un slice con una longitud y capacidad inicial especificadas.
+	// Crear un slice la función `make()`.
+	// Permite crear un slice con una longitud y capacidad inicial especificadas.
 	// La capacidad es un argumento opcional.
-	// El slice creado se inicializa con valores cero.
-	make1 := make([]byte, 5)
-	fmt.Println("slice creado con make:", make1)
+	// El slice creado se inicializa con valores cero de su tipo correspondiente.
+	makeBytes := make([]byte, 5)
+	fmt.Println("slice creado con make:", makeBytes)
+
+	// Función `Clone`.
+	// Crea una copia superficial de un slice.
+	sliceToClone := []int{0, 42, -10, 8}
+	clonedSlice := slices.Clone(sliceToClone)
+	fmt.Println("clone de slice:", clonedSlice)
+
+	// Función `Contains`.
+	// Verifica si un slice contiene un elemento. Devuelve `true` o `false`.
+	sliceToSearch := []int{0, 1, 2, 3}
+	elementPresent := slices.Contains(sliceToSearch, 2)
+	fmt.Println("contains:", elementPresent) // Output: true
+
+	// Función `Delete`.
+	// Elimina un rango de elementos en un slice, especificando el índice de inicio y fin (exclusivo).
+	sliceToDelete := []string{"a", "b", "c", "d", "e"}
+	deletedSlice := slices.Delete(sliceToDelete, 1, 3)
+	fmt.Println("slice después de delete:", deletedSlice) // Output: [a e]
+
+	// Función `Equal`.
+	// Verifica si dos slices son iguales.
+	// Devuelve `true` si ambos slices tienen los mismos elementos en el mismo orden.
+	sliceEqual := []int{0, 42, 8}
+	fmt.Println(slices.Equal(sliceEqual, []int{0, 42, 8})) // Output: true
+	fmt.Println(slices.Equal(sliceEqual, []int{10}))       // Output: false
+
+	// Función `Index`.
+	// Busca un elemento en un slice y devuelve su índice. Devuelve `-1` si el elemento no se encuentra.
+	sliceToIndex := []int{0, 42, 8}
+	fmt.Println("índice de 42:", slices.Index(sliceToIndex, 42)) // Output: 1
+
+	// Función `Clip`.
+	// Se utiliza para eliminar la capacidad no utilizada de un slice.
+	// Liberar esta capacidad extra no utilizada para reducir el uso de memoria.
+	fmt.Println("capacidad del slice c:", cap(c)) // Output: 8
+	sliceClip := slices.Clip(c)
+	fmt.Println("capacidad del nuevo slice con clip:", cap(sliceClip)) // Output: 7
+
+	// Función `Grow`. Aumenta la capacidad de un slice sin modificar su longitud actual.
+	// Se puede especificar el número de elementos adicionales que se desea agregar.
+	sliceToGrow := []int{0, 42, 8}
+	grownSlice := slices.Grow(sliceToGrow, 2)
+	fmt.Println("slice después de grow:", grownSlice)
+	fmt.Println("longitud:", len(grownSlice))
+	fmt.Println("capacidad:", cap(grownSlice))
+
+	// Función `Sort`.
+	// Ordena los elementos en un slice en orden ascendente.
+	sliceToSort := []int{0, 42, 8, -10, 2}
+	slices.Sort(sliceToSort)
+	fmt.Println("slice ordenado:", sliceToSort) // Output: [-10 0 2 8 42]
 
 	// Función `Concat` (Introducida en Go 1.22).
-	// Concatena dos slices en un nuevo slice.
+	// Concatena dos o más slices en un nuevo slice.
 	s1 := []string{"Mayer", "Andres"}
 	s2 := []string{"Joe", "Rose"}
 	concat := slices.Concat(s1, s2)
 	fmt.Println("slice concatenado:", concat) // Output: [Mayer Andres Joe Rose]
 
 	// Función `Repeat` (Introducida en Go 1.23).
-	// Toma un slice y lo repite un número de veces para crear un nuevo slice más grande.
-	// El método devuelve una nueva porción que contiene la porción original repetida `count` veces.
+	// Repite un slice un número determinado de veces para crear un nuevo slice más grande.
 	numbers := []int{0, 1, 2, 3}
 	repeat := slices.Repeat(numbers, 2)
 	fmt.Println("slice repetido:", repeat) // Output: [0 1 2 3 0 1 2 3]
