@@ -4,15 +4,22 @@ import "fmt"
 
 /*
 * Bucle For: Para
-- El bucle `for` se utiliza para ejecutar un conjunto de instrucciones mientras una condición sea verdadera.
-- En Go solo existe un tipo de bucle "for", el cual puede ser utilizado de diferentes maneras.
-- Sintaxis: for inicialización; condición; actualización { bloque de código }
-- El bucle `for` se puede usar para iterar sobre colecciones como arrays, strings, slices, maps y channels.
+- El bucle `for` se utiliza para repetir un bloque de código mientras una condición sea verdadera.
+- En Go solo existe un tipo de bucle "for", pero puede usarse de diversas maneras.
+- Sintaxis básica: for inicialización; condición; actualización { bloque de código }
+- También se puede utilizar para iterar sobre colecciones como arrays, slices, strings, maps y canales.
+
+* Break: Romper
+- Termina el bucle completamente y sigue con el código después del bloque `for`.
+* Continue: Continuar
+- Saltar: Omitir lo que queda en esa 'vuelta' del bucle y pasar directamente a la siguiente.
+- Salta el resto de la iteración actual y pasa a la siguiente.
+- No sale del bucle, solo omite el código restante de la iteración actual.
 */
 
 func main() {
 
-	// Bucle "for" clásico.
+	//* Bucle "for" clásico.
 	// Sintaxis: inicialización; condición; actualización.
 	fmt.Println("Bucle clásico:")
 	for i := 0; i <= 5; i++ {
@@ -20,76 +27,75 @@ func main() {
 	}
 
 	//* Bucle tipo "while".
-	// Go no tiene un bucle "while" explícito, pero se puede emular con "for".
+	// Go no tiene un bucle "while", pero puede simularse con "for".
 	i := 0
 	for i <= 3 {
-		fmt.Println("Bucle tipo while", i)
+		fmt.Println("Bucle tipo while:", i)
 		i++
 	}
 
 	//* Bucle "for" con "range".
 	// Se utiliza para iterar sobre colecciones como arrays, strings, slices, maps y canales.
 	// Si solo necesitas el índice, puedes omitir el segundo valor.
-	// Si solo necesitas el valor, puedes usar el identificador blank _ para omitir el índice. (_,v)
+	// Si solo necesitas el valor, puedes usar el identificador blank `_` para omitir el índice (_,v).
 	numeros := [4]int{1, 2, 3, 4}
 	// La variable "i" representa el índice y la variable "v" representa el valor.
 	for i, v := range numeros {
 		fmt.Printf("Índice: %d, Valor: %d\n", i, v)
 	}
 
-	//* Bucle for con range de enteros.
-	// Desde la versión 1.22 de Go, se puede utilizar "range" con un número entero como argumento.
-	// Itera desde 0 hasta n-1.
+	//* Bucle "for" con range de enteros.
+	// En Go 1.22+, "range" se puede usar con enteros, iterando de 0 a n-1.
 	for i := range 3 {
 		fmt.Println(i) // Output: 0, 1, 2
 	}
 
 	//* Bucle for con range de enteros sin variable de índice.
-	// Se ignora la variable de índice "i".
-	// Esta sintaxis es útil cuando simplemente necesitas realizar una acción repetitiva un número determinado de veces.
+	// Ignoramos la variable índice `i`.
+	// Es útil cuando necesitas realizar una acción repetitiva un número determinado de veces.
 	for range 5 {
 		fmt.Println("Go") // Output: Go Go Go Go Go
 	}
 
 	//* Bucle for con "break".
-	// Se detiene el bucle cuando i es igual a 50.
-	for i := 1; i <= 100; i++ {
-		// Cuando i sea igual a 50, rompe el bucle
-		if i == 50 {
+	for i := 1; i <= 50; i++ {
+		// Cuando i sea igual a 25 se ejecuta el `break`, rompe el bucle.
+		if i == 25 {
 			break
 		}
-		// Imprime los números del 1 al 49
-		fmt.Println(i)
+		// Si la condición del if no es verdadera, el código sigue y ejecuta `fmt.Println(i)`.
+		// fmt.Println(i) solo se ejecuta si el valor de `i` es menor a 25.
+		fmt.Println(i) // Imprime los números del 1 al 24.
 	}
 
 	//* Bucle for con "continue".
-	// Salta la iteración cuando i es igual a 4.
-	for i := 0; i <= 5; i++ {
-		// Cuando i sea igual a 4, imprime "Continuando..." y salta a la siguiente iteración
+	for i := 1; i <= 5; i++ {
+		// Si i es igual a 4, imprime "Continuando..." y pasa directamente a la siguiente iteración,
+		// sin ejecutar el código que imprime el número.
 		if i == 4 {
 			fmt.Println("Continuando...")
 			continue
 		}
-		// Imprime el mensaje para los valores de i que no son 4
+		// Para todos los valores de i que no sean 4, imprime "Soy el número" seguido del valor de i.
 		fmt.Printf("Soy el número %d\n", i)
 	}
 
 	//* Iterar sobre un string.
-	// Los caracteres son runas (runes), se imprime su valor Unicode.
-	// Se debe hacer un casting a string para imprimir cada caracter como una cadena.
+	// Se itera sobre runas (runes), que son valores Unicode.
+	// Debes convertir cada rune a string para imprimirlo como un carácter.
 	nombre := "Mayer"
 	for _, value := range nombre {
-		fmt.Println(value)
+		fmt.Println(string(value))
 	}
 
 	//* Bucle infinito.
-	// Un bucle sin condiciones de salida explícitas se convierte en un bucle infinito.
+	// Un bucle sin condición explícita se convierte en un bucle infinito.
 	count := 0
 	for {
 		fmt.Println("Bucle infinito, cuenta:", count)
-		// Cuando count sea igual a 3, rompe el bucle
+		// Cuando count sea igual a 3, se sale del bucle.
 		if count == 3 {
-			break // Salida del bucle infinito
+			break
 		}
 		count++
 	}
@@ -101,7 +107,7 @@ func main() {
 		{7, 8, 9},
 	}
 
-	//* Bucles anidados para trabajar con una matriz (slice de slices).
+	//* Bucles anidados para trabajar con matrices (slice de slices).
 	for i := range matrix {
 		for j := range matrix[i] {
 			fmt.Printf("Elemento en [%d][%d] es %d\n", i, j, matrix[i][j])
@@ -109,18 +115,17 @@ func main() {
 	}
 
 	//* Bucle con más de una variable.
-	// Inicialización: La variable i y j se inicializan en 0 y 10 respectivamente.
-	// Condición: Su condición es que i sea menor que j.
-	// Actualización: i aumenta en 1 y j disminuye en 1.
+	// Inicialización de múltiples variables: i comienza en 0 y j en 10.
+	// La condición es que i sea menor que j.
+	// En cada iteración, i aumenta en 1 y j disminuye en 1.
 	// i imprime los números del 0 al 4 y j los imprime del 10 al 6.
 	for i, j := 0, 10; i < j; i, j = i+1, j-1 {
 		fmt.Printf("i: %d, j: %d\n", i, j)
 	}
 
-	//* Simular un bucle "do while" en Go.
-	// Se asegura que el código se ejecute al menos una vez.
+	//* Simulación de un bucle "do while".
+	// El código se ejecuta al menos una vez antes de la verificación de la condición.
 	var numero int
-
 	for {
 		// Código que se ejecuta al menos una vez
 		fmt.Print("Introduce un número positivo: ")
