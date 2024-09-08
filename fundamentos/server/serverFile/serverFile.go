@@ -21,7 +21,6 @@ como obtener el directorio de trabajo actual.
 */
 
 func main() {
-
 	// Obtiene la ruta completa a la carpeta 'public', donde se encuentran los archivos estáticos.
 	publicPath := getPublicPath()
 	// Crea un servidor de archivos estáticos que servirá los archivos desde la carpeta 'public'.
@@ -46,7 +45,11 @@ func main() {
 	// Registra un mensaje en la consola utilizando slog cuando el servidor se inicia.
 	slog.Info("Servidor iniciado en el puerto " + addr)
 	// Iniciamos el servidor web en el puerto especificado.
-	server.ListenAndServe()
+	if err := server.ListenAndServe(); err != nil {
+		// Imprime el error si no se puede iniciar el servidor.
+		fmt.Println(err)
+		os.Exit(1)
+	}
 }
 
 // getCurrentDirectory obtiene el directorio de trabajo actual.

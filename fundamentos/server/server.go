@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 	"log/slog"
 	"net/http"
 	"strconv"
@@ -55,7 +56,6 @@ type User struct {
 var users = make(map[int]User)
 
 func main() {
-
 	// Crea un servidor HTTP.
 	// Nuevo multiplexor de solicitudes HTTP.
 	mux := http.NewServeMux()
@@ -81,20 +81,18 @@ func main() {
 	//* Iniciamos el servidor.
 	// El primer argumento es la dirección o puerto donde escuchará el servidor.
 	// El segundo argumento es el manejador de solicitudes (en este caso, `mux`).
-	http.ListenAndServe(":8080", mux)
+	log.Fatal(http.ListenAndServe(":8080", mux))
 }
 
 // Controlador para manejar la ruta raíz.
 // Escribe un mensaje de "Hola Mundo" como respuesta.
 func handleRoot(w http.ResponseWriter, r *http.Request) {
-
 	// Nos permite enviar cualquier contenido en la respuesta.
 	fmt.Fprintf(w, "Hola Mundo!")
 	// w.Write([]byte("Hello, World!"))
 }
 
 func createUser(w http.ResponseWriter, r *http.Request) {
-
 	// Creamos una instancia vacía de `User` para almacenar los datos del cuerpo de la solicitud.
 	// Go inicializa los campos de la estructura `User` a sus valores cero correspondientes.
 	var user User
@@ -121,8 +119,11 @@ func createUser(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Guardamos el usuario en la base de datos.
-	users[len(users)+1] = user
+	// El ID del usuario se crea como el siguiente entero mayor al último ID guardado.
+	userID := len(users) + 1
+
+	// Guardamos el usuario en la "base de datos".
+	users[userID] = user
 
 	// Indicamos que la solicitud fue exitosa con un estado 201.
 	w.WriteHeader(http.StatusCreated)
@@ -132,7 +133,6 @@ func createUser(w http.ResponseWriter, r *http.Request) {
 }
 
 func getUsers(w http.ResponseWriter, r *http.Request) {
-
 	// Recuperamos el valor del parámetro '{id}' de la ruta de la solicitud.
 	// Este método `PathValue` está disponible desde la versión 1.22 de Go.
 	userId := r.PathValue("id")
@@ -174,7 +174,6 @@ func getUsers(w http.ResponseWriter, r *http.Request) {
 }
 
 func deleteUser(w http.ResponseWriter, r *http.Request) {
-
 	// Recuperamos el valor del parámetro '{id}' de la ruta de la solicitud.
 	userId := r.PathValue("id")
 
@@ -197,5 +196,4 @@ func deleteUser(w http.ResponseWriter, r *http.Request) {
 	// Indicamos que la petición fue exitosa con un estado 204.
 	// El código 204 indica que la acción fue exitosa, pero no es necesario devolver ninguna información.
 	w.WriteHeader(http.StatusNoContent)
-	// fmt.Fprintf(w, "el usuario %s fue eliminado exitosamente", users[id].Name)
 }

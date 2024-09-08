@@ -8,11 +8,11 @@ import (
 )
 
 /*
-* Sincronización de Goroutines con WaitGroup en Go
+* Sincronización de Goroutines con WaitGroup
 El paquete "sync" proporciona primitivas para sincronizar goroutines, entre ellas el `WaitGroup`.
 
-El objetivo de usar un `WaitGroup` es asegurarse de que todas las goroutines terminen antes de que el programa principal
-continúe, pero no se controla el orden en que se ejecutan las goroutines.
+El objetivo de usar un `WaitGroup` es asegurarse de que todas las goroutines terminen
+antes de que el programa principal continúe, pero no se controla el orden en que se ejecutan las goroutines.
 
 - `sync.WaitGroup`: Estructura que permite esperar a que un grupo de goroutines termine su ejecución.
 - `Add(delta int)`: Incrementa el contador del WaitGroup por el valor de `delta`.
@@ -22,7 +22,6 @@ hasta que todas las goroutines hayan llamado a `Done()`.
 */
 
 func main() {
-
 	waitGroup()
 	fetchAllAPIs()
 }
@@ -61,8 +60,8 @@ func waitGroup() {
 
 //* Consumiendo múltiples APIs con WaitGroup:
 
-// URLs de las 3 APIs que queremos solicitar.
-var URLS = [3]string{
+// urls de las 3 APIs que queremos solicitar.
+var urls = [3]string{
 	"https://jsonplaceholder.typicode.com/posts/1",
 	"https://rickandmortyapi.com/api/character",
 	"https://jsonplaceholder.typicode.com/users",
@@ -72,16 +71,16 @@ func fetchAllAPIs() {
 	// Inicializa un WaitGroup para esperar hasta que todas las solicitudes a las APIs hayan finalizado.
 	var wg sync.WaitGroup
 
-	// Incrementa el contador del WaitGroup con la longitud de la lista de APIs.
-	wg.Add(len(URLS))
+	// Incrementa el contador del WaitGroup con la longitud del slice de APIs.
+	wg.Add(len(urls))
 
 	// Lanza una gorutina por cada API en el slice.
-	for _, url := range URLS {
+	for _, url := range urls {
 		go func(url string) {
 			// Decrementa el contador del WaitGroup cuando cada gorutina finaliza.
 			defer wg.Done()
 			// Llama a la función requestAPI para realizar la solicitud HTTP.
-			data, err := requestAPI(url)
+			data, err := RequestAPI(url)
 			if err != nil {
 				fmt.Println(err)
 				return
@@ -95,12 +94,21 @@ func fetchAllAPIs() {
 	wg.Wait()
 }
 
-func requestAPI(url string) ([]byte, error) {
-	// Realiza una solicitud HTTP a la URL proporcionada y devuelve el cuerpo de la respuesta como un slice de bytes.
-	// Si ocurre un error, devuelve un error detallado.
+// RequestAPI realiza una solicitud HTTP GET a una URL proporcionada y devuelve el cuerpo de la respuesta
+// como un slice de bytes o un error detallado.
+//
+// El cuerpo de la respuesta se devuelve como un slice de bytes.
+// Si se produce un error, se devuelve un error con una descripción detallada.
+func RequestAPI(url string) ([]byte, error) {
+	// Verifica que la URL no esta vacía.
+	if url == "" {
+		return nil, fmt.Errorf("la URL proporcionada no puede estar vacía")
+	}
+
+	// Realiza la solicitud HTTP GET a la URL proporcionada.
 	resp, err := http.Get(url)
 	if err != nil {
-		return nil, fmt.Errorf("error al realizar la solicitud: %w", err)
+		return nil, fmt.Errorf("fallo al realizar la solicitud a %q: %w", url, err)
 	}
 
 	// Asegura que el cuerpo de la respuesta HTTP se cierre al finalizar la función, evitando fugas de recursos.
@@ -108,13 +116,13 @@ func requestAPI(url string) ([]byte, error) {
 
 	// Verifica que el estado de la respuesta HTTP sea 200 OK.
 	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("el estado de la respuesta es: %v", resp.StatusCode)
+		return nil, fmt.Errorf("el código de estado de la respuesta es %d, se esperaba 200", resp.StatusCode)
 	}
 
 	// Lee el cuerpo de la respuesta HTTP y devuelve los datos como un slice de bytes.
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
-		return nil, fmt.Errorf("error al leer los datos de la API: %w", err)
+		return nil, fmt.Errorf("error al leer el cuerpo de la respuesta: %w", err)
 	}
 
 	// Devuelve los datos leídos como un slice de bytes y un error nil, indicando que la operación fue exitosa.
