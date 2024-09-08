@@ -11,7 +11,7 @@ Los canales en Go permiten la comunicación y sincronización entre goroutines, 
 
 - Los canales deben crearse asignandoles memoria utilizando la función `make()`. Su tipo de dato es `chan`.
 - El operador `<-` se usa para enviar datos a un canal (canal <- dato) y para recibir datos de un canal (dato <- canal).
-- Los canales pueden bloquearse si no hay una goroutine disponible
+- Los canales pueden bloquearse (esperar) si no hay una goroutine disponible
 para recibir los datos enviados o para enviar los datos requeridos.
 - La función `close()` se utiliza para indicar que no se enviarán más datos a través de un canal.
 
@@ -36,9 +36,12 @@ func main() {
 		ch <- "Hello, World!"       // Envía el mensaje "Hello, World!" al canal `ch`.
 	}()
 
-	//* Recibir datos del canal.
-	msg := <-ch // Espera a recibir un mensaje desde el canal y lo asigna a la variable `msg`.
-	fmt.Println(msg)
+	//* Operación de recepción desde un canal.
+	// `msg` es la variable donde se almacená el valor recibido desde el canal.
+	// `ok` es un valor booleano que indica si la operación de recepción fue exitosa.
+	msg, ok := <-ch
+	fmt.Println("mensaje:", msg)      // Output: Hello, World!
+	fmt.Println("canal abierto:", ok) // Output: true
 
 	// * Canales unidireccionales.
 	num := make(chan int)
@@ -75,9 +78,11 @@ func main() {
 		close(ch3) // Cerrando el canal después de enviar todos los valores.
 	}()
 
-	// Recibiendo datos del canal hasta que esté cerrado.
-	for val := range ch3 {
-		fmt.Println(val) // Imprime los valores 1, 2, 3.
+	// Iterando todos los valores pasados por el canal `ch3`.
+	// Recibimos los datos del canal hasta que esté cerrado.
+	for value := range ch3 {
+		// Leemos cada uno de los valores del canal y los imprimimos.
+		fmt.Println("valor:", value) // Output: 1, 2, 3
 	}
 }
 
