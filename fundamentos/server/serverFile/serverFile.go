@@ -31,22 +31,23 @@ func main() {
 	addr := ":5000"
 
 	// Configuramos el servidor HTTP con tiempos de espera personalizados para lectura y escritura.
+	// Recomendado para apliaciones de producción.
 	server := &http.Server{
-		Addr:    addr,
-		Handler: fs,
-		// El tiempo de lectura especifica cuánto tiempo el servidor esperará para leer la solicitud del cliente
-		// antes de cancelar la conexión.
-		ReadTimeout: 10 * time.Second,
-		// El tiempo de escritura especifica cuánto tiempo el servidor esperará para enviar la respuesta completa
-		// antes de cancelar la conexión.
-		WriteTimeout: 10 * time.Second,
+		Addr: addr,
+		// Si el cliente no envía datos en un plazo de tiempo definido, el servidor cierra la conexión.
+		// El cliente puede volver a hacer una solicitud después de que el servidor cierre una conexión.
+		ReadTimeout: 5 * time.Second,
+		// Si el cliente no pudo recibir la respuesta completa del servidor, el servidor cierra la conexión.
+		WriteTimeout: 5 * time.Second,
+		Handler:      fs,
 	}
 
 	// Registra un mensaje en la consola utilizando slog cuando el servidor se inicia.
 	slog.Info("Servidor iniciado en el puerto " + addr)
+
 	// Iniciamos el servidor web en el puerto especificado.
 	if err := server.ListenAndServe(); err != nil {
-		// Imprime el error si no se puede iniciar el servidor.
+		// Imprime el error y termina el programa si no se puede iniciar el servidor.
 		fmt.Println(err)
 		os.Exit(1)
 	}

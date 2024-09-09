@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"io"
+	"log"
 	"net/http"
 	"sync"
 )
@@ -105,18 +106,22 @@ func RequestAPI(url string) ([]byte, error) {
 		return nil, fmt.Errorf("la URL proporcionada no puede estar vacía")
 	}
 
-	// Realiza la solicitud HTTP GET a la URL proporcionada.
 	resp, err := http.Get(url)
 	if err != nil {
 		return nil, fmt.Errorf("fallo al realizar la solicitud a %q: %w", url, err)
 	}
 
-	// Asegura que el cuerpo de la respuesta HTTP se cierre al finalizar la función, evitando fugas de recursos.
-	defer resp.Body.Close()
+	// Asegura que el cuerpo de la respuesta HTTP se cierre al finalizar la función.
+	defer func() {
+		err := resp.Body.Close()
+		if err != nil {
+			log.Printf("no se pudo cerrar la respuesta: %v\n", err)
+		}
+	}()
 
 	// Verifica que el estado de la respuesta HTTP sea 200 OK.
 	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("el código de estado de la respuesta es %d, se esperaba 200", resp.StatusCode)
+		return nil, fmt.Errorf("el código de estado de respuesta es %d, esperado 200", resp.StatusCode)
 	}
 
 	// Lee el cuerpo de la respuesta HTTP y devuelve los datos como un slice de bytes.
