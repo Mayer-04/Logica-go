@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"maps"
+)
 
 /*
 * Maps: Mapas
@@ -20,7 +23,6 @@ para inicializarlo correctamente.
 */
 
 func main() {
-
 	// Creando un map literal - declarando e inicializando el map con valores predeterminados.
 	// NOTA: Es obligatorio incluir una coma al final de cada elemento en un mapa literal.
 	var edades = map[string]int{
@@ -89,4 +91,22 @@ func main() {
 	// Agregar una clave diferente.
 	m["b"] = 3
 	fmt.Println(m) // Output: map[a:2 b:3]
+
+	// `Equal()`.
+	// Verifica si dos mapas contienen los mismos pares clave/valor.
+	// Los valores de cada par se comparan utilizando el operador ==.
+	equal := maps.Equal(edades, edades2)
+	fmt.Println("equal:", equal) // Output: false
+
+	// `Copy()`.
+	// Copia todos los pares clave/valor del mapa 'src' al mapa 'dst'.
+	// Si una clave de 'src' ya existe en 'dst', su valor será reemplazado por el valor de 'src'.
+	newMap := make(map[string]int)
+	maps.Copy(newMap, edades2)
+	fmt.Println("copy:", newMap)
+
+	// `Clone()`.
+	// Crea y devuelve una copia del mapa proporcionado.
+	clone := maps.Clone(newMap)
+	fmt.Println("clone:", clone)
 }
