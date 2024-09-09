@@ -112,21 +112,22 @@ func RequestAPI(url string) ([]byte, error) {
 	}
 
 	// Asegura que el cuerpo de la respuesta HTTP se cierre al finalizar la función.
-	// Este patrón asegura que el cuerpo se cierre, pero no drena el contenido del cuerpo.
+	// Este patrón asegura que el cuerpo se cierre, pero no "drena" el contenido del cuerpo.
 	defer func() {
 		err := resp.Body.Close()
 		if err != nil {
-			log.Printf("no se pudo cerrar la respuesta: %v\n", err)
+			log.Printf("no se pudo cerrar el cuerpo de la respuesta: %v\n", err)
 		}
 	}()
 
 	// defer func() {
-	// 	// `io.Copy` es una función que copia el contenido desde un origen (src) a un destino (dst).
-	// 	// `io.Discard` es el destino, no hace nada con los datos. Cualquier dato que llegue a él será ignorado.
-	// 	// `resp.Body` es el origen, contiene los datos del cuerpo de la respuesta HTTP.
+	// 	// Drenar: Leer el cuerpo por completo, incluso si no necesitamos su contenido.
+	// 	// `io.Copy` es una función que copia los datos desde un origen (src) a un destino (dst).
+	// 	// `io.Discard` es el destino, que descarta cualquier dato recibido. Es una especie de "basurero".
+	// 	// `resp.Body` es el origen, que contiene los datos del cuerpo de la respuesta HTTP.
 	// 	_, err := io.Copy(io.Discard, resp.Body)
 	// 	if err != nil {
-	// 		log.Printf("erro al copiar el cuerpo de la respuesta: %v\n", err)
+	// 		log.Printf("error al copiar el cuerpo de la respuesta: %v\n", err)
 	// 	}
 
 	// 	// Cerramos el cuerpo de la respuesta para liberar los recursos asociados con la conexión.
@@ -134,7 +135,7 @@ func RequestAPI(url string) ([]byte, error) {
 
 	// 	// Si ocurre un error al cerrar el cuerpo, lo registramos.
 	// 	if err != nil {
-	// 		log.Printf("no se pudo cerrar la respuesta: %v\n", err)
+	// 		log.Printf("no se pudo cerrar el cuerpo de la respuesta: %v\n", err)
 	// 	}
 	// }()
 
