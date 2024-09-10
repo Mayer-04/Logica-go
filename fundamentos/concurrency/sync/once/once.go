@@ -26,7 +26,6 @@ var once sync.Once
 // Este será el recurso que se inicializa una sola vez.
 func printMessage() {
 	fmt.Println("Hola Mundo!")
-	fmt.Println("Iniciando...")
 }
 
 // Ejemplo de uso de `sync.Once` para inicializar un recurso una sola vez.
@@ -35,17 +34,16 @@ func printMessage() {
 func main() {
 	// Creación de un WaitGroup para sincronizar las goroutines.
 	var wg sync.WaitGroup
-	// Espera a que terminen 4 goroutines.
+	// Espera a que terminen 3 goroutines.
 	wg.Add(3)
 
-	// Lanzamiento de 4 goroutines que intentarán ejecutar la función `printMessage`.
+	// Lanzamiento de 3 goroutines que intentarán ejecutar la función `printMessage`.
 	for i := 1; i <= 3; i++ {
 		go func() {
 			once.Do(printMessage) // Asegura que `printMessage` se ejecute solo una vez.
 			wg.Done()             // Marca la goroutine como completa.
 		}()
 	}
-
 	// Espera a que todas las goroutines terminen antes de finalizar el programa.
 	wg.Wait()
 }

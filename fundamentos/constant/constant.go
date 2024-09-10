@@ -72,7 +72,6 @@ const (
 )
 
 func main() {
-
 	// Las constantes se declaran con la palabra clave 'const' seguida del nombre y, opcionalmente, el tipo.
 	// No podemos utilizar el operador de asignación corta (:=) para definir una constante.
 	const gender string = "Masculino"

@@ -10,6 +10,7 @@ import (
 * Paquete context en Go:
 El paquete `context` es usado en Go para manejar la cancelación y establecer límites de tiempo
 en operaciones concurrentes, como goroutines.
+- Esencial para gestionar y coordinar tareas concurrentes.
 
 * Propagación de contextos:
 - Los contextos permiten compartir datos y gestionar la cancelación de tareas concurrentes.
@@ -88,12 +89,12 @@ func main() {
 	// No usar `string` literales como claves para evitar colisiones.
 	ctxValue := context.WithValue(ctxDeadline, requestIDKey, "12345")
 
-	// Simular operaciones concurrentes que usan los contextos anteriores.
+	// Simular operaciones concurrentes que usan los contextos anteriores
 	go processRequest(ctxValue)   // Output: Operación completada con RequestID: 12345
-	go processRequest(ctxTimeout) // Output: Operación completada en el request.
+	go processRequest(ctxTimeout) // Output: Operación completada en el request
 
 	// Esperar 1 segundos para permitir que las goroutines terminen.
-	time.Sleep(1 * time.Second)
+	time.Sleep(time.Second)
 }
 
 // processRequest Simula una función que procesa una solicitud respetando el contexto proporcionado.

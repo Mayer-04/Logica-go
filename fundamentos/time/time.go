@@ -15,10 +15,14 @@ El paquete "time" proporciona funcionalidades para manejar fechas, horas, duraci
 - `time.Format(layout string)`: Formatea la fecha y hora a un string.
 - `time.ParseDuration(s string)`: Convierte un string a un tipo `time.Duration`.
 - `time.Sleep(d time.Duration)`: Pausa la ejecución durante una duración específica.
+- Evitar llamadas a `time.After` en funciones repetidas como bucles o controladores HTTP.
+
+* Una fecha límite se refiere a un punto específico en el tiempo determinado con uno de los siguientes:
+- `time.Duration` desde ahora (por ejemplo, en 250 ms). Es un alias para int64.
+- `time.Time` (por ejemplo, 2023-02-07 00:00:00 UTC).
 */
 
 func main() {
-
 	// Obtener la fecha y hora actual en el que se ejecuta el programa.
 	now := time.Now()
 	fmt.Println("Fecha y hora actual:", now) // 2024-09-04 17:14:52.3757128 -0500 -05 m=+0.000626201
@@ -79,4 +83,9 @@ func main() {
 	fmt.Println("Temporizador de 3 segundos iniciado...")
 	<-timer.C
 	fmt.Println("Temporizador finalizado.")
+
+	// time.Since() regresa el tiempo 'transcurrido' desde una fecha de inicio.
+	// Es un alias de time.Now().Sub(t).
+	elapsed := time.Since(now)
+	fmt.Printf("¡Listo! Tomó %v", elapsed) // ¡Listo! Tomó 5.0185089s
 }

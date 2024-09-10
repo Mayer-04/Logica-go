@@ -17,7 +17,6 @@ no un puntero al primer elemento de la matriz.
 */
 
 func main() {
-
 	// Array sin asignación de valores.
 	// Los elementos del array se inicializan con el valor cero del tipo de dato correspondiente.
 	// En este caso array5 tiene 2 elementos que corresponden al valor cero del tipo de dato `bool`.
@@ -80,12 +79,12 @@ func main() {
 	var copyArray = array
 	fmt.Println("copia del array:", copyArray)
 
-	// Recorriendo un array con un `for clásico`
+	// Recorriendo un array con un `for clásico`.
 	for i := 0; i < len(array); i++ {
 		fmt.Println("elemento:", array[i])
 	}
 
-	// Recorriendo un array con for `range`
+	// Recorriendo un array con for `range`.
 	for i, v := range array {
 		fmt.Println("i:", i, "v:", v)
 	}

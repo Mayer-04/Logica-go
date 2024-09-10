@@ -19,7 +19,6 @@ y que puede acceder y modificar variables definidas en el ámbito de la función
 */
 
 func main() {
-
 	// Llamada a la función saludar con dos argumentos de tipo string.
 	saludar("Mayer", "Chaves")
 
@@ -111,16 +110,13 @@ func multiplesRetornos(text string) (string, string) {
 // * Funciones variádicas - Permiten pasar un número indefinido de argumentos del mismo tipo.
 // Se anteponen tres puntos (...) al tipo de dato para indicar que es una función variádica.
 func variatica(nums ...int) int {
-
-	//* El parámetro nums se convierte en un "slice"
-
+	//El parámetro nums se convierte en un "slice" de enteros.
 	var total int
 	for _, num := range nums {
 		total += num
 	}
 
 	return total
-
 }
 
 // * Funciones anónimas - No tienen un nombre de función.
@@ -155,6 +151,6 @@ func createCounter() func() int {
 	}
 }
 
-// * Definición de un tipo de función para mejorar la legibilidad.
+// * Definición de un `tipo de función`.
 // Suele usarse en funciones complejas para evitar confusiones.
 type tipoFuncion func(string, string)

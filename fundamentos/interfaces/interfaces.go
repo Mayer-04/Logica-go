@@ -93,7 +93,6 @@ func (p Person) Log(message string) {
 }
 
 func main() {
-
 	// Crear una instancia de Person y asignarla a una variable de tipo Printer.
 	// Esto es posible porque Person implementa el método Print, que es el único
 	// requisito para satisfacer la interfaz Printer.

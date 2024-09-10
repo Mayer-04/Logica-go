@@ -4,9 +4,9 @@ import "fmt"
 
 /*
 * Funciones Incorporadas en Go
-- Go proporciona una serie de funciones predefinidas que se pueden utilizar directamente sin necesidad de importarlas.
+Go proporciona una serie de funciones `predefinidas` que se pueden utilizar directamente sin necesidad de importarlas.
 
-Lista de algunas funciones incorporadas en Go:
+* Lista de algunas funciones incorporadas en Go:
 - append(): Agrega uno o más elementos al final de un slice, devolviendo un nuevo slice.
 - copy(): Copia elementos de un slice a otro y retorna el número de elementos copiados.
 - cap(): Retorna la capacidad (capacidad total posible) de un slice.
@@ -22,7 +22,6 @@ Lista de algunas funciones incorporadas en Go:
 */
 
 func main() {
-
 	// `print()` imprime un texto sin un salto de línea al final.
 	print("Built-in Functions!")
 
@@ -84,5 +83,4 @@ func main() {
 		}
 	}()
 	panic("Error de ejecución")
-
 }
