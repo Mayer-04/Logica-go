@@ -4,32 +4,41 @@ import "fmt"
 
 /*
 * Operadores aritméticos
-Primero se ejecutan las operaciones entre (), *, /, %, +, -
+- Si divides dos enteros (int), Go realiza división entera.
+Esto significa que el resultado siempre será un `número entero`, descartando la parte decimal (truncamiento).
+- Si quieres obtener un valor con decimales (punto flotante),
+necesitas que al menos uno de los operandos sea un número de punto flotante (float32 o float64).
+
+* Orden de precedencia o prioridad de operadores:
+- Paréntesis ().
+- Multiplicación (*), división (/) y resto (%): Tienen la misma prioridad y se evalúan de izquierda a derecha.
+- Suma (+) y resta (-): Tienen la misma prioridad y se evalúan de izquierda a derecha.
 */
 
 func main() {
-	// Suma +
+	// Suma de enteros.
 	suma := 10 + 10
-	fmt.Println("Suma:", suma)
+	fmt.Println("Suma:", suma) // Output: 20
 
-	// Resta -
+	// Resta de enteros.
 	resta := 10 - 5
-	fmt.Println("Resta:", resta)
+	fmt.Println("Resta:", resta) // Output: 5
 
-	// Multiplicación *
+	// Multiplicación de enteros.
 	multiplicacion := 10 * 5
-	fmt.Println("Multiplicación:", multiplicacion)
+	fmt.Println("Multiplicación:", multiplicacion) // Output: 50
 
-	// División /
-	division := 10 / 5
-	fmt.Println("División:", division)
+	// División de enteros.
+	// Como la división es de enteros no devuelve la parte decimal, en este ejemplo 19.05.
+	division := 1905 / 100
+	fmt.Println("División:", division) // Output: 19
 
-	// Modulo o Resto %
+	// Módulo o Resto de enteros.
 	modulo := 10 % 5
-	fmt.Println("Modulo:", modulo)
+	fmt.Println("Modulo:", modulo) // Output: 0
 
 	// Ejemplo del orden de ejecución de las operaciones.
 	// Primero se realiza la operación que esta entre parentesis y luego se multiplica por 2.
 	ejemplo := (2 + 3) * 2
-	fmt.Println("Ejemplo:", ejemplo)
+	fmt.Println("Ejemplo:", ejemplo) // Output: 10
 }
