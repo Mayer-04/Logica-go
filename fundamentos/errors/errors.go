@@ -19,19 +19,16 @@ si deseas ignorar un error, utiliza el operador blank `_`.
 * Es un error común manejar un mismo error varias veces. Debemos recordar que:
 - Manejar un error significa registrarlo (log) o devolverlo (return), no ambas cosas.
 - Si manejas un error, es importante hacerlo solo una vez.
-- Para envolver un error y conservar la causa original, se puede usar `fmt.Errorf` con la directiva `%w`.
-La comparación de este tipo de errores se debe hacer con `errors.As`.
-- Para comparar un error con un valor específico, se debe usar `errors.Is` en lugar de `==`.
-- Si no deseas exponer el error original a quien llama a la función,
-no envuelvas el error usando `%w`; en su lugar, usa `%v` para solo formatear el mensaje.
+- Para envolver un error y mantener su contexto original, usa `fmt.Errorf` con la directiva `%w`,
+permitiendo comparar con `errors.Is` o extraer el error con `errors.As`.
+- Si no deseas exponer el error original a quien llama a la función, usa `%v` en lugar de `%w`.
 */
 
 // La función 'New()' del paquete "errors" crea un nuevo valor de error con un mensaje personalizado.
 var errorDivide = errors.New("cannot divide by zero")
 
 func main() {
-	// Convertimos un string a un entero utilizando 'strconv.Atoi'.
-	// Si falla, se devuelve un error.
+	// Intentamos convertir una cadena a entero usando 'strconv.Atoi'.
 	value, err := strconv.Atoi("10")
 	if err != nil {
 		// Imprimimos un mensaje de error y nos salimos del programa.
@@ -39,18 +36,17 @@ func main() {
 		return
 	}
 
-	// Imprimimos el valor convertido.
+	// Si no hay error, imprimimos el valor convertido.
 	fmt.Println("Valor convertido:", value)
 
-	// Llamamos a la función 'divide' que nos devuelve un error.
+	// Intentamos dividir dos números. Si el divisor es cero, recibiremos un error.
 	result, err := divide(6, 0)
 	// Comprobamos si hubo un error.
 	if err != nil {
-		// Si el error es específico de división, lo imprimimos.
+		// Comprobamos si el error recibido es el específico de "división por cero".
 		if errors.Is(err, errorDivide) {
 			fmt.Println("Error en la división:", err)
 		}
-		// Nos salimos del programa.
 		return
 	}
 	// Imprimimos el resultado.
@@ -59,11 +55,11 @@ func main() {
 
 // Función que realiza una división y devuelve un error si b es igual a 0.
 func divide(a, b float64) (float64, error) {
-	// Verificamos si el divisor es cero.
+	// Verificamos si el divisor es cero y retornamos un error si es el caso.
 	if b == 0 {
 		// Devolvemos un valor de error personalizado.
 		return 0, errorDivide
 	}
-	// Si no hay error, devolvemos el resultado de la división y nil como indicación de que no hubo errores.
+	// Retornamos el resultado de la división y nil, indicando que no hubo error.
 	return a / b, nil
 }
