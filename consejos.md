@@ -6,7 +6,7 @@ En Go, los puntos y comas (;) son opcionales y el compilador los inserta automá
 
 **Algunas caracteristicas a tener en cuenta:**
 
-- No se insertara un punto y coma justo despues de la palabra reservada `for`.
+- No se insertara un punto y coma justo después si la línea termina con una _palabra reservada_ como for, if, switch, etc.
 - Con los operadores de incremento `++` y decremento `--` hay que tener cuidado y tratarlos como una declaración y no como una expresión.
 
 La razón por la cual el código anterior no es válido es que los compiladores lo verán como:
@@ -34,6 +34,8 @@ func main() {
 ## Nombres de Paquetes
 
 Los nombres de paquetes en Go deben ser cortos, claros y en minúsculas, evitando convenciones como `snake_case` o `camelCase`. Nombres como `utils`, `common,` `helpers`, etc., deben evitarse ya que no indican claramente la funcionalidad del paquete.
+
+Algunos buenos nombres de paquetes pueden ser: `parser`, `auth`, `logger`, etc.
 
 # La Mejor Forma de Inicializar un Slice en Go
 
@@ -139,8 +141,8 @@ Aunque `panic` puede ser recuperado con `recover()`, esto no siempre es posible 
 Cuando Go compila el código, intenta inlinear las funciones para mejorar el rendimiento. El uso de `new(T)` en lugar de `&T{}` tiene un costo de `inlining` más bajo porque new(T) es una operación más simple y directa, lo que facilita que Go realice la optimización.
 
 - Tanto `new(T)` como `&T{}` crean un nuevo valor de `tipo T` y devuelven un puntero a ese valor.
-- `new(T)` inicializa el valor con el valor cero del `tipo T`.
-- `&T{}` permite la inicialización de los campos del `tipo T` en el mismo paso.
+- `new(T)` solo asigna espacio para un valor del `tipo T` y devuelve un puntero a la memoria asignada
+- `&T{}` permite inicializar campos específicos de T en la misma línea.
 
 ## Construir un Binario más Óptimo en Go
 
@@ -201,6 +203,7 @@ CGO_ENABLED=0 go build -ldflags="-s -w" -o my-binary example.go
 
 - **Dependencias en C:** Si tu proyecto depende de bibliotecas escritas en C, no podrás usarlas si CGO está desactivado.
 - **Funcionalidad del sistema operativo:** Algunas características específicas del sistema operativo, especialmente las que son de bajo nivel, pueden no estar disponibles directamente en Go sin CGO.
+- CGO puede ser necesario para utilizar ciertas librerías del sistema operativo o interactuar con componentes nativos de hardware, lo que podría ser una limitación en algunos casos específicos.
 
 #### ¿Cuándo Desactivar CGO?
 
