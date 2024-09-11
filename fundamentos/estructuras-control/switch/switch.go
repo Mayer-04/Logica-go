@@ -19,10 +19,8 @@ Go te permite hacerlo utilizando la palabra clave `fallthrough`.
 */
 
 func main() {
-
-	edad := 18
-
 	// Declarando una estructura switch con múltiples casos.
+	edad := 18
 	switch {
 	case edad < 13:
 		fmt.Println("Eres un niño")
@@ -43,10 +41,9 @@ func main() {
 		fmt.Println("Eres un adulto")
 	}
 
-	var x interface{} = true
-
 	// * Switch de Tipos (Type Switches).
 	// Se puede utilizar para el caso de que la variable sea de otro tipo.
+	var x interface{} = true
 	switch x.(type) {
 	case int:
 		fmt.Println("Es un entero")
@@ -89,7 +86,6 @@ loop:
 	// Podemos utilizar múltiples valores dentro de un solo bloque de `case`.
 	// En tal caso, el bloque `case` se ejecuta si la expresión coincide con cualquiera de los valores.
 	dayOfWeek := "Sunday"
-
 	switch dayOfWeek {
 	case "Saturday", "Sunday":
 		fmt.Println("Weekend")
@@ -105,7 +101,6 @@ loop:
 	// No se coloca ninguna expresión después de switch, lo que implica que cada condición en los `case`,
 	// es evaluada de manera individual como una expresión booleana.
 	numberOfDays := 28
-
 	// La expresión 'switch true' es equivalente a 'switch true {  }'.
 	switch {
 	case numberOfDays == 28:
@@ -113,5 +108,4 @@ loop:
 	default:
 		fmt.Println("Not February")
 	}
-
 }

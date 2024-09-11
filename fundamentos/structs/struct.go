@@ -21,7 +21,6 @@ type Rectangulo struct {
 }
 
 func main() {
-
 	//* Creación de una variable "maria" de tipo struct con los valores cero para cada campo.
 	// Los valores cero para cada tipo de dato son: "" (cadena vacía) para strings y 0 para números.
 	var maria Persona

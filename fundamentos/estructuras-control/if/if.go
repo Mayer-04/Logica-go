@@ -13,7 +13,6 @@ Si la condición es verdadera, se ejecutará el bloque de código del if.
 */
 
 func main() {
-
 	// La condición no debe estar entre paréntesis.
 	// La condición debe ser "true" para que se ejecute el bloque de código.
 	if true {
@@ -58,9 +57,8 @@ func main() {
 	// "Oye, sé que esta variable guarda algo, y creo que es un tipo específico.
 	// Quiero que me lo muestres como ese tipo".
 	var i interface{} = 10
-
-	if v, ok := i.(int); ok {
-		fmt.Println("i es un int:", v)
+	if value, ok := i.(int); ok {
+		fmt.Println("i es un int:", value)
 	} else {
 		fmt.Println("i no es un int")
 	}

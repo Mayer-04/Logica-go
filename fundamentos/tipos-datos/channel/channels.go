@@ -26,7 +26,6 @@ lo cual puede ayudar a evitar errores.
 */
 
 func main() {
-
 	// Creando un canal de tipo string.
 	ch := make(chan string)
 
@@ -84,6 +83,9 @@ func main() {
 		// Leemos cada uno de los valores del canal y los imprimimos.
 		fmt.Println("valor:", value) // Output: 1, 2, 3
 	}
+
+	// Canales de notificación.
+	// disconnectCh := make(chan bool)
 }
 
 // `send` envía un valor entero al canal.

@@ -19,7 +19,6 @@ El paquete "reflect" proporciona métodos para trabajar con tipos y valores en t
 */
 
 func main() {
-
 	// `reflect.TypeOf()` - Determina el tipo de dato de las variables.
 	number := 10
 	text := "Hello, World!"

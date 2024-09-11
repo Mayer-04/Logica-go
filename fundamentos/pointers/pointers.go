@@ -13,7 +13,6 @@ Ejemplo: *puntero
 */
 
 func main() {
-
 	// Declaración e inicialización de una variable de tipo entero.
 	var numero int = 42
 
@@ -55,25 +54,25 @@ func main() {
 	fmt.Printf("Valor de x después de incrementar: %d, Tipo: %T\n", x, x)
 
 	//* Uso de punteros con estructuras (struct).
-	type Persona struct {
+	type persona struct {
 		nombre string
 		edad   int
 	}
 
 	// Declarar una variable de tipo Persona.
-	persona := Persona{nombre: "Carlos", edad: 25}
+	carlos := persona{nombre: "Carlos", edad: 25}
 
 	// Crear un puntero a la estructura Persona.
-	punteroPersona := &persona
+	punteroPersona := &carlos
 
 	// Modificar el valor del campo edad a través del puntero.
 	punteroPersona.edad = 26
 
 	// Imprimir los valores actualizados de la estructura.
-	fmt.Printf("Nombre: %q, Edad: %d\n", persona.nombre, persona.edad) // Output: Nombre: Carlos, Edad: 26
+	fmt.Printf("Nombre: %q, Edad: %d\n", carlos.nombre, carlos.edad) // Output: Nombre: Carlos, Edad: 26
 }
 
-// la función `incrementar` toma un puntero a un entero y aumenta el valor apuntado en 1.
+// La función `incrementar` toma un puntero a un entero y aumenta el valor apuntado en 1.
 // Es un ejemplo de cómo modificar una variable fuera de su contexto usando un puntero.
 func incrementar(puntero *int) {
 	// El operador de desreferenciación * permite acceder al valor al que apunta el puntero.

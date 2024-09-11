@@ -7,7 +7,6 @@ import (
 
 /*
 * Paquete unsafe: arriesgado
-
 El paquete `unsafe` en Go permite realizar operaciones de bajo nivel que interactúan directamente con la memoria,
 saltando las garantías de seguridad y portabilidad del lenguaje. Esto puede ser útil para optimizaciones avanzadas,
 aunque se debe usar con precaución.
@@ -43,7 +42,6 @@ con `unsafe` es posible emularla utilizando conversiones a `uintptr`.
 */
 
 func main() {
-
 	// `unsafe.Sizeof()`
 	// Devuelve el tamaño en bytes de una variable. Es útil para ver cuánto espacio ocupa un tipo.
 	// No considera el contenido dinámico de slices o strings, sino solo su estructura interna.

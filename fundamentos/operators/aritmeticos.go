@@ -2,11 +2,12 @@ package main
 
 import "fmt"
 
-// * Operadores aritméticos
-// * Primero se ejecutan las operaciones entre (), *, /, %, +, -
+/*
+* Operadores aritméticos
+Primero se ejecutan las operaciones entre (), *, /, %, +, -
+*/
 
 func main() {
-
 	// Suma +
 	suma := 10 + 10
 	fmt.Println("Suma:", suma)
@@ -31,5 +32,4 @@ func main() {
 	// Primero se realiza la operación que esta entre parentesis y luego se multiplica por 2.
 	ejemplo := (2 + 3) * 2
 	fmt.Println("Ejemplo:", ejemplo)
-
 }

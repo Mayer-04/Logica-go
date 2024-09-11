@@ -17,7 +17,6 @@ type Person struct {
 }
 
 func main() {
-
 	// Uso de la función new para crear un puntero a un entero.
 	var x = new(int)
 

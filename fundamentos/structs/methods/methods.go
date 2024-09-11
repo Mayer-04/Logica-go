@@ -46,7 +46,6 @@ func (p *Product) aplicarDescuento(descuento float64) {
 }
 
 func main() {
-
 	// Antes de invocar métodos en una estructura, debes crear una instancia de esa estructura
 	//* Crear una instancia de la estructura Person e invocar su método saludar.
 	mayer := Person{Name: "Mayer", Lastname: "Prada", Age: 24}

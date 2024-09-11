@@ -27,7 +27,6 @@ type slice struct {
 */
 
 func main() {
-
 	// Declaración de un slice.
 	// Un slice sin valores iniciales será "nil".
 	var slice []int
