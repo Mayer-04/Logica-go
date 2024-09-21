@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"io"
 	"log"
 	"log/slog"
 	"net/http"
@@ -41,6 +42,8 @@ El primer argumento es un 'io.Writer', que determina el destino de la escritura.
 junto con el código de estado correspondiente.
 - w.Write(): Escribe datos en una respuesta HTTP que se enviará al cliente. El argumento que toma es un []byte,
 que generalmente representa datos binarios o texto. Estos datos se enviarán en el cuerpo de la respuesta HTTP.
+- io.WriteString(): Se utiliza para escribir (s) el contenido de una cadena de texto en un destino (w)
+que puede aceptar datos, como un archivo, la salida estándar o una respuesta HTTP.
 */
 
 // Definimos una estructura 'User' para representar un usuario.
@@ -88,10 +91,11 @@ func main() {
 // Escribe un mensaje de "Hola Mundo" como respuesta.
 func handleRoot(w http.ResponseWriter, r *http.Request) {
 	// Nos permite enviar cualquier contenido en la respuesta.
-	fmt.Fprintf(w, "Hola Mundo!")
-	// w.Write([]byte("Hello, World!"))
-}
+	// fmt.Fprintf(w, "Hola Mundo!")
 
+	// Usamos io.WriteString para escribir directamente la respuesta como cadena.
+	io.WriteString(w, "Hola Mundo!")
+}
 func createUser(w http.ResponseWriter, r *http.Request) {
 	// Creamos una instancia vacía de `User` para almacenar los datos del cuerpo de la solicitud.
 	// Go inicializa los campos de la estructura `User` a sus valores cero correspondientes.
