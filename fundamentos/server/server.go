@@ -201,3 +201,25 @@ func deleteUser(w http.ResponseWriter, r *http.Request) {
 	// El código 204 indica que la acción fue exitosa, pero no es necesario devolver ninguna información.
 	w.WriteHeader(http.StatusNoContent)
 }
+
+//* Funciones auxiliares.
+
+// renderJSON es una función que se encarga de enviar una respuesta HTTP con un cuerpo
+// codificado en formato JSON.
+func renderJSON[T any](w http.ResponseWriter, data T) {
+	// Configura la cabecera de la respuesta para indicar que el contenido es JSON.
+	w.Header().Set("Content-Type", "application/json")
+
+	encoder := json.NewEncoder(w)
+
+	// Desactiva el escape de HTML en el encoder.
+	encoder.SetEscapeHTML(false)
+
+	// Codifica el valor 'T' en formato JSON.
+	if err := encoder.Encode(data); err != nil {
+		// Si ocurre un error al codificar el JSON, se devuelve un error 500 (Internal Server Error)
+		// con el mensaje de error correspondiente.
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+}

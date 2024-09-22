@@ -78,12 +78,11 @@ func getPublicPath() string {
 	}
 
 	// Define una lista de directorios que componen la ruta relativa a la carpeta 'public'.
-	directorys := []string{"fundamentos", "server", "serverFile", "public"}
+	directorys := [...]string{"fundamentos", "server", "serverFile", "public"}
 	for _, directory := range directorys {
 		// Acumula la ruta completa añadiendo cada directorio de la lista.
 		dir = filepath.Join(dir, directory)
 	}
-
 	// Devuelve la ruta completa a la carpeta 'public'.
 	return dir
 }
