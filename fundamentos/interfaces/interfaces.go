@@ -13,6 +13,7 @@ si un tipo posee `todos` los métodos definidos por una interfaz, entonces ese t
 
 - Las interfaces pueden ser implementadas por cualquier tipo.
 - Un tipo puede implementar múltiples interfaces.
+- Cualquier struct que implemente un método Error() automáticamente implementa la `interfaz Error`.
 - En Go, es común que las interfaces tengan un solo método.
 Esto se conoce como interfaces mínimas, lo que permite una mayor flexibilidad y reusabilidad.
 - Es una buena práctica nombrar las interfaces con un sufijo `-er`, como `Printer` en lugar de `Print`.
