@@ -7,21 +7,31 @@ import (
 )
 
 /*
-* Strings: Cadenas de caracteres
-- Los strings son secuencias de caracteres y son inmutables (no se pueden modificar después de creados).
-- Se declaran entre comillas dobles: "".
-- Puedes concatenar strings usando el operador `+` o con `fmt.Sprintf()` para formatear.
-- Para incluir un salto de línea en un string, utiliza `\n`.
+* Strings: Secuencia de bytes.
+- Los strings son secuencias inmutables de bytes, codificados en UTF-8.
+Esto significa que cada string es una colección de bytes que representan texto.
+- Un carácter ASCII ocupa un byte, mientras que los caracteres Unicode pueden necesitar más (hasta 4 bytes en UTF-8).
+- Los strings son inmutables: una vez creados, no pueden modificarse directamente.
+- Los strings se declaran entre comillas dobles "".
+- Los espacios en blanco, saltos de línea y otros caracteres especiales también son parte del string.
+- Se pueden concatenar usando el operador `+` o `fmt.Sprintf()`, que formatea cadenas.
 - Las letras entre comillas simples '' se tratan como runas (`rune`), un alias para el tipo int32.
+
+* Algunas definiciones:
+- Secuencia: Colección ordenada de elementos, uno tras otro.
+- Byte: Es la unidad básica de almacenamiento de datos en una computadora.
+Cada byte contiene 8 bits (donde un bit puede ser 0 o 1). Un byte puede representar un número entre 0 y 255.
+- Codificar: Es el proceso de transformar datos o información a un formato que pueda ser procesado por una máquina o computadora.
+- UTF-8: Es un tipo de codificación que se usa para representar caracteres de texto en una computadora. Incluye
+símbolos de otros idiomas, emojis y caracteres especiales. Puede usar entre 1 y 4 bytes para representar cada carácter.
 */
 
 func main() {
-
-	//* Los strings se declaran entre comillas dobles.
+	// Declaración de un string
 	name := "Mayer"
 	fmt.Printf("tipo: %T - valor: %s\n", name, name)
 
-	// Salto de línea `\n`.
+	// Uso de salto de línea con `\n`
 	secondName := "Andres"
 	fmt.Printf("tipo: %T - valor: %v\n", secondName, secondName)
 
@@ -29,14 +39,13 @@ func main() {
 	fullName := fmt.Sprintf("Mi nombre es %s %s", name, secondName)
 	fmt.Printf("interpolación: %s\n", fullName)
 
-	// Convertir un string a un slice de bytes si necesitas modificar el contenido.
+	// Modificar un string (convertir a slice de bytes).
+	// Los strings en Go son inmutables, pero se pueden convertir a un slice de bytes para hacer modificaciones.
 	cadena := "Hola"
 	bytes := []byte(cadena)                      // Convierte el string en un slice de bytes
 	bytes[0] = 'M'                               // Modifica el primer carácter
 	nuevoString := string(bytes)                 // Convierte de nuevo a string
 	fmt.Printf("nuevoString: %q\n", nuevoString) // "Mola"
-
-	//* Paquete "strings": Métodos útiles para manipular cadenas.
 
 	// Obtener la longitud de un string usando la función `len()`.
 	fmt.Println("longitud de name:", len(name))
@@ -44,6 +53,8 @@ func main() {
 	// Concatenar dos strings utilizando el operador +.
 	nameAndSecondName := name + " " + secondName
 	fmt.Println("concatenar strings:", nameAndSecondName)
+
+	//* Paquete "strings": Métodos útiles para manipular cadenas.
 
 	// Verifica si una cadena contiene una subcadena. Retorna true o false.
 	str := strings.Contains(name, "Mayer")

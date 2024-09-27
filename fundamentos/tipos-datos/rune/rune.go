@@ -3,39 +3,64 @@ package main
 import "fmt"
 
 /*
-* Rune: Runa
-- Es un alias para el tipo int32.
-- Puede representar caracteres Unicode que pueden ocupar más de un byte en la codificación UTF-8.
-- El valor de una runa es su punto de código Unicode.
-- Cuando se define un carácter como runa, Go usa su valor numérico Unicode.
+* Rune: Runa en Go
+- En Go, `rune` es un alias para el tipo `int32`. Esto significa que puede almacenar puntos de código Unicode.
+- Una `runa` representa un carácter Unicode y puede ocupar más de un byte en la codificación UTF-8.
+- El valor de una `runa` es el punto de código Unicode del carácter.
+- Es especialmente útil cuando trabajas con texto que incluye caracteres especiales o no latinos.
+- Al usar `rune`, Go permite manejar texto Unicode de manera eficiente.
+
+* ASCII vs Unicode:
+- Los caracteres ASCII, como las letras 'a', 'n', 'o', 's', y el espacio " ", se representan con un solo byte (0-127).
+- Los caracteres fuera de ASCII, como 'ñ' o emojis como 👴🏼, pueden requerir varios bytes.
 */
 
 func main() {
-
 	/*
-		* Explicación de como convertir este valor Hexadecimal a Decimal:
-		Como ejemplo tomares el valor de la runa 'a', si número en Unicode es: U+0061, su valor en decimal es 97.
-		- Hexadecimal (base 16) utiliza los siguientes valores: 0-9, A-F.
-		- Los dígitos A-F se representan como: A = 10, B = 11, C = 12, D = 13, E = 14, F = 15.
-		- Cada dígito hexadecimal tiene 4 bits, por lo que el valor numérico de la runa es 16^3 + 16^2 + 16^1 + 16^0
-		- El valor numérico de la runa es 16^3 + 16^2 + 16^1 + 16^0.
-
-		1. 0 x 16^3 = 0
-		2. 0 x 16^2 = 0
-		3. 6 x 16^1 = 6 * 16 = 96
-		4. 1 x 16^0 = 1 * 1 = 1
-		5. 0 + 0 + 96 + 1 = 97
-
-		La mejor fórmula de calcular el valor hexadecimal es:
-		6 * 16^1 + 1 * 16^0 = 6 * 16 + 1 = 97
+	   * Conversión de valores Hexadecimales a Decimales (ejemplo con la letra 'a'):
+	   - El valor Unicode para 'a' es U+0061, que en hexadecimal es 0x61.
+	   - El sistema hexadecimal (base 16) usa los dígitos 0-9 y las letras A-F (donde A = 10, B = 11, ..., F = 15).
+	   - Para convertir 0x61 a decimal, se descompone de la siguiente manera:
+	       1. 6 * 16^1 = 6 * 16 = 96
+	       2. 1 * 16^0 = 1 * 1 = 1
+	       3. 96 + 1 = 97
+	   - Por lo tanto, el valor decimal de U+0061 es 97.
 	*/
 
-	// Definiendo una variable de tipo rune
-	// Número en Unicode: U+0061
+	// Definiendo una variable de tipo rune para la letra 'a'
+	// El punto de código Unicode para 'a' es U+0061
 	runa := 'a'
-	fmt.Println("runa:", runa) // Output: runa: 97
+	fmt.Printf("Runa 'a': %d\n", runa) // Output: Runa 'a': 97
 
+	// Ejemplo con un emoji 🍎 (Unicode: U+1F34E)
 	runa2 := '🍎'
-	fmt.Println("runa2:", runa2) // Output: runa2: 127822
+	fmt.Printf("Runa para 🍎: %d\n", runa2) // Output: Runa para 🍎: 127822
 
+	// Cadena con caracteres Unicode
+	s := "años, 👴🏼"
+
+	// Convertimos la cadena en una slice de runas (puntos de código Unicode)
+	runaSlice := []rune(s)
+	fmt.Println("Runa slice:", runaSlice) // Output: [97 241 111 115 44 32 128116 127996]
+
+	/*
+	   * Desglose de la slice de runas:
+	   97   → 'a'
+	   241  → 'ñ'
+	   111  → 'o'
+	   115  → 's'
+	   44   → ','
+	   32   → (espacio)
+	   128116 → 👴 (anciano)
+	   127996 → tono de piel claro (modificador de emoji)
+	*/
+
+	// Recorriendo la cadena y mostrando la posición en bytes y las runas
+	for i, r := range s {
+		fmt.Printf("Posición en bytes %d, Runa: %c\n", i, r)
+	}
+	/*
+	 La posición en el loop es en bytes, no en caracteres. UTF-8 usa múltiples bytes para algunos caracteres,
+	 por lo que la posición en bytes de cada runa no siempre coincide con la posición en caracteres.
+	*/
 }
