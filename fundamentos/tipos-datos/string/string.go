@@ -15,13 +15,16 @@ Esto significa que cada string es una colección de bytes que representan texto.
 - Los strings se declaran entre comillas dobles "".
 - Los espacios en blanco, saltos de línea y otros caracteres especiales también son parte del string.
 - Se pueden concatenar usando el operador `+` o `fmt.Sprintf()`, que formatea cadenas.
-- Las letras entre comillas simples '' se tratan como runas (`rune`), un alias para el tipo int32.
+- Los caracteres entre comillas simples '' se tratan como runas (`rune`), un alias para el tipo int32.
 
 * Algunas definiciones:
 - Secuencia: Colección ordenada de elementos, uno tras otro.
-- Byte: Es la unidad básica de almacenamiento de datos en una computadora.
-Cada byte contiene 8 bits (donde un bit puede ser 0 o 1). Un byte puede representar un número entre 0 y 255.
-- Codificar: Es el proceso de transformar datos o información a un formato que pueda ser procesado por una máquina o computadora.
+- Byte: Es la unidad básica de almacenamiento de datos en una computadora. Cada byte contiene 8 bits (donde un bit puede ser 0 o 1).
+Un byte puede representar un número entre 0 y 255.
+- Codificar: Es el proceso de transformar datos o información a un formato que pueda ser procesado o entendido por una máquina o computadora.
+- ASCII: Conjunto de caracteres que usa 7 bits para representar 128 caracteres (0-127), incluyendo letras, números y signos de puntuación.
+- Unicode: Estándar que abarca caracteres de casi todos los idiomas y símbolos, usando hasta 4 bytes para representar caracteres complejos.
+Asigna un número único (código) a cada carácter en casi todos los idiomas del mundo.
 - UTF-8: Es un tipo de codificación que se usa para representar caracteres de texto en una computadora. Incluye
 símbolos de otros idiomas, emojis y caracteres especiales. Puede usar entre 1 y 4 bytes para representar cada carácter.
 */
