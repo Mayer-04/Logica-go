@@ -30,7 +30,6 @@ NOTA: No es el valor de la capacidad directamente, sino el índice hasta el cual
 */
 
 func main() {
-
 	// Declaración de un array.
 	array := [5]int{10, 20, 30, 40, 50}
 
@@ -48,6 +47,7 @@ func main() {
 	fmt.Println("slice3:", slice3) // Output: [30 40 50]
 
 	//* Referencias y no copias.
+	// El slicing no crea una copia del slice original, solo apunta al mismo array subyacente.
 	original := []string{"a", "b", "c", "d"}
 	sliced := original[1:3] // Output: [b, c]
 	sliced[0] = "z"
@@ -65,7 +65,7 @@ func main() {
 	fmt.Printf("substr: %q\n", substr) // "genial"
 
 	//* Slicing avanzado: s[start:end:cap].
-	// No es posible aplicar el slicing avanzado con tres parámetros a los strings.
+	// IMPORTANTE: No es posible aplicar el slicing avanzado a los strings.
 
 	// Declaramos un slice con longitud 5 y capacidad 10.
 	s := make([]int, 5, 10)
