@@ -13,38 +13,27 @@ Por ejemplo, la secuencia de Fibonacci para n = 10 es:
 0, 1, 1, 2, 3, 5, 8, 13, 21, 34
 */
 
-// func main() {
-
-// 	calcularFibonacci(15)
-
-// }
-
-// func calcularFibonacci(n int) {
-// 	digi1 := 0
-// 	digi2 := 1
-
-// 	for i := 0; i < n; i++ {
-// 		fmt.Print(digi1, " ")
-// 		result := digi1 + digi2
-// 		digi1 = digi2
-// 		digi2 = result
-// 	}
-// }
-
-func fibonacci(n int) []int {
+func getFibonacci(n int) []int {
 	if n <= 0 {
 		return []int{}
 	}
 
-	fib := make([]int, n)
-	fib[0] = 0
-
-	if n > 1 {
-		fib[1] = 1
+	if n == 1 {
+		return []int{0}
 	}
 
+	if n == 2 {
+		return []int{0, 1}
+	}
+
+	fib := make([]int, n)
+	fib[0] = 0
+	fib[1] = 1
+
+	a, b := 0, 1
 	for i := 2; i < n; i++ {
-		fib[i] = fib[i-1] + fib[i-2]
+		a, b = b, a+b
+		fib[i] = b
 	}
 
 	return fib
@@ -52,6 +41,6 @@ func fibonacci(n int) []int {
 
 func main() {
 	n := 10
-	result := fibonacci(n)
+	result := getFibonacci(n)
 	fmt.Println(result)
 }
