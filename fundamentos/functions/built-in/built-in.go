@@ -28,16 +28,19 @@ func main() {
 	// `println()` imprime un texto con un salto de línea al final.
 	println("¡Hola, Go!")
 
-	// `append()` agrega elementos al final de un slice y retorna un nuevo slice.
+	// `append()` agrega elementos al final de un slice y modifica el slice original.
 	slice := []int{1, 2, 3}
 	slice = append(slice, 4, 5)
 	fmt.Println("append:", slice)
 
-	// `len()` retorna el número de elementos en un slice, array, map, canal o string.
+	// `len()` devuelve el número de elementos en un slice, array, map, string y channel.
+	// En slices y maps devuelve el número de elementos en `v`.
+	// En strings devuelve el número de bytes en `v`.
 	fmt.Println("len:", len(slice))
 
-	// `cap()` retorna la capacidad total de un slice, es decir, el número máximo de elementos
-	// que puede contener sin reasignación.
+	// `cap()` devuelve la capacidad total de un slice, es decir, el número máximo de elementos que puede contener sin reasignación.
+	// En arrays, devuelve el número de elementos en `v`. Igual que `len(v)`.
+	// En slices, devuelve la longitud máxima que puede alcanzar el slice si decides recortar (es decir, hacer más grande) el slice.
 	fmt.Println("cap:", cap(slice))
 
 	// `copy()` copia elementos de un slice a otro. Devuelve el número de elementos copiados.
@@ -46,8 +49,7 @@ func main() {
 	n := copy(dst, src)             // Los elementos de `src` se copian en la variable `dst`.
 	fmt.Println("copy:", dst, "número de elementos copiados:", n)
 
-	// `close()` cierra un canal
-	// Lo que indica que no se enviarán más valores a través de él.
+	// `close()` cierra un canal, lo que indica que no se enviarán más valores a través de él.
 	// IMPORTANTE: Leer o enviar a un canal cerrado causará un panic.
 	ch := make(chan int)
 	close(ch)
