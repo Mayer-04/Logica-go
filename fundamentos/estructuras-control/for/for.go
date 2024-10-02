@@ -5,20 +5,25 @@ import "fmt"
 /*
 * Bucle For: Para
 - El bucle `for` se utiliza para repetir un bloque de código mientras una condición sea verdadera.
-- En Go solo existe un tipo de bucle "for", pero puede usarse de diversas maneras.
+- En Go solo existe un tipo de bucle (for), pero puede usarse de diversas maneras.
 - Sintaxis básica: for inicialización; condición; actualización { bloque de código }
-- También se puede utilizar para iterar sobre colecciones como arrays, slices, strings, maps y canales.
+- Se puede utilizar para `iterar` sobre colecciones como arrays, slices, strings, maps y canales.
 
 * Break: Romper
 - Termina el bucle completamente y sigue con el código después del bloque `for`.
 * Continue: Continuar
-- Saltar: Omitir lo que queda en esa 'vuelta' del bucle y pasar directamente a la siguiente.
 - Salta el resto de la iteración actual y pasa a la siguiente.
+- Saltar: Omitir lo que queda en esa 'vuelta' del bucle y pasar directamente a la siguiente.
 - No sale del bucle, solo omite el código restante de la iteración actual.
+
+* Conceptos claves:
+- Recorrer o Iterar: Es pasar por cada uno de los elementos de una colección de datos, como en un ciclo.
+- Iterable: Es cualquier estructura de datos que se puede recorrer o iterar.
+- Iteración: Es el proceso de repetir una acción varias veces. Cada vez que se pasa sobre un elemento de la colección
+es una iteración, y el proceso continúa hasta que no queden más elementos.
 */
 
 func main() {
-
 	//* Bucle "for" clásico.
 	// Sintaxis: inicialización; condición; actualización.
 	fmt.Println("Bucle clásico:")
@@ -44,13 +49,13 @@ func main() {
 		fmt.Printf("Índice: %d, Valor: %d\n", i, v)
 	}
 
-	//* Bucle "for" con range de enteros.
+	//* Bucle "for" con rango de enteros.
 	// En Go 1.22+, "range" se puede usar con enteros, iterando de 0 a n-1.
 	for i := range 3 {
 		fmt.Println(i) // Output: 0, 1, 2
 	}
 
-	//* Bucle for con range de enteros sin variable de índice.
+	//* Bucle for con rango de enteros sin variable de índice.
 	// Ignoramos la variable índice `i`.
 	// Es útil cuando necesitas realizar una acción repetitiva un número determinado de veces.
 	for range 5 {
