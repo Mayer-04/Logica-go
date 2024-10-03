@@ -23,19 +23,41 @@ Si el mismo valor se solicita varias veces, en lugar de crear nuevas copias, se 
 */
 
 func main() {
-	// Internamiento de cadenas (string)
+	/*
+		* La función `Make()` permite internar cualquier tipo de valor comparable.
+		- En lugar de guardar el valor directamente, esta función devuelve un "handle" (puntero o referencia)
+		que es único para ese valor.
+		- En lugar de comparar los valores reales, puedes comparar los handles. Si los handles son iguales,
+		sabes que los valores subyacentes también lo son.
+		- unique puede internar cualquier tipo de dato comparable.
+
+		func Make[T comparable](value T) Handle[T] { ... }
+
+		* `Handle` es una estructura que actúa como un identificador único o puntero para un valor internado.
+		Cuando llamas a unique.Make(), obtienes un `Handle` en lugar del valor original.
+		- En lugar de manejar directamente el valor (como una cadena, número, etc.), el paquete unique
+		utiliza estos `Handle` para representar los valores.
+
+		type Handle[T comparable] struct {
+			value *T
+		}
+	*/
+
+	// Internamiento de cadenas (string).
 	name := unique.Make("Mayer")  // Interna el valor "Mayer"
 	name2 := unique.Make("Mayer") // Dado que "Mayer" ya existe, name2 apunta a la misma ubicación en memoria
 
-	// Verificamos que ambos apuntan al mismo "handle" (la referencia interna es la misma)
+	// Verificamos que ambos apuntan al mismo "handle" (la referencia interna es la misma).
 	// Las comparaciones entre "handles" son eficientes porque comparamos las direcciones de memoria.
 	fmt.Println("name == name2:", name == name2) // true, ambas referencias son iguales
+	fmt.Println("name:", name)                   // {0xc000086060}
+	fmt.Println("name2:", name2)                 // {0xc000086060}
 
-	// Internamiento de otra cadena (string)
+	// Internamiento de otra cadena (string).
 	lastname := unique.Make("Prada")                   // Nuevo valor "Prada", distinta referencia
 	fmt.Println("name == lastname:", name == lastname) // false, porque son valores diferentes
 
-	// Internamiento de números (int)
+	// Internamiento de números (int).
 	edad := unique.Make(24)                      // Interna el valor 24
 	edad2 := unique.Make(24)                     // Reutiliza la referencia de 24
 	fmt.Println("edad == edad2:", edad == edad2) // true, ambos apuntan al mismo valor internado
