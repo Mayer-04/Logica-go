@@ -20,8 +20,10 @@ IMPORTANTE:
 - Para evitar problemas al agregar elementos a un map, asegúrese de crearlo usando la función `make()`
 para inicializarlo correctamente.
 - El valor cero de un map no inicializado es `nil`, lo que significa que no apunta a ninguna estructura de datos.
-- Los mapas en Go no son seguros para el uso concurrente.
-- Si deseas utilizar un mapa en múltiples goroutines, deberas usar un mutex o canales para coordinar el acceso.
+- los mapas no son seguros para la concurrencia. Si tienes múltiples goroutines accediendo y modificando
+el mapa simultáneamente, puede haber problemas de integridad de datos.
+- Si deseas utilizar un mapa en múltiples goroutines, deberas usar un mutex, canales o sync.Map para coordinar el acceso.
+- sync.Map es una versión concurrente de los mapas que maneja de manera segura múltiples accesos.
 */
 
 func main() {
