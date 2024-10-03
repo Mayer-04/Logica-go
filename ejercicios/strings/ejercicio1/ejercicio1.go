@@ -1,11 +1,29 @@
 package main
 
+import "fmt"
+
 /*
-Implementa una función que tome una string y devuelva el rango de longitud de los substrings únicos
-dentro de la string.
-Por ejemplo, para la string "abcabc", el rango sería de 1 a 3, ya que las longitudes de substrings únicos son 1, 2 y 3.
+Crea una función que reciba una string y devuelva un map donde la clave es cada letra única
+y el valor es el número de veces que esa letra aparece en el string.
 */
 
 func main() {
+	abc := "abcabc"
+	fruta1 := "coco"
+	fruta2 := "banana"
 
+	fmt.Printf("abs: %#v\n", contarCaracteres(abc))     // abs: map[string]int{"a":2, "b":2, "c":2}
+	fmt.Printf("coco: %#v\n", contarCaracteres(fruta1)) // coco: map[string]int{"c":2, "o":2}
+	fmt.Printf("banana: %#v", contarCaracteres(fruta2)) // banana: map[string]int{"a":3, "b":1, "n":2}
+}
+
+func contarCaracteres(s string) map[string]int {
+	newMap := make(map[string]int)
+
+	for i := 0; i < len(s); i++ {
+		caracter := string(s[i])
+		newMap[caracter]++
+	}
+
+	return newMap
 }

@@ -9,7 +9,6 @@ Asegúrate de que el slice resultante mantenga su longitud y capacidad original.
 */
 
 func main() {
-
 	enteros := []int{1, 2, 3, 4, 5, 6, 7, 8, 9}
 
 	fmt.Printf("enteros: %d, capacidad: %d\n", len(enteros), cap(enteros)) // enteros: 9, capacidad: 9

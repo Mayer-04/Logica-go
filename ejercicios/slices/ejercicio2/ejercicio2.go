@@ -14,7 +14,6 @@ La función debería devolver ambos slices.
 
 func main() {
 	enteros := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
-
 	primeros, resto := dosSlices(enteros, 4)
 
 	fmt.Println("primeros:", primeros)
@@ -22,7 +21,6 @@ func main() {
 }
 
 func dosSlices(enteros []int, n int) ([]int, []int) {
-
 	// Si n es mayor que la longitud del slice, devolver el slice completo y un slice vacío.
 	if n > len(enteros) {
 		return enteros, []int{}

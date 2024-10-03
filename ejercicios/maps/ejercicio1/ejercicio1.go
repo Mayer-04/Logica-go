@@ -8,14 +8,12 @@ Donde la clave es el entero y el valor es la cantidad de veces que aparece en el
 */
 
 func main() {
-
 	enteros := []int{1, 2, 3, 1, 2, 3, 5, 6, 7, 8, 9, 10}
 	resultado := contarCaracteresSli(enteros)
 	fmt.Printf("resultado: %#v", resultado) // map[int]int{1:2, 2:2, 3:2, 5:1, 6:1, 7:1, 8:1, 9:1, 10:1}
 }
 
 func contarCaracteresSli(sli []int) map[int]int {
-
 	newMap := make(map[int]int)
 
 	for _, entero := range sli {

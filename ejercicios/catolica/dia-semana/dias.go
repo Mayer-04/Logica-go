@@ -31,12 +31,12 @@ func main() {
 	// Solicitar entrada del usuario.
 	var input string
 	fmt.Print("Ingrese un dígito entre 1 y 7: ")
-	fmt.Scanln(&input)
+	fmt.Scan(&input)
 
 	// Convertir la entrada a entero.
 	dia, err := strconv.Atoi(input)
 	if err != nil {
-		fmt.Println("entrada inválida. Debe ser un número entero.")
+		fmt.Println("Entrada inválida. Debe ser un número entero.")
 		return
 	}
 

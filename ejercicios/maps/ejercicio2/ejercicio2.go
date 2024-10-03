@@ -8,7 +8,6 @@ La función debe eliminar todas las entradas del map que tengan ese string.
 */
 
 func main() {
-
 	ciudades := map[int]string{
 		1: "Bogotá",
 		2: "Cali",
@@ -23,7 +22,6 @@ func main() {
 }
 
 func eliminarValor(m map[int]string, s string) {
-
 	for key, value := range m {
 		if value == s {
 			delete(m, key)

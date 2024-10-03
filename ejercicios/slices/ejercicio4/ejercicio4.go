@@ -26,7 +26,6 @@ func main() {
 }
 
 func enteroMayor(enteros []int) (int, int) {
-
 	mayor := enteros[0]
 	index := 0
 
@@ -42,7 +41,6 @@ func enteroMayor(enteros []int) (int, int) {
 }
 
 func example2(enteros []int) (int, int) {
-
 	// Se ordena el slice de enteros en orden ascendente.
 	// Esto hace que el número mayor siempre sea el ultimo.
 	// A partir de Go 1.22, esta función simplemente llama a `slices.Sort`.

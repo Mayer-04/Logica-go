@@ -13,7 +13,6 @@ func main() {
 }
 
 func multiplesOperations(number int) map[string]any {
-
 	result := make(map[string]any)
 
 	// Convierte el número en un string
@@ -29,6 +28,7 @@ func multiplesOperations(number int) map[string]any {
 	for i := len(str) - 1; i >= 0; i-- {
 		reversedStr += string(str[i])
 	}
+
 	result["reverse"] = reversedStr
 
 	// Convertimos los caracteres en enteros
