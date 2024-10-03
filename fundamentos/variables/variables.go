@@ -41,8 +41,6 @@ func main() {
 
 	// Declaración de variable corta :=
 	// Infiere automáticamente el tipo basado en el valor asignado.
-	// Solo se puede utilizar para declarar nuevas variables.
-	// No se utilizan para reasignar variables existentes.
 	age := 23
 	fmt.Println("edad:", age)
 
