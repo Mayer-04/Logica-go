@@ -30,7 +30,7 @@ func (p Person) GreetPerson() {
 	fmt.Println("Hello, my name is", p.Name)
 }
 
-// Creando un método `getter`, en Go no se recomienda poner Get antes del nombre del método.
+// Creando un método `getter`, en Go no se recomienda poner `Get` antes del nombre del método.
 // `yourAge` es un método privado que retorna la edad de la persona.
 // Solo puede ser llamado dentro del paquete donde se definió.
 func (p Person) yourAge() int {
@@ -46,7 +46,6 @@ func (p *Person) setAge(age int) {
 }
 
 func main() {
-
 	// Creamos una nueva instancia de `Person`.
 	// En este caso,`hobbies` no puede ser accedido fuera del paquete, pero puede ser inicializado dentro de `main`.
 	andres := Person{Name: "Andres", Age: 24, Live: true, hobbies: []string{"programar", "leer"}}

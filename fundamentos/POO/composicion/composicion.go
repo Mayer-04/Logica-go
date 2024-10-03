@@ -8,8 +8,7 @@ En Go, no existe la herencia como en otros lenguajes orientados a objetos.
 En su lugar, se utiliza la composición para reutilizar y extender funcionalidades.
 
 * Composición: Se logra a través de la `incrustación` de tipos,
-* Incrustación de tipos: Agregar un tipo dentro de otro.
-lo que permite a una estructura "heredar" los campos y métodos de otra.
+- Incrustación de tipos: Agregar un tipo dentro de otro. Permite a una estructura "heredar" los campos y métodos de otro.
 - La composición ayuda a evitar la jerarquía de clases (niveles) que se suele presentar con la herencia.
 - Usar composición facilita el test unitario.
 - La incrustación de tipos permite que los métodos y campos de la estructura incrustada,
@@ -34,7 +33,6 @@ type Car struct {
 }
 
 func main() {
-
 	// Creamos una instancia de `Car`, inicializando el campo incrustado `Engine` y el campo `Model`.
 	// Se puede acceder directamente a los campos y métodos de `Engine` desde una instancia de `Car`.
 	myCar := Car{

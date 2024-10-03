@@ -4,15 +4,15 @@ import "fmt"
 
 /*
 * Operadores aritméticos
-- Si divides dos enteros (int), Go realiza división entera.
+- Si divides dos enteros (int), Go realiza la división entera.
 Esto significa que el resultado siempre será un `número entero`, descartando la parte decimal (truncamiento).
 - Si quieres obtener un valor con decimales (punto flotante),
 necesitas que al menos uno de los operandos sea un número de punto flotante (float32 o float64).
 
 * Orden de precedencia o prioridad de operadores:
-- Paréntesis ().
-- Multiplicación (*), división (/) y resto (%): Tienen la misma prioridad y se evalúan de izquierda a derecha.
-- Suma (+) y resta (-): Tienen la misma prioridad y se evalúan de izquierda a derecha.
+- Paréntesis `()`.
+- Multiplicación `*`, división `/` y resto `%`: Tienen la misma prioridad y se evalúan de izquierda a derecha.
+- Suma `+` y resta `-`: Tienen la misma prioridad y se evalúan de izquierda a derecha.
 */
 
 func main() {
@@ -29,7 +29,7 @@ func main() {
 	fmt.Println("Multiplicación:", multiplicacion) // Output: 50
 
 	// División de enteros.
-	// Como la división es de enteros no devuelve la parte decimal, en este ejemplo 19.05.
+	// Como la división es de enteros no devuelve la parte decimal.
 	division := 1905 / 100
 	fmt.Println("División:", division) // Output: 19
 

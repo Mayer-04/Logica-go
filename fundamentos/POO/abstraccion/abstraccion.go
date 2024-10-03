@@ -40,7 +40,6 @@ func (c *car) changeYear(year int) {
 }
 
 func main() {
-
 	// Creamos una instancia de `car` asignándola a la variable `nissan`.
 	nissan := car{
 		model:      "Nissan",

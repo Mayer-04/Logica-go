@@ -13,7 +13,7 @@ Los Maps en Go son estructuras de datos no ordenadas que almacenan pares clave-v
 - Los valores pueden ser de cualquier tipo.
 - Los mapas proporcionan acceso rápido a los datos y son muy útiles para almacenar conjuntos de datos
 donde se necesita buscar elementos por clave.
-- En un mapa no pueden haber dos claves iguales. Cada clave en un mapa debe ser única.
+- En un mapa `no` pueden haber dos claves iguales. Cada clave en un mapa debe ser única.
 - Si intentas asignar un valor a una clave que ya existe en el mapa, el valor asociado con esa clave se actualizará.
 
 IMPORTANTE:
@@ -35,7 +35,7 @@ func main() {
 	}
 	fmt.Println("Edades:", edades)
 
-	// Creando un map con valores iniciales en una sola línea.
+	// Creando un map literal con valores iniciales en una sola línea.
 	nuevoMapa := map[string]int{"a": 1, "b": 2, "c": 3}
 	fmt.Println("nuevoMapa:", nuevoMapa)
 
@@ -59,7 +59,8 @@ func main() {
 	fmt.Println("Valor de la llave 'd':", nuevoMapa["d"]) // Output: Valor de la llave 'd': 0
 
 	// La función incorporada `delete()` elimina el elemento con la clave especificada (m[clave]) del mapa.
-	delete(nuevoMapa, "a")
+	delete(edades2, "Mayer") // Eliminando del map edades2 la clave "Mayer" con su valor.
+	fmt.Println("Edades2:", edades2)
 
 	// Verificando si una clave existe en el map y obteniendo su valor.
 	// "value" es el valor de la clave "a". Si la clave no existe, "value" será el valor cero.
@@ -79,13 +80,14 @@ func main() {
 		fmt.Printf("Nombre: %q, Edad: %d\n", nombre, edad)
 	}
 
-	// Ejemplo de un mapa donde no pueden haber dos claves iguales.
+	//* Ejemplo de un mapa donde no pueden haber dos claves iguales.
 	m := make(map[string]int)
+
 	// Agregar un valor.
 	m["a"] = 1
 	fmt.Println(m) // Output: map[a:1]
 
-	// Agregar otro valor con la misma clave.
+	// Agregar la misma clave con un valor diferente.
 	// Se actualiza el valor de la clave "a" a 2. El valor 1 se reemplaza por 2.
 	m["a"] = 2
 	fmt.Println(m) // Output: map[a:2]

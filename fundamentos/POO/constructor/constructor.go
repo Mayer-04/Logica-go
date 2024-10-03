@@ -35,7 +35,6 @@ func New(nombre string, edad int) *Persona {
 //* NewPersona crea una nueva instancia de `Persona` con validaciones.
 // Si el nombre es vacío o la edad es negativa, retorna un error.
 func NewPersona(nombre string, edad int) (*Persona, error) {
-
 	// Validación para nombre vacío
 	if nombre == "" {
 		return nil, fmt.Errorf("el nombre no puede estar vacío")
@@ -64,7 +63,6 @@ func NewPersonaValor(nombre string, edad int) Persona {
 }
 
 func main() {
-
 	// Crear una nueva instancia de `Persona` usando el constructor básico `New`.
 	persona := New("Mayer", 24)
 	// `persona` es un puntero a `Persona`.

@@ -4,11 +4,11 @@ import "fmt"
 
 /*
 * Polimorfismo en Go
-El polimorfismo en Go se logra a través de las 'interfaces'.
+El polimorfismo en Go se logra a través de las `interfaces`.
 Esto permite que diferentes tipos compartan el mismo conjunto de métodos, lo que facilita que una función trabaje con
 cualquier tipo que implemente la interfaz.
 
-Características del polimorfismo en Go:
+* Características del polimorfismo en Go:
 - Si un tipo implementa todos los métodos de una interfaz, se dice que ese tipo satisface la interfaz.
 - A diferencia de otros lenguajes, no es necesario declarar explícitamente que un tipo implementa una interfaz;
 Go lo determina automáticamente.
@@ -56,7 +56,6 @@ func StartVehicle(v Vehicle) {
 }
 
 func main() {
-
 	// Creación de instancias de diferentes tipos que satisfacen la interfaz 'Vehicle'.
 	// Esto demuestra cómo 'StartVehicle' puede trabajar con diferentes tipos de vehículos.
 	// Todos estos tipos implementan la misma interfaz 'Vehicle'.

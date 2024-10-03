@@ -20,7 +20,6 @@ var (
 )
 
 func main() {
-
 	// Declarando e inicializando una variable con su tipo explícito.
 	var name string = "Mayer"
 	fmt.Println("nombre:", name)
