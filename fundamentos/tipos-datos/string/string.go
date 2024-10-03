@@ -17,6 +17,9 @@ Esto significa que cada string es una colección de bytes que representan texto.
 - Se pueden concatenar usando el operador `+` o `fmt.Sprintf()`, que formatea cadenas.
 - Los caracteres entre comillas simples '' se tratan como runas (`rune`), un alias para el tipo int32.
 
+* Substrings: Son secuencias de caracteres consecutivos que se encuentran dentro del string original.
+* Substrings únicos: Son substrings que no se repiten.
+
 * Algunas definiciones:
 - Secuencia: Colección ordenada de elementos, uno tras otro.
 - Byte: Es la unidad básica de almacenamiento de datos en una computadora. Cada byte contiene 8 bits (donde un bit puede ser 0 o 1).
