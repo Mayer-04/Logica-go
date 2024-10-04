@@ -28,11 +28,11 @@ type slice struct {
 
 func main() {
 	// Declaración de un slice.
-	// Un slice sin valores iniciales será "nil".
+	// Cuando se declara un slice sin inicializarlo (sin asignarle valores o longitud), su valor por defecto es nil.
 	var slice []int
 	fmt.Println("slice sin valores:", slice)
 
-	// Crear un slice nulo explícitamente.
+	// Creando un slice nulo explícitamente.
 	// Un slice nulo es igual a nil y no contiene elementos.
 	sliceNull := []string(nil)
 	fmt.Println("slice nulo:", sliceNull)
@@ -143,7 +143,8 @@ func main() {
 	sliceClip := slices.Clip(c)
 	fmt.Println("capacidad del nuevo slice con clip:", cap(sliceClip)) // Output: 7
 
-	// Función `Grow`. Aumenta la capacidad de un slice sin modificar su longitud actual.
+	// Función `Grow`.
+	// Aumenta la capacidad de un slice sin modificar su longitud actual.
 	// Se puede especificar el número de elementos adicionales que se desea agregar.
 	sliceToGrow := []int{0, 42, 8}
 	grownSlice := slices.Grow(sliceToGrow, 2)

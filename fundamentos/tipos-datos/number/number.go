@@ -5,12 +5,17 @@ import "fmt"
 /*
 * Números en Go
 - Si definimos `uint` o `int`, el valor dependera del sistema operativo, si es 32 bits o 64 bits.
+- Si queremos que los números más grandes sean legibles podemos usar el guion bajo _.
 */
 
 func main() {
 	// Números enteros positivos.
 	var number uint8 = 10
 	fmt.Printf("Tipo: %T - Valor: %d\n", number, number)
+
+	// Utilizamos el guión bajo para leer mejor un número grande.
+	bigNumber := 1_000_000
+	fmt.Println("número grande:", bigNumber)
 
 	// Números enteros negativos y positivos.
 	var number2 int8 = -10

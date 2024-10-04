@@ -19,29 +19,29 @@ no un puntero al primer elemento de la matriz.
 func main() {
 	// Array sin asignación de valores.
 	// Los elementos del array se inicializan con el valor cero del tipo de dato correspondiente.
-	// En este caso array5 tiene 2 elementos que corresponden al valor cero del tipo de dato `bool`.
-	var array5 [2]bool
-	fmt.Println("array sin asignación de valores:", array5) // Output: [false false]
+	// En este caso array tiene 2 elementos que corresponden al valor cero del tipo de dato `bool`.
+	var array [2]bool
+	fmt.Println("array sin asignación de valores:", array) // Output: [false false]
 
 	// Declaración de un array de enteros con una longitud de 5.
-	var array [5]int
+	var array1 [5]int
 	// Asignación de valores a los elementos del array.
-	array[0] = 10
-	array[1] = 20
-	array[2] = 30
-	array[3] = 40
-	array[4] = 50
-	fmt.Println("array:", array)
+	array1[0] = 10
+	array1[1] = 20
+	array1[2] = 30
+	array1[3] = 40
+	array1[4] = 50
+	fmt.Println("array:", array) // Output: [10 20 30 40 50]
 
 	// Ejemplo de uso de la función `len()` para obtener la longitud del array.
-	fmt.Println("longitud de array:", len(array))
+	fmt.Println("longitud de array:", len(array)) // Output: 5
 
 	// Declaración de un array con valores literales.
 	// Los valores se proporcionan directamente entre llaves.
 	array2 := [3]string{"Mayer", "Andres", "Chaves"}
 	fmt.Println("array literal:", array2)
 
-	// TODO: Cuando declaramos un array literal arr := [3]int{1, 2, 3, 4}, lo que realmente sucede es esto:
+	// * Cuando declaramos un array literal: arr := [3]int{1, 2, 3, 4}, lo que realmente sucede es esto:
 	arr := [4]int{}
 	arr[0] = 1
 	arr[1] = 2
@@ -58,15 +58,17 @@ func main() {
 	array4 := [...]int{10, 20, 30}
 	fmt.Println("array con longitud implícita:", array4)
 
-	//* Array con longitud implícita - Inicialización indexada.
-	// Inicializar elementos específicos de un arreglo usando sus índices,
-	// dejando los elementos no especificados con valores por defecto.
+	// * Array con longitud implícita - Inicialización indexada.
+	// Se inicializan elementos específicos de un array usando índices,
+	// mientras que los elementos no especificados se inicializan con el valor por defecto.
+	// En este caso, el tamaño del array será deducido automáticamente.
+	// El array tendrá una longitud de 6 elementos (de 0 a 5), el índice 5 se inicializa con el valor 3.
 	array6 := [...]int{5: 3}
-	fmt.Println("array6:", array6) // Output: [0 0 0 0 3]
+	fmt.Println("array6:", array6) // Output: [0 0 0 0 0 3]
 
 	// Acceder a un elemento del array.
 	// Los índices comienzan en 0, por lo que array2[1] accede al segundo elemento.
-	fmt.Println("segundo elemento de array2:", array2[1])
+	fmt.Println("segundo elemento de array2:", array2[1]) // Output: Andres
 
 	// Modificación de un elemento del array.
 	// El primer elemento del array se cambia de "Perro" a "Conejo".
@@ -75,7 +77,7 @@ func main() {
 	fmt.Println("array modificado:", modificar) // Output: [Conejo Gato Pez]
 
 	// Los arrays en Go se pasan por valor.
-	// Asignar un array a otra variable crea una copia de todos los elementos del array original.
+	// Asignar un array a otra variable crea una `copia` de todos los elementos del array original.
 	var copyArray = array
 	fmt.Println("copia del array:", copyArray)
 
@@ -84,7 +86,7 @@ func main() {
 		fmt.Println("elemento:", array[i])
 	}
 
-	// Recorriendo un array con for `range`.
+	// Recorriendo un array con un for `range`.
 	for i, v := range array {
 		fmt.Println("i:", i, "v:", v)
 	}
