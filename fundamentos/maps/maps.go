@@ -70,6 +70,13 @@ func main() {
 	value, ok := nuevoMapa["a"]
 	fmt.Printf("Valor: %v - Existe: %t\n", value, ok)
 
+	// Comprobando si la clave existe con un if.
+	// Las claves del mapa deben tener un valor `booleano` para hacer esta comprobación.
+	mapBool := map[string]bool{"a": true, "b": false}
+	if mapBool["a"] {
+		fmt.Printf("La clave 'a' existe en el map.")
+	}
+
 	// Eliminando todos sus elementos del map usando la función `clear()`.
 	// `clear()` es una función que simplifica la eliminación de todos los elementos de un map.
 	clear(edades)
