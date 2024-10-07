@@ -5,6 +5,7 @@ import "fmt"
 /*
 * Constantes en Go
 - Las constantes en Go son valores inmutables que se definen con la palabra clave 'const'.
+- Las constantes en Go están limitadas a tipos básicos como enteros, flotantes, cadenas y booleanos.
 - No es necesario utilizar todas las constantes definidas para que el programa compile.
 - Al ser inmutables, las constantes deben recibir un valor en el momento de su declaración.
 - Se recomienda declarar constantes a nivel de paquete cuando se necesitan en varias partes del código.
