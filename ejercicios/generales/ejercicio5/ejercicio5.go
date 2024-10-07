@@ -1,37 +1,39 @@
 package main
 
-import (
-	"fmt"
-	"slices"
-	"strconv"
-	"strings"
-)
+import "fmt"
 
-// Dado un número entero x, devuelve verdadero si x es un palíndromo y falso en caso contrario.
+/*
+* Concatenar slices:
+Crea una función que tome dos slices de enteros y los concatene en uno solo.
+Asegúrate de que el slice resultante tenga una longitud igual a la suma de las longitudes de los dos slices originales,
+y que su capacidad sea igual a la capacidad del primer slice más la capacidad del segundo slice.
+*/
 
 func main() {
-	number := 121
+	slice1 := []int{1, 2, 3, 4, 5}
+	slice2 := []int{6, 7, 8, 9, 10}
 
-	result, err := isPalindrome(number)
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Println(result)
+	result := concatenarSlices(slice1, slice2)
+
+	fmt.Println("Longitud:", len(result))  // Longitud: 10
+	fmt.Println("Capacidad:", cap(result)) // Capacidad: 10
+	fmt.Println(result)                    // [1 2 3 4 5 6 7 8 9 10]
 }
 
-func isPalindrome(x int) (bool, error) {
-	nuevoString := strconv.Itoa(x)
-	arregloStrings := strings.Split(nuevoString, "")
+func concatenarSlices(slice1, slice2 []int) []int {
 
-	slices.Reverse(arregloStrings)
+	sumaCapacidades := cap(slice1) + cap(slice2)
 
-	unir := strings.Join(arregloStrings, "")
+	// Inicializar result con la longitud adecuada.
+	result := make([]int, len(slice1), sumaCapacidades)
 
-	nuevoNumber, err := strconv.Atoi(unir)
+	// for _, value := range slice1 {
+	// 	result = append(result, value)
+	// }
 
-	if err != nil {
-		return false, fmt.Errorf("error converting reversed string to number: %w", err)
-	}
+	copy(result, slice1)
 
-	return x == nuevoNumber, nil
+	result = append(result, slice2...)
+
+	return result
 }

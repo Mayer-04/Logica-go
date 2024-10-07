@@ -3,37 +3,30 @@ package main
 import "fmt"
 
 /*
-* Concatenar slices:
-Crea una función que tome dos slices de enteros y los concatene en uno solo.
-Asegúrate de que el slice resultante tenga una longitud igual a la suma de las longitudes de los dos slices originales,
-y que su capacidad sea igual a la capacidad del primer slice más la capacidad del segundo slice.
+Imprimir un triángulo de asteriscos.
+Escribe un programa que, dado un número n, imprima un triángulo de asteriscos de altura n. Por ejemplo, para n=5:
+
+*
+**
+***
+****
+*****
 */
 
 func main() {
-	slice1 := []int{1, 2, 3, 4, 5}
-	slice2 := []int{6, 7, 8, 9, 10}
-
-	result := concatenarSlices(slice1, slice2)
-
-	fmt.Println("Longitud:", len(result))  // Longitud: 10
-	fmt.Println("Capacidad:", cap(result)) // Capacidad: 10
-	fmt.Println(result)                    // [1 2 3 4 5 6 7 8 9 10]
+	n := 5
+	buildTriangle(n)
 }
 
-func concatenarSlices(slice1, slice2 []int) []int {
+func buildTriangle(n int) {
+	const defaultHeight = 5
+	if n <= 0 {
+		n = defaultHeight
+	}
 
-	sumaCapacidades := cap(slice1) + cap(slice2)
-
-	// Inicializar result con la longitud adecuada.
-	result := make([]int, len(slice1), sumaCapacidades)
-
-	// for _, value := range slice1 {
-	// 	result = append(result, value)
-	// }
-
-	copy(result, slice1)
-
-	result = append(result, slice2...)
-
-	return result
+	asterisks := ""
+	for i := 0; i < n; i++ {
+		asterisks += "*"
+		fmt.Println(asterisks)
+	}
 }

@@ -1,21 +1,25 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 /*
-Dado un año, regresa el siglo  en el que está.
-El primer siglo abarca desde el año 1 hasta el año 100, el segundo, desde el año 101 hasta el año 200, etc.
+Escribe una función que convierta un slice de enteros en un slice de strings.
+La función debería devolver el nuevo slice.
 */
 
-func solution(year int) int {
-	century := year / 100
-	if year%100 == 0 {
-		century--
-	}
-	return century + 1
-	// return (year + 99) / 100
+func main() {
+	arr := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	result := convertToStringSlice(arr)
+	fmt.Println(result)
 }
 
-func main() {
-	fmt.Println(solution(1905)) // 20
+func convertToStringSlice(arr []int) []string {
+	strArr := make([]string, len(arr))
+	for i, value := range arr {
+		strArr[i] = strconv.Itoa(value)
+	}
+	return strArr
 }

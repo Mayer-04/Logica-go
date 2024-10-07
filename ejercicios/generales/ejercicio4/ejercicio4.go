@@ -1,38 +1,37 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"slices"
+	"strconv"
+	"strings"
+)
 
-/* Tenemos un objeto que almacena los salarios de nuestro equipo:
-
-let salaries = {
-  John: 100,
-  Ann: 160,
-  Pete: 130,
-};
-
-Escribe el código para sumar todos los salarios y almacenar el resultado en la variable sum.
-En el ejemplo de arriba nos debería dar 390.
-
-Si salaries está vacío entonces el resultado será 0.
-*/
+// Dado un número entero x, devuelve verdadero si x es un palíndromo y falso en caso contrario.
 
 func main() {
-	salaries := map[string]int{
-		"John": 100,
-		"Ann":  160,
-		"Pete": 130,
-	}
+	number := 121
 
-	result := SumSalaries(salaries)
+	result, err := isPalindrome(number)
+	if err != nil {
+		fmt.Println(err)
+	}
 	fmt.Println(result)
 }
 
-func SumSalaries(salaries map[string]int) int {
-	sumaTotal := 0
+func isPalindrome(x int) (bool, error) {
+	nuevoString := strconv.Itoa(x)
+	arregloStrings := strings.Split(nuevoString, "")
 
-	for _, salary := range salaries {
-		sumaTotal += salary
+	slices.Reverse(arregloStrings)
+
+	unir := strings.Join(arregloStrings, "")
+
+	nuevoNumber, err := strconv.Atoi(unir)
+
+	if err != nil {
+		return false, fmt.Errorf("error converting reversed string to number: %w", err)
 	}
 
-	return sumaTotal
+	return x == nuevoNumber, nil
 }

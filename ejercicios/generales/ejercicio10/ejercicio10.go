@@ -3,43 +3,27 @@ package main
 import "fmt"
 
 /*
-Crea un slice que contenga el slice nums duplicado.
-Ejemplo: Si nums = [1,2,3], el resultado es [1,2,3,1,2,3].
-La capacidad del slice resultante es el doble de la longitud del slice nums.
+Escribe una función `argumentsLength` que devuelva el número de argumentos se le pasan.
+
+Ejemplo:
+- Input: args = [5] - Output: 1
+- Input: args = [true, 10, "3"] - Output: 3
 */
 
 func main() {
-	nums := []int{1, 2, 3}
-	result := getConcatenation(nums)
+	result := argumentsLength("mayer", "lucas")
 	fmt.Println(result)
+
+	// Ejemplo 2
+	// El operador ... (variadic) en Go solo puede desempaquetar slices, no arrays.
+	arr := [1]int{5}
+	fmt.Println(argumentsLength(arr[:]...)) // Convertimos el array a slice y luego desempaquetamos
+
+	// Ejemplo 3
+	arr2 := []any{true, 10, "3"}
+	fmt.Println(argumentsLength(arr2...)) // Desempaquetar el slice
 }
 
-func getConcatenation(nums []int) []int {
-	n := len(nums)
-	ans := make([]int, 2*n) // Crear el array con tamaño 2n
-
-	// Usamos copy() para copiar nums en la primera y segunda mitad de ans
-	copy(ans[0:n], nums)   // Copia la primera mitad
-	copy(ans[n:2*n], nums) // Copia la segunda mitad
-
-	return ans
-}
-
-// Segunda solución ✅
-func GetConcatenation2(nums []int) []int {
-	return append(nums, nums...) // Usamos append para concatenar nums consigo mismo
-}
-
-// Tercera solución ✅
-func GetConcatenation3(nums []int) []int {
-	n := len(nums)
-	ans := make([]int, 2*n) // Crear el array ans con tamaño 2n
-
-	// Copiar los valores en la primera y segunda mitad de ans
-	for i := 0; i < n; i++ {
-		ans[i] = nums[i]
-		ans[i+n] = nums[i]
-	}
-
-	return ans
+func argumentsLength[T any](args ...T) int {
+	return len(args)
 }

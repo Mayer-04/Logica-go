@@ -3,30 +3,18 @@ package main
 import "fmt"
 
 /*
-Imprimir un triángulo de asteriscos.
-Escribe un programa que, dado un número n, imprima un triángulo de asteriscos de altura n. Por ejemplo, para n=5:
-
-*
-**
-***
-****
-*****
+Dado un año, regresa el siglo  en el que está.
+El primer siglo abarca desde el año 1 hasta el año 100, el segundo, desde el año 101 hasta el año 200, etc.
 */
 
-func main() {
-	n := 5
-	buildTriangle(n)
+func solution(year int) int {
+	century := year / 100
+	if year%100 == 0 {
+		century--
+	}
+	return century + 1 // return (year + 99) / 100
 }
 
-func buildTriangle(n int) {
-	const defaultHeight = 5
-	if n <= 0 {
-		n = defaultHeight
-	}
-
-	asterisks := ""
-	for i := 0; i < n; i++ {
-		asterisks += "*"
-		fmt.Println(asterisks)
-	}
+func main() {
+	fmt.Println(solution(1905)) // 20
 }
