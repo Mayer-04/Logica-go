@@ -47,8 +47,6 @@ func dosSlices(enteros []int, n int) ([]int, []int) {
 	return primeros, resto
 }
 
-//!NOTE: Otra solución al ejercicio
-
 func DividirSlice(slice []int, n int) ([]int, []int) {
 	// Verificar si n es mayor que la longitud del slice
 	if n > len(slice) {
