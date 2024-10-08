@@ -14,6 +14,7 @@ y el último está en `len(arr)-1`.
 - La dirección en memoria de un array es la misma dirección del primero elemento del array. (Ej: arr[0])
 - En Go cuando pasas un array como argumento de una función, este recibe una copia de ese arreglo,
 no un puntero al primer elemento de la matriz.
+- En los array no podemos utilizar el `slicing`, es una característica de los slices y strings.
 */
 
 func main() {

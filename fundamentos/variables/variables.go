@@ -20,7 +20,7 @@ var (
 )
 
 func main() {
-	// Declarando e inicializando una variable con su tipo explícito.
+	// Declarando e inicializando una variable con su tipo de dato explícito.
 	var name string = "Mayer"
 	fmt.Println("nombre:", name)
 
@@ -40,11 +40,12 @@ func main() {
 	fmt.Printf("casas: %s, %s, %s\n", casa1, casa2, casa3)
 
 	// Declaración de variable corta :=
+	// Es una manera más simple de crear variables en Go, solo puede utilizarse dentro de funciones.
 	// Infiere automáticamente el tipo basado en el valor asignado.
 	age := 23
 	fmt.Println("edad:", age)
 
-	// Imprimiendo las variables agrupadas en un bloque var.
+	// Imprimiendo las variables agrupadas en un `bloque var`.
 	fmt.Printf("múltiples variables: %s, %s, %s\n", home, user, animal)
 
 	// Declaración de múltiples variables en una sola línea utilizando la declaración de variable corta.

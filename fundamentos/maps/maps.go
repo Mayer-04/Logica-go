@@ -27,7 +27,7 @@ el mapa simultáneamente, puede haber problemas de integridad de datos.
 */
 
 func main() {
-	// Creando un map literal - declarando e inicializando el map con valores predeterminados.
+	// Creando un map literal - Declarando e inicializando el map con valores predeterminados.
 	// NOTA: Es obligatorio incluir una coma al final de cada elemento en un mapa literal.
 	var edades = map[string]int{
 		"Mayer":  24,
@@ -44,27 +44,27 @@ func main() {
 	// Inicializando un map vacío utilizando un map literal.
 	// Es común usar esta técnica para evitar un nil map, el cual no permite agregar elementos.
 	mapaVacio := map[int]string{}
-	fmt.Println("Mapa vacío:", mapaVacio) // Output: Mapa vacío: map[]
+	fmt.Println("Mapa vacío:", mapaVacio) // Output: map[]
 
 	// Creando e inicializando un mapa vacío utilizando `make()`.
 	// Podemos especificar la capacidad inicial como segundo argumento del map para optimizar el rendimiento.
 	edades2 := make(map[string]int, 2)
 
-	// Agregando nuevos elementos al map.
+	//* Agregando nuevos elementos al map.
 	edades2["Mayer"] = 24
 	edades2["Andres"] = 23
 	fmt.Println("Edades2:", edades2)
 
-	// Accediendo a un elemento del map.
+	//* Accediendo a el valor un elemento del map.
 	// Si la clave no existe, se devuelve el valor cero del tipo de dato correspondiente.
 	fmt.Println("Valor de la llave 'a':", nuevoMapa["a"])
 	fmt.Println("Valor de la llave 'd':", nuevoMapa["d"]) // Output: Valor de la llave 'd': 0
 
-	// La función incorporada `delete()` elimina el elemento con la clave especificada (m[clave]) del mapa.
+	// La función incorporada `delete()` elimina el elemento con la clave especificada del mapa.
 	delete(edades2, "Mayer") // Eliminando del map edades2 la clave "Mayer" con su valor.
 	fmt.Println("Edades2:", edades2)
 
-	// Verificando si una clave existe en el map y obteniendo su valor.
+	//* Verificando si una clave existe en el mapa y obteniendo su valor.
 	// "value" es el valor de la clave "a". Si la clave no existe, "value" será el valor cero.
 	// "ok" es un booleano que indica si la clave existe en el map.
 	value, ok := nuevoMapa["a"]
@@ -77,12 +77,12 @@ func main() {
 		fmt.Printf("La clave 'a' existe en el map.")
 	}
 
-	// Eliminando todos sus elementos del map usando la función `clear()`.
+	// Eliminando todos los elementos del map usando la función `clear()`.
 	// `clear()` es una función que simplifica la eliminación de todos los elementos de un map.
 	clear(edades)
 	fmt.Println("Edades después de clear():", edades) // Output: map[]
 
-	// Recorriendo un map con un bucle `for range`
+	// Recorriendo un map con un bucle `for range`.
 	// El orden de iteración de los elementos en un map es aleatorio y puede cambiar entre ejecuciones del programa.
 	// La primera variable son las "claves", la segunda variable son los "valores" del map.
 	for nombre, edad := range edades2 {
@@ -90,9 +90,10 @@ func main() {
 	}
 
 	//* Ejemplo de un mapa donde no pueden haber dos claves iguales.
+	// Declarando un mapa con la función `make`.
 	m := make(map[string]int)
 
-	// Agregar un valor.
+	// Agregando un valor.
 	m["a"] = 1
 	fmt.Println(m) // Output: map[a:1]
 

@@ -7,10 +7,10 @@ import "fmt"
 - Una Struct es una colección de campos que se pueden definir en un paquete.
 - En Go, las estructuras suelen declararse a nivel de paquete y no a nivel de funciones.
 - Es similar a una "clase" en otros lenguajes de programación, pero sin métodos asociados directamente.
-- Las estructuras en Go no soportan herencia, pero se puede lograr composición mediante la inclurtación de structs.
+- Las estructuras en Go no soportan herencia, pero se puede lograr composición mediante la incrustación de structs.
 */
 
-//* Persona es una `estructura` que define un objeto con Nombre y Edad.
+// Persona es una `estructura` que define un objeto con Nombre y Edad.
 type Persona struct {
 	Nombre string
 	Edad   uint8
@@ -28,7 +28,7 @@ type Direccion struct {
 	CP     string
 }
 
-// Empleado es una estructura que demuestra la composición mediante la inclusión de la estructura Persona.
+// Empleado es una estructura que demuestra la composición mediante la incrustación de la estructura Persona.
 type Empleado struct {
 	Persona   // Composición: incluye todos los campos de Persona
 	Puesto    string
@@ -36,18 +36,19 @@ type Empleado struct {
 }
 
 func main() {
-	// Creación de una variable "maria" de tipo struct con los valores cero para cada campo.
+	// Creación de una objeto "maria" de tipo Persona con los valores cero para cada campo.
 	var maria Persona
-	fmt.Println("maria (valores cero):", maria)
+	fmt.Println("maria (valores cero):", maria) // Output: {"", 0}
 
 	// Creación e inicialización de una Persona con todos sus campos.
 	luis := Persona{
 		Nombre: "Luis",
 		Edad:   25,
 	}
-	fmt.Printf("luis: %+v\n", luis)
+	fmt.Printf("luis: %+v\n", luis) // Output: luis: {Nombre:Luis Edad:25}
 
-	// Definición de un campo - Los campos no especificados tomarán el valor cero.
+	//* Definición de un campo.
+	// Los campos no especificados tomarán el valor cero de su tipo de dato correspondiente.
 	// No es obligatorio inicializar todos los campos, pero es recomendable hacerlo.
 	andres := Persona{
 		Nombre: "Andres",
@@ -63,7 +64,7 @@ func main() {
 	lucas := Persona{Edad: 40, Nombre: "Lucas"}
 	fmt.Println("lucas:", lucas)
 
-	// Acceso a los campos de la estructura utilizando el operador punto (.).
+	// Acceder a los campos de la estructura utilizando el operador punto (.).
 	fmt.Println("Nombre de Luis:", luis.Nombre)
 	fmt.Println("Edad de Luis:", luis.Edad)
 
@@ -81,7 +82,7 @@ func main() {
 	fmt.Printf("Struct anónimo: %+v\n", objeto)
 
 	// Uso del operador & para obtener un puntero a un struct.
-	// Los cambios realizados a través del puntero afectarán al struct original
+	// Los cambios realizados a través del puntero afectarán a la estructura original.
 	objetoCopy := &objeto
 	objetoCopy.B = 24
 	fmt.Printf("Struct original modificado a través del puntero: %+v\n", objeto)
@@ -91,16 +92,16 @@ func main() {
 	otroLuis := Persona{Nombre: "Luis", Edad: 25}
 	fmt.Println("¿Son luis y otroLuis iguales?", luis == otroLuis)
 
-	// Uso de structs con slices y maps.
+	//* Uso de structs con slices y maps.
 	personas := []Persona{luis, andres, mayer}
-	fmt.Println("Slice de personas:", personas)
+	fmt.Println("Slice de personas:", personas) // Output: [{Luis 25} {Andres 0} {Mayer 23}]
 
 	personasMap := map[string]Persona{
 		"luis":   luis,
 		"andres": andres,
 		"mayer":  mayer,
 	}
-	fmt.Println("Map de personas:", personasMap)
+	fmt.Println("Map de personas:", personasMap) // Output: map[andres:{Andres 0} luis:{Luis 25} mayer:{Mayer 23}]
 
 	// Demostración de composición y estructuras anidadas
 	empleado := Empleado{
