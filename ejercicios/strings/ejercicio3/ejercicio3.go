@@ -40,8 +40,8 @@ func contarVocales(s string) int {
 }
 
 func countVowels(s string) int {
-	// Mapa que contiene las vocales como claves y un valor booleano true
-	// Esto nos permite buscar si un carácter es una vocal de manera eficiente
+	// Mapa que contiene las vocales como claves y un valor booleano true.
+	// Esto nos permite buscar si un carácter es una vocal de manera eficiente.
 	vowels := map[rune]bool{'a': true, 'e': true, 'i': true, 'o': true, 'u': true}
 	count := 0
 
