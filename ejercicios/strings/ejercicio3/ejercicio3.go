@@ -19,6 +19,9 @@ func main() {
 	// Ejemplo 2
 	result2 := countVowels(str)
 	fmt.Println(result2)
+
+	// Ejemplo 3
+	fmt.Println(GetCount(str))
 }
 
 // En terminos de eficiencia este código no es el mejor.
@@ -39,6 +42,7 @@ func contarVocales(s string) int {
 	return contador
 }
 
+// Ejemplo 2
 func countVowels(s string) int {
 	// Mapa que contiene las vocales como claves y un valor booleano true.
 	// Esto nos permite buscar si un carácter es una vocal de manera eficiente.
@@ -54,5 +58,16 @@ func countVowels(s string) int {
 		}
 	}
 
+	return count
+}
+
+// Ejemplo 3
+func GetCount(str string) (count int) {
+	for _, c := range str {
+		switch c {
+		case 'a', 'e', 'i', 'o', 'u':
+			count++
+		}
+	}
 	return count
 }
