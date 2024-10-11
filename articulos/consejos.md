@@ -6,10 +6,10 @@ En Go, los puntos y comas (;) son opcionales y el compilador los inserta automá
 
 **Algunas caracteristicas a tener en cuenta:**
 
-- No se insertara un punto y coma justo después si la línea termina con una _palabra reservada_ como for, if, switch, etc.
+- No se insertara un punto y coma justo después si la línea termina con una _palabra reservada_ como **for, if, switch, etc**.
 - Con los operadores de incremento `++` y decremento `--` hay que tener cuidado y tratarlos como una declaración y no como una expresión.
 
-La razón por la cual el código anterior no es válido es que los compiladores lo verán como:
+**La razón por la cual el código anterior no es válido es que los compiladores lo verán como:**
 
 ```go
 func main() {
@@ -19,7 +19,7 @@ func main() {
 }
 ```
 
-Para que sea correcto, los operadores de incremento y decremento deben estar en su propia línea como declaraciones:
+**Para que sea correcto, los operadores de incremento y decremento deben estar en su propia línea como declaraciones:**
 
 ```go
 func main() {
@@ -35,15 +35,16 @@ func main() {
 
 Los nombres de paquetes en Go deben ser cortos, claros y en minúsculas, evitando convenciones como `snake_case` o `camelCase`. Nombres como `utils`, `common,` `helpers`, etc., deben evitarse ya que no indican claramente la funcionalidad del paquete.
 
-Algunos buenos nombres de paquetes pueden ser: `parser`, `auth`, `logger`, etc.
+> [!NOTE]
+> Algunos buenos nombres de paquetes pueden ser: parser, auth, logger, etc.
 
 # La Mejor Forma de Inicializar un Slice en Go
 
 Inicializar correctamente un slice en Go es crucial para el rendimiento de tu programa. Una mala inicialización puede llevar a reasignaciones innecesarias de memoria y sobrecargar el recolector de basura (GC), lo que afecta negativamente la eficiencia.
 
-En Go, la función `make()` es la herramienta clave para inicializar slices de manera eficiente, permitiéndote especificar tanto la longitud como la capacidad.
+En Go, la función `make()` es la herramienta clave para inicializar slices de manera eficiente, permitiéndonos especificar tanto la `longitud` como la `capacidad`.
 
-Si sabes cuántos elementos tendrá el slice desde el inicio, define su longitud. Esto previene reasignaciones de memoria durante su uso.
+Si sabes cuántos elementos tendrá el slice desde el inicio, define su **longitud**. Esto previene reasignaciones de memoria durante su uso.
 
 ```go
 // Inicialización con longitud conocida
@@ -76,12 +77,12 @@ slice := make([]int, 5, 10) // Longitud inicial de 5 y capacidad de 10
 
 ### Conclusión
 
-- Si conocemos la longitud final del slice y no planeamos usar append para agregar elementos, inicializarlo con una longitud específica es más eficiente.
+- Si conocemos la longitud final del slice y no planeamos usar `append()` para agregar elementos, inicializarlo con una longitud específica es más eficiente.
 - Si el slice va a crecer dinámicamente, inicializarlo con una capacidad que prevea el crecimiento puede evitar múltiples reasignaciones de memoria, mejorando el rendimiento.
 
 ## Desempaquetar Elementos de un Slice
 
-Cuando utilizas los tres puntos (...) después de un slice, estás desempaquetando los elementos del slice, es decir, estás expandiendo el slice en una lista de sus elementos individuales. Esto es útil en situaciones donde necesitas pasar cada elemento del slice como un argumento separado a una función.
+Cuando utilizas los tres puntos **(...)** después de un slice, estás **desempaquetando** los elementos del slice, es decir, estás expandiendo el slice en una lista de sus elementos individuales. Esto es útil en situaciones donde necesitas pasar cada elemento del slice como un argumento separado a una función.
 
 ```go
 package main
@@ -91,10 +92,10 @@ import "fmt"
 func main() {
     original := []int{1, 2, 3, 4, 5}
 
-    // Crear un slice vacío
+    // Crear un slice vacío.
     emptySlice := []int{}
 
-    // Usar append con los tres puntos para desempaquetar los elementos del slice
+    // Usar append con los tres puntos para desempaquetar los elementos del slice.
     copySlice := append(emptySlice, original...)
 
     fmt.Println("Original slice:", original) // [1 2 3 4 5]
@@ -104,7 +105,7 @@ func main() {
 
 ## Manejo de Errores en Go con fmt.Errorf, el Verbo %w y errors.Join
 
-Desde **Go 1.13**, puedes añadir contexto a los errores sin perder la información original usando `fmt.Errorf` con el verbo `%w`. En **Go 1.20**, se introdujo `errors.Join` para agrupar múltiples errores.
+Desde **Go 1.13**, puedes añadir contexto a los errores sin perder la información original usando `fmt.Errorf()` con el verbo `%w`. En **Go 1.20**, se introdujo `errors.Join()` para agrupar múltiples errores.
 
 ### Formato de los Mensajes de Error
 
@@ -124,15 +125,15 @@ errors.Join(err1, err2)
 
 **¿Por Qué Envolver Errores?**
 
-Envolver errores proporciona más contexto sobre dónde y por qué ocurrió el error, lo que facilita la depuración. El verbo %w permite mantener el error original, útil para inspección con `errors.Is` y `errors.As`.
+Envolver errores proporciona más contexto sobre dónde y por qué ocurrió el error, lo que facilita la depuración. El verbo `%w` permite mantener el error original, útil para inspección con `errors.Is` y `errors.As`.
 
 ## Evitar el uso de panic() y más en entornos de producción
 
-Aunque `panic` puede ser recuperado con `recover()`, esto no siempre es posible ni recomendable.
+Aunque la función `panic()` puede ser recuperado con `recover()`, esto no siempre es posible ni recomendable.
 
-- `recover()` solo puede capturar pánicos en la misma goroutine donde se llama, el pánico de otra función no pueden ser recuperado por la función diferida en _main()_. Esto resulta en un crash del programa.
+- `recover()` solo puede capturar pánicos en la misma goroutine donde se llama, el pánico de otra función no puede ser recuperado por la función diferida en **main()**. Esto resulta en un crash del programa.
 - Un pánico en una parte del sistema puede provocar fallos en otras partes, especialmente en entornos de microservicios o sistemas distribuidos, causando fallos en cascada.
-- Debería limitarse a situaciones críticas, como durante la inicialización de un programa.
+- Debería limitarse a situaciones críticas como la inicialización de un programa.
 
 ## Diferencias entre new(T) y &T{}
 
@@ -165,13 +166,13 @@ Al construir un binario en Go, puedes utilizar los flags `-s` y `-w` para reduci
 
 Para utilizar estos flags al construir tu binario, añádelos a la línea de comandos de `go build`. Aquí tienes ejemplos de cómo hacerlo:
 
-Para construir un binario con el nombre del archivo de Go:
+**Para construir un binario con el nombre del archivo de Go:**
 
 ```bash
 go build -ldflags="-s -w" example.go
 ```
 
-Para construir un binario con un nombre específico:
+**Para construir un binario con un nombre específico:**
 
 ```bash
 go build -ldflags="-s -w" -o my-binary example.go
@@ -193,19 +194,19 @@ Si no necesitas interoperabilidad con código `C`, puedes desactivar _CGO_ utili
 CGO_ENABLED=0 go build -ldflags="-s -w" -o my-binary example.go
 ```
 
-#### Beneficios de Desactivar CGO:
+### Beneficios de Desactivar CGO:
 
 - **Binario más pequeño:** El compilador de Go no incluye dependencias ni código C en el binario resultante. Esto generalmente da como resultado un binario más ligero, ya que todo el código está escrito en Go puro.
 - **Compilación más rápida:** Al no tener que enlazar con bibliotecas C ni ejecutar un compilador C, el proceso de compilación suele ser más rápido.
 - Especialmente útil en entornos controlados como contenedores `Docker`, donde la simplicidad y la portabilidad son clave.
 
-#### Consideraciones al Desactivar CGO:
+### Consideraciones al Desactivar CGO:
 
 - **Dependencias en C:** Si tu proyecto depende de bibliotecas escritas en C, no podrás usarlas si CGO está desactivado.
 - **Funcionalidad del sistema operativo:** Algunas características específicas del sistema operativo, especialmente las que son de bajo nivel, pueden no estar disponibles directamente en Go sin CGO.
 - CGO puede ser necesario para utilizar ciertas librerías del sistema operativo o interactuar con componentes nativos de hardware, lo que podría ser una limitación en algunos casos específicos.
 
-#### ¿Cuándo Desactivar CGO?
+### ¿Cuándo Desactivar CGO?
 
 **Desactivar CGO es recomendable cuando:**
 
