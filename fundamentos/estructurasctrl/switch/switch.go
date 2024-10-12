@@ -3,7 +3,8 @@ package main
 import "fmt"
 
 /*
-* Switch: Una alternativa más limpia y eficiente a múltiples if-else.
+* Switch: Conmutador-Selector
+Una alternativa más limpia y eficiente a múltiples if-else.
 - En Go, cada caso (case) en un switch incluye implícitamente un `break`,
 lo que significa que una vez que se encuentra una coincidencia, el programa no ejecutará los casos siguientes.
 - Go facilita el trabajo con switch al eliminar la necesidad de break explícitos en cada caso.
