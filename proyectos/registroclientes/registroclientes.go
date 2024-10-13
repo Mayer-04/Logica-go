@@ -147,7 +147,7 @@ func eliminarCliente() {
 
 //* VALIDACIONES
 
-// TODO: Validar que el nombre no este ya en la lista de clientes
+// TODO: Validar que el nombre no este ya en la lista de clientes.
 func validarNombre(nombre string) bool {
 	regex := regexp.MustCompile(`^[a-zA-Z\s]+$`)
 	return regex.MatchString(nombre)
