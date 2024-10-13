@@ -4,17 +4,20 @@ import "fmt"
 
 /*
 * Arrays: Arreglos
-Los Arrays en Go tienen un tamaño fijo y almacenan elementos del mismo tipo en ubicaciones de memoria contiguas.
+Los Arrays en Go son estructuras de datos que tienen un tamaño fijo y almacenan elementos del mismo tipo
+en ubicaciones de memoria contiguas.
 
-- Los arrays son: arreglos estaticos, tienen un tamaño fijo y se suelen declarar en la pila (stack).
+- Los arrays suelen declarar en la pila (stack).
 - El compilador de Go conoce la longitud y la capacidad con anticipación de un array.
-- `len y cap` son constantes y siempre iguales.
+- Para un array, len(arr) y cap(arr) son constantes y siempre iguales al tamaño del array.
 - Los elementos del array se acceden mediante `índices`, donde el primer elemento está en el índice 0
 y el último está en `len(arr)-1`.
-- La dirección en memoria de un array es la misma dirección del primero elemento del array. (Ej: arr[0])
-- En Go cuando pasas un array como argumento de una función, este recibe una copia de ese arreglo,
-no un puntero al primer elemento de la matriz.
-- En los array no podemos utilizar el `slicing`, es una característica de los slices y strings.
+- La dirección en memoria de un array es la misma que la dirección del primer elemento (arr[0]).
+- Cuando pasas un array a una función, se crea una copia del array. Esto evita modificaciones no deseadas
+en el array original dentro de la función.
+- No se puede usar "slicing" directamente en arrays. El slicing es una característica de los slices y strings.
+- Go soporta arrays multidimensionales, que son útiles para representar matrices o tablas.
+- Se pueden comparar dos arrays si tienen el mismo tipo y longitud.
 */
 
 func main() {
