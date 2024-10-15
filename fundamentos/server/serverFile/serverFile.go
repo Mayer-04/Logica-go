@@ -14,20 +14,23 @@ import (
 Este programa crea un servidor web que sirve archivos estáticos desde una carpeta específica (public).
 
 * Paquetes utilizados en el código:
-- El paquete 'path/filepath' proporciona funciones para trabajar con rutas de archivos y directorios.
-- El paquete 'os' proporciona funciones para interactuar con el sistema operativo,
+- El paquete "path/filepath" proporciona funciones para trabajar con rutas de archivos y directorios.
+- El paquete "os" proporciona funciones para interactuar con el sistema operativo,
 como obtener el directorio de trabajo actual.
-- El paquete 'slog' se utiliza para registrar eventos y mensajes informativos en el sistema de registro.
+- El paquete "slog" se utiliza para registrar eventos y mensajes informativos en el sistema de registro.
 */
 
 func main() {
+	// Configurando un nuevo registrador de mensajes.
+	logger := slog.New(slog.NewTextHandler(os.Stdout, &slog.HandlerOptions{}))
+
 	// Obtiene la ruta completa a la carpeta 'public', donde se encuentran los archivos estáticos.
 	publicPath := getPublicPath()
 	// Crea un servidor de archivos estáticos que servirá los archivos desde la carpeta 'public'.
 	fs := http.FileServer(http.Dir(publicPath))
 	// Configura el manejador de solicitudes HTTP para servir archivos estáticos desde la ruta raíz (/).
 	http.Handle("/", fs)
-	// Definimos el puerto en el que el servidor web escuchará las solicitudes.
+	// Definimos el puerto en el que el servidor HTTP escuchará las solicitudes.
 	addr := ":5000"
 
 	// Configuramos el servidor HTTP con tiempos de espera personalizados para lectura y escritura.
@@ -43,12 +46,12 @@ func main() {
 	}
 
 	// Registra un mensaje en la consola utilizando slog cuando el servidor se inicia.
-	slog.Info("Servidor iniciado en el puerto " + addr)
+	logger.Info("servidor iniciado", "puerto", addr)
 
 	// Iniciamos el servidor web en el puerto especificado.
 	if err := server.ListenAndServe(); err != nil {
 		// Imprime el error y termina el programa si no se puede iniciar el servidor.
-		fmt.Println(err)
+		logger.Error("fallo al iniciar el servidor", "error", err)
 		os.Exit(1)
 	}
 }
